@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from htmldemo.net/furbar-1/furbar/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Dec 2023 16:16:17 GMT -->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Anfield turf booking</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/liverpool_logo_PNG5.png" />
+
+    <!-- CSS
+	============================================ -->
+
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="assets/css/plugins/font-awesome.min.css" />
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/plugins/animate.min.css" />
+    <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/plugins/odometer.min.css" />
+    <link rel="stylesheet" href="assets/css/plugins/select2.min.css" />
+    <link rel="stylesheet" href="assets/css/plugins/ion.rangeSlider.min.css" />
+
+    <!-- Main Style CSS -->
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <link rel="stylesheet" href="assets/css/style.min.css" />
+</head>
+
+
+<body>
+    <div class="header-area header-sticky d-none d-lg-block">
+        <div class="container position-relative">
+            <div class="row align-items-center">
+                <div class="col-lg-3">
+                    <!-- Header Logo Start -->
+                    <div class="header-logo">
+                        <a href="/home"><img src="assets/images/liverpool_logo_PNG5.png" width="154" height="46" alt="Logo" /></a>
+                    </div>
+                    <!-- Header Logo End -->
+                </div>
+                <div class="col-lg-6">
+                    <div class="header-menu">
+                        <ul class="nav-menu">
+                            <li><a href="/home">Home</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <!-- Header Meta Start -->
+                    <div class="header-meta">
+                        <div class="dropdown">
+                            <a class="action" href="#" role="button" data-bs-toggle="dropdown"><i class="pe-7s-user"></i></a>
+                            <ul class="dropdown-menu dropdown-profile">
+                                <li><a href="/my-accounts">My Account</a></li>
+                                <li><a href="/logout">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Header Meta End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+   
+
+
+    <!-- Page Banner Section Start -->
+    <div class="section page-banner-section" style="background-image: url(assets/images/team-photos/Soccer.jpg)">
+        <div class="container">
+            <!-- Page Banner Content End -->
+            <div class="page-banner-content">
+                <h2 class="title">Checkout</h2>
+                <ul class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li class="active">Checkout</li>
+                </ul>
+            </div>
+            <!-- Page Banner Content End -->
+        </div>
+    </div>
+    <!-- Page Banner Section End -->
+
+    
+
+
+    <!-- Checkout Section Start -->
+    <div class="section section-padding">
+        <div class="container">
+
+            <div class="checkout-info">
+                <p class="info-header">
+                    <i class="fa fa-exclamation-circle"></i> Have a coupon?
+                    <a data-bs-toggle="collapse" href="#coupon">Click here to enter your code</a>
+                </p>
+        
+                <div class="collapse" id="coupon">
+                    <div class="card-body">
+                        <form id="myForm" action="#">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="single-form">
+                                        <input id="inputCode" type="" placeholder="Coupon code" />
+                                        <div style="height: 10px;">
+                                            <p id="couponMessage" style="color: red;"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="single-form">
+                                        <button class="btn btn-primary btn-hover-dark">
+                                            Coupon
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+
+            <form action="#">
+                <div class="row">
+                    <h2>Confirm Your Order</h2>
+                    <div class="col-lg-5">
+                        <div class="checkout-order">
+                            <div class="checkout-title">
+                                <h5 class="title"><%= turf.name %> <%= turf.court %> Turf <%= turf.city %></h5>
+                            </div>
+
+                            <div class="checkout-order-table table-responsive">
+                                <table class="table">
+                                        <tr>
+                                            <td class="-name">
+                                                <p>Turf name</p>
+                                            </td>
+                                            <td class="Product-price">
+                                                <p><%= turf.name %> Turf</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="Product-name">
+                                                <p>Court</p>
+                                            </td>
+                                            <td class="Product-price">
+                                                <p><%= turf.court %> Court</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="Product-name">
+                                                <p>Location</p>
+                                            </td>
+                                            <td class="Product-price">
+                                                <p><%= turf.location %>, <%= turf.city %></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="Product-name">
+                                                <p>Time</p>
+                                            </td>
+                                            <td class="Product-price">
+                                                <p><%= time.startingTime %> to <%= time.endingTime %></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="Product-name">
+                                                <p>Date</p>
+                                            </td>
+                                            <td class="Product-price">
+                                                <p id="date"><%= date %></p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="Product-name">
+                                                <p>Cash</p>
+                                            </td>
+                                            <td class="Product-price">
+                                                <p id="date">₹<%= time.cash %></p>
+                                            </td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td class="Product-name">
+                                                    <p>Offer</p>
+                                                </td>
+                                                <td class="Product-price">
+                                                    <p id="offer"><%= time.cash*percentage/100 %></p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="Product-name">
+                                                    <p>Coupon discount</p>
+                                                </td>
+                                                <td class="Product-price">
+                                                    <p id="couponDiscount">0</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="Product-name">
+                                                    <p>Total</p>
+                                                </td>
+                                                <td class="Product-price">
+                                                    <p style="font-weight: bold; color: orangered;" id="totalVal"><%= time.cash - time.cash*percentage/100 %></p>
+                                                </td>
+                                            </tr>
+                                            
+                                        </tfoot>
+                                        <p style="display: none;" id="percentage"><%= percentage %></p>
+                                    </table>
+                                </div>
+                                <p hidden id="dummyTotal"><%= time.cash - time.cash*percentage/100 %></p>
+                                <p hidden id="couponName"></p>
+
+                            <div class="checkout-payment">
+                                <ul>
+                                    <li>
+                                        <div class="single-payment">
+                                            <div class="payment-radio radio">
+                                                <input type="radio" name="payment" id="offline" />
+                                                <label for="offline"><span></span> Offline payment </label>
+                            
+                                                <div class="payment-details">
+                                                    <p>
+                                                        Pay cash to turf owners
+                                                        before entering the ground
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="single-payment">
+                                            <div class="payment-radio radio">
+                                                <input type="radio" name="payment" id="wallet" />
+                                                <label for="wallet"><span></span> Wallet </label>
+                            
+                                                <div class="payment-details">
+                                                    <p>
+                                                        Widrawing cash from
+                                                        your wallet
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                            
+                                    <li>
+                                        <div class="single-payment">
+                                            <div class="payment-radio radio">
+                                                <input type="radio" name="payment" id="razopay" />
+                                                <label for="razopay"><span></span> Razopay
+                                                    <img class="payment" src="assets/images/payment-2.html" alt="" />
+                                                    <a href="#"></a></label>
+                            
+                                                <div class="payment-details">
+                                                    <p>
+                                                        Pay via Razopay; you
+                                                        can pay with your
+                                                        Razopay very easily.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            
+                                <div class="single-form">
+                                    <a class="btn btn-primary btn-hover-dark d-block" onclick="checkPayment()">Book confirm</a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Checkout Section End -->
+
+    <p style="display: none;" id="turfId"><%= turf._id %></p>
+    <p style="display: none;" id="timeId"><%= time %></p>
+    <!--Back To Start-->
+    <button id="backBtn" class="back-to-top"><i class="pe-7s-angle-up"></i></button>
+    <!--Back To End-->
+    <!-- JS
+    ============================================ -->
+
+    <!-- Modernizer & jQuery JS -->
+    <!-- Coupon check script -->
+    <script>
+        const form = document.getElementById('myForm');
+    
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            // ----- Dummy total for adjusting coupon apply -----
+            const dummyTotal = document.getElementById('dummyTotal').innerHTML;
+            // ----- Assign dummy total to grand total -----
+            document.getElementById('totalVal').innerHTML = dummyTotal
+            // ----- User entered coupon code -----
+            const inputCode = document.getElementById('inputCode').value;
+            fetch(`/coupon-check?inputCode=${inputCode}`)
+            .then(res => res.json())
+            .then(data => {
+                // ----- If coupon code is wrong -----
+                if(data.message) {
+                    // ------ Put off the value on a p tag (That is hidden coupon name) ------
+                    document.getElementById('couponName').innerHTML = ''
+                    // ---- Assingn coupon discount = 0 ----
+                    document.getElementById('couponDiscount').innerHTML = 0
+                    // ---- Passing the message ----
+                    document.getElementById('couponMessage').innerHTML = data.message
+                    // ---- Remove message after 3 seconds ----
+                    function hideParagraph() {
+                        document.getElementById('couponMessage').innerHTML = ''
+                    }
+                    setTimeout(hideParagraph, 3000)
+
+                } else if(data.success) {
+                    // ----- Pass coupon applied message -----
+                    document.getElementById('couponMessage').innerHTML = data.verified
+                    // ----- Grand total after all offers applied -----
+                    const total = document.getElementById('totalVal').innerHTML
+                    // ----- Setting coupon offer -----
+                    const couponOffer = total*data.couponPercentage/100
+                    // ----- Assingning the total value and coupon offer -----
+                    document.getElementById('couponDiscount').innerHTML = couponOffer
+                    document.getElementById('totalVal').innerHTML = total - couponOffer
+                    // ----- Assingn the coupon name to a p tag to checking coupon -----
+                    document.getElementById('couponName').innerHTML = inputCode
+                }
+            })
+        });
+    </script>
+    
+    
+    
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <!-- Checkout submit -->
+    <script>
+        function checkPayment() {
+            const offlineRadio = document.getElementById("offline");
+            const razopayRadio = document.getElementById("razopay");
+            const walletRadio = document.getElementById("wallet");
+
+            let paymentMethod;
+            if (offlineRadio.checked) {
+                paymentMethod = 'offline'
+                console.log("User selected Offline payment");
+            } else if (razopayRadio.checked) {
+                paymentMethod = 'razopay'
+                console.log("User selected Razopay");
+            } else if (walletRadio.checked) {
+                paymentMethod = 'wallet'
+                console.log("User selected Razopay");
+            } else {
+                Swal.fire({
+                    title: "Pick method",
+                    text: "Please select a payment option.",
+                });
+            }
+            const time = document.getElementById("timeId").innerHTML
+            const turfId = document.getElementById("turfId").innerHTML
+            const date = document.getElementById("date").innerHTML
+            const total = document.getElementById('totalVal').innerText
+
+            fetch(`/check-payment?totalVal=${total}&date=${date}&method=${paymentMethod}&turfId=${turfId}&time=<%= encodeURIComponent(JSON.stringify(time)) %>`)
+            .then(res => res.json())
+			.then(data =>{
+                const couponName = document.getElementById('couponName').innerHTML
+                const offer = document.getElementById('offer').innerHTML
+                const couponDiscount = document.getElementById('couponDiscount').innerHTML
+                const time = document.getElementById("timeId").innerHTML
+                const turfId = document.getElementById("turfId").innerHTML
+                const date = document.getElementById("date").innerHTML
+                const total = document.getElementById('totalVal').innerText
+				if(data.offline){
+					window.location.href = `/payment-success?offer=${offer}&couponDiscount=${couponDiscount}&couponName=${couponName}&totalVal=${total}&date=${date}&method=${paymentMethod}&turfId=${turfId}&time=<%= encodeURIComponent(JSON.stringify(time)) %>`;
+				} else if (data.offlineLimit){
+                    Swal.fire({
+                        title: "Amount greater than 1000",
+                        text: "Offline payment not available grater than 1000, Please choose another option",
+                    });
+                } else if (data.booked){
+                    Swal.fire({
+                        title: "Already booked",
+                        text: "This slot is already booked, You can book another slot",
+                    });
+                } else if (data.balance){
+                    Swal.fire({
+                        title: "No balance",
+                        text: "No balance in your wallet, Please choose another option",
+                    });
+                } else if (data.success) {
+                    console.log('Raaaaaazopaaaay')
+                    var options = {
+						"key": data.key_id,
+						"amount": `${total}`,
+						"currency": "INR",
+						"name": data.name,
+						// "description": ""+res.description+"",
+						// "image": "https://dummyimage.com/600x400/000/fff",
+						"order_id": data.order_id, 
+						"handler": function (response){
+                            console.log('///////////////')
+							alert("Payment Succeeded");
+                            window.location.href = `/payment-success?offer=${offer}&couponDiscount=${couponDiscount}&couponName=${couponName}&totalVal=${total}&date=${date}&method=${paymentMethod}&turfId=${turfId}&time=<%= encodeURIComponent(JSON.stringify(time)) %>`;
+						},
+						// "prefill": {
+						// 	// "contact":""+res.contact+"",
+						// 	"name":`asdfa`,
+						// 	"email": `asdfa`
+						// },
+						// "notes" : {
+						// 	"description":""+res.description+""
+						// },
+						"theme": {
+							"color": "#2300a3"
+						}
+					};
+                  
+					var razorpayObject = new Razorpay(options);
+					razorpayObject.on('payment.failed', function (response){
+                        console.log(response);
+						alert("Payment Failed");
+                        window.location.href = `/payment-success?error=yes&offer=${offer}&couponDiscount=${couponDiscount}&couponName=${couponName}&totalVal=${total}&date=${date}&method=${paymentMethod}&turfId=${turfId}&time=<%= encodeURIComponent(JSON.stringify(time)) %>`;
+					});
+					razorpayObject.open();
+                    
+                } 
+            
+        })
+    }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="assets/js/vendor/jquery-3.5.1.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="assets/js/plugins/popper.min.js"></script>
+    <script src="assets/js/plugins/bootstrap.min.js"></script>
+
+    <!-- Plugins JS -->
+    <script src="assets/js/plugins/swiper-bundle.min.js"></script>
+    <script src="assets/js/plugins/ajax-contact.js"></script>
+    <script src="assets/js/plugins/odometer.min.js"></script>
+    <script src="assets/js/plugins/select2.min.js"></script>
+    <script src="assets/js/plugins/ion.rangeSlider.min.js"></script>
+    <script src="assets/js/plugins/jquery.zoom.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+
+<!-- Mirrored from htmldemo.net/furbar-1/furbar/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Dec 2023 16:16:17 GMT -->
+</html>

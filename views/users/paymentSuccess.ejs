@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Success</title>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/liverpool_logo_PNG5.png" />
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.container {
+    text-align: center;
+    padding: 50px;
+}
+
+.success-icon {
+    margin-bottom: 20px;
+}
+
+.success-heading {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.success-message {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: darkgreen;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <% if(order == 'Failed') { %>
+            <div class="failed-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red" width="100px" height="100px">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/>
+                </svg>
+            </div>
+            <h1 class="failed-heading">Booking Failed!</h1>
+            <p class="success-message">You can continue your payment on on your profile page.</p>
+        <% } else { %>
+            <div class="success-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="green" width="100px" height="100px">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+                </svg>
+            </div>
+            <h1 class="success-heading">Booking Successful!</h1>
+            <p class="success-message">Thank you for your turf booking. Your booking was successful.</p>
+        <% } %>
+        <a href="/home" class="btn">Go to home</a>
+    </div>
+</body>
+</html>

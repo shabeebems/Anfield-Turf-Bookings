@@ -32,6 +32,24 @@ const signup = async (req, res) => {
     }
 }
 
+const refferalCodeCheck = async (req, res) => {
+    try {
+        const code = req.query.code
+        const find = await users.findOne({ refferalCode: code })
+        if(find){
+            req.session.refferalCode = code
+            res.send({ message: 'Refferal code applied' })
+        } else if(code.length !== 8) {
+            res.send({ message: 'Refferal code must 8 character' })
+        } else {
+            res.send({ message: 'Enter valid refferal code' })
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
 // ------- After signup --------
 const signupCheck = async (req, res) => {
     try {
@@ -110,6 +128,9 @@ const checkOtp = async (req, res) => {
     try {
         // ----- userDetails session saving to data variable -----
         const data = req.session.data
+        // ----- Creating a refferal code and saving to data -----
+        const newRefferalCode = data.username.slice(0,4) + Math.floor(1000 + Math.random() * 9000)
+        data.refferalCode = newRefferalCode
         // ----- Checking session email in otpSchema -----
         const email = await otpSchema.findOne({ email: data.email })
         // ----- Checking session email and entered Otp in otpSchema -----
@@ -124,7 +145,8 @@ const checkOtp = async (req, res) => {
 
             // ---- Checking refferals and add money to wallet
             const user = await users.findOne({ email: data.email })
-            if (typeof(req.session.refferal) !==  'undefined') {
+
+            if (typeof(req.session.refferal) !==  'undefined' || typeof(req.session.refferalCode) !==  'undefined') {
                 let cancelledOrder = {
                     name: `Refferal`,
                     amount: 21,
@@ -132,7 +154,17 @@ const checkOtp = async (req, res) => {
                 }
                 await walletSchema.insertMany({ userId: user._id, amount: 21, cancelledOrders: cancelledOrder })
                 cancelledOrder.amount = 121
-                await walletSchema.findOneAndUpdate({ userId: req.session.refferal }, { $inc: { amount: 121 }, $push: { cancelledOrders: cancelledOrder } } )
+                if(typeof(req.session.refferalCode) !==  'undefined') {
+                    const refferalCode = req.session.refferalCode
+                    // ----- Find the refferal user with referal code -----
+                    const findRefferal = await users.findOne({
+                        refferalCode: refferalCode,
+                        // refferalCode: { $exists: true} 
+                    })
+                    await walletSchema.findOneAndUpdate({ userId: findRefferal._id }, { $inc: { amount: 121 }, $push: { cancelledOrders: cancelledOrder } } )
+                } else {
+                    await walletSchema.findOneAndUpdate({ userId: req.session.refferal }, { $inc: { amount: 121 }, $push: { cancelledOrders: cancelledOrder } } )
+                }
             } else {
                 await walletSchema.insertMany({ userId: user._id, amount: 0 })
             }
@@ -276,6 +308,7 @@ const checkForget = async (req, res) => {
 
 module.exports = {
     signup,
+    refferalCodeCheck,
     signupCheck,
     otpSend,
     checkOtp,

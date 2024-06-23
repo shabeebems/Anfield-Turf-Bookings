@@ -59,6 +59,7 @@
     <!-- Page Banner Section Start -->
     <div class="section page-banner-section" style="background-image: url(assets/images/team-photos/Soccer.jpg)">
         <div class="container">
+            
             <!-- Page Banner Content End -->
             <div class="page-banner-content">
                 <h2 class="title">Register</h2>
@@ -80,13 +81,63 @@
                 <div class="col-lg-6">
                     <!-- Login & Register Start -->
                     <div class="login-register-wrapper">
-                        
+                        <div class="checkout-info">
                         <h4 class="title">Create New Account</h4>
                         <p>
                             Already have an account?
                             <a href="/">Log in instead!</a>
                         </p>
+                        <div class="checkout-info">
+                            <p class="info-header">
+                                <i class="fa fa-exclamation-circle"></i> Have a refferal code?
+                                <a data-bs-toggle="collapse" href="#refferal">Click here to enter your code</a>
+                            </p>
+                    
+                            <div class="collapse" id="refferal">
+                                <div class="card-body">
+                                    <form id="myForm" action="#">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="single-form">
+                                                    <input id="inputCode" type="" placeholder="Refferal code" />
+                                                    <div style="height: 10px;">
+                                                        <p id="refferalMessage" style="color: red;"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="single-form">
+                                                    <button class="btn btn-primary btn-hover-dark">
+                                                        submit
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                         <form method="" id="signupForm">
+                            
+                        <script>
+                            const refForm = document.getElementById('myForm')
+                            refForm.addEventListener('submit', function(event) {
+                                event.preventDefault();
+                                const refferalCode = document.getElementById('inputCode').value
+                                fetch(`/check-refferal?code=${refferalCode}`)
+                                .then(res => res.json())
+                                .then(data => {
+                                    document.getElementById('refferalMessage').innerHTML = data.message
+                                    function hideParagraph() {
+                                        document.getElementById('refferalMessage').innerHTML = ''
+                                    }
+                                    setTimeout(hideParagraph, 3000)
+                                })
+
+                            })
+
+                        </script>
+
 
                             <div class="single-form">
                                 <input type="text" name="name" placeholder="name" id="name" required="">

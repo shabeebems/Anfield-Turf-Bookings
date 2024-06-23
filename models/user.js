@@ -18,6 +18,9 @@ const sSchema = new mongoose.Schema({
     address:{
         type:String
     },
+    refferalCode: {
+        type:String
+    },
     password:{
         type:String,
     },

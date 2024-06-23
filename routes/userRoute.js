@@ -48,10 +48,10 @@ user_route.set('views','./views/users');
 
 
 user_route.get('/signup',auth.isLogout,userControler.signup)
+user_route.get('/check-refferal',auth.isLogout,userControler.refferalCodeCheck)
 user_route.get('/signup-check',auth.isLogout,userControler.signupCheck)
 user_route.get('/otpSend',auth.isLogout,userControler.otpSend)
 user_route.get('/check-otp',auth.isLogout,userControler.checkOtp)
-
 user_route.get('/resend',auth.isLogout,userControler.resendOtp)
 
 user_route.get('/',auth.isLogout,userControler.login)

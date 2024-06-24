@@ -47,7 +47,12 @@ admin_route.get('/data',auth.isLogin,dashboardController.data)
 admin_route.get('/admin-users-list',auth.isLogin,userManagementController.userList)
 admin_route.get('/admin-block-user',auth.isLogin,userManagementController.blockUser)
 admin_route.get('/admin-add-user',auth.isLogin,userManagementController.addUsers)
-admin_route.post('/admin-add-user',auth.isLogin,userManagementController.addingUser)
+admin_route.get('/admin-addUser-check',auth.isLogin,userManagementController.checkuser)
+admin_route.get('/admin-userAdding',auth.isLogin,userManagementController.addingUser)
+admin_route.get('/admin-userEdit',auth.isLogin,userManagementController.userEdit)
+admin_route.get('/admin-editUser-check',auth.isLogin,userManagementController.userEditCheck)
+admin_route.get('/admin-userEditing',auth.isLogin,userManagementController.editingUser)
+
 
 // ------- Category management ---------
 admin_route.get('/admin-category',auth.isLogin,categoryManagementController.category)
@@ -71,12 +76,6 @@ admin_route.get('/admin-bookings',auth.isLogin,turfManagementController.bookings
 
 
 // --------- Offer management ---------
-// admin_route.get('/admin-turf-offer',auth.isLogin,offerController.turfOfferpage)
-// admin_route.get('/admin-check-turfOffer-details',auth.isLogin,offerController.checkTurfOffer)
-// admin_route.get('/admin-TurfOffer-checkSuccess',auth.isLogin,offerController.turfOfferSuccess)
-// admin_route.get('/admin-categoryOffer',auth.isLogin,offerController.categoryOfferPage)
-// admin_route.get('/adminCategory-offer-check',auth.isLogin,offerController.categoryOfferCheck)
-// admin_route.get('/admin-category-offerCheck-success',auth.isLogin,offerController.categoryOfferSuccess)
 admin_route.get('/admin-offerPage',auth.isLogin,offerController.offerpage)
 admin_route.get('/admin-addOffer-page',auth.isLogin,offerController.addOfferpage)
 admin_route.get('/admin-checkOffer',auth.isLogin,offerController.checkOffer)

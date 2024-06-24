@@ -51,7 +51,7 @@ const orderSchema = mongoose.Schema({
         },
         status : {
             type:String,
-            enum : ['Used', 'Not used', 'Canceled', 'Failed'],
+            enum : ['Success', 'Canceled', 'Failed'],
             required: true
         },
         orderedDate : {

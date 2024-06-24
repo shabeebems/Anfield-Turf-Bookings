@@ -141,7 +141,7 @@ button{
         <h3>Admin login</h3>
             <h4 id="sendingMessage" style="color: red; text-align: center; height: 20px;"></h4>
         <label for="username">Username</label>
-        <input type="text" placeholder="username" id="username" name="username" value="salah123">
+        <input type="text" placeholder="username" id="username" name="username" value="faheem@123">
 
         <label for="password">Password</label>
         <div class="password-container">
@@ -170,7 +170,6 @@ button{
 						  document.getElementById('sendingMessage').innerHTML = ''
 					  }
 					  setTimeout(hideParagraph, 3000)
-            console.log(data.message)
           }else if(data.success){
             window.location.href="/admin-home"
           }

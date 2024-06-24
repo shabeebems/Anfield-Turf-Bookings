@@ -262,7 +262,7 @@ const paymentSuccess = async (req, res) => {
         if(req.query.error){
             status = 'Failed'
         } else {
-            status = 'Not used'
+            status = 'Success'
         }
         console.log('sss', req.query)
         // ----- Picking userId and coupon code for pushing id to coupon details -----

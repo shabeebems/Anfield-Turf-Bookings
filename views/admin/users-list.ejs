@@ -83,18 +83,25 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <div class="col-12">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Users List</h6>
-                            <div class="table-responsive">
-                                <table class="table">   
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Username</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Email</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                        <div class="container">
+                            <div class="bg-secondary rounded h-100 p-4">
+                                <h6 class="mb-4">Users List</h6>
+                                <!-- Search Input Field -->
+                                <div class="form-group">
+                                    <input type="text" id="searchInput" class="form-control" placeholder="Search by Username, Name, or Email" onkeyup="filterTable()">
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table" id="userTable">   
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Username</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Action</th>
+                                                <th scope="col">Edit</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
                                             <%
                                                 if(user.length > 0){
                                                 for(let i=0;i<user.length;i++){
@@ -105,27 +112,31 @@
                                                         <td><%= user[i].email %></td>
                                                         <td>
                                                             <%if(user[i].block==1){%>
-                                                                <button class="btn btn-sm font-sm rounded btn-danger " onclick="blokUser(this,'<%= user[i].email%>') ">Unblock</button>
+                                                                <button class="btn btn-sm font-sm rounded btn-danger" onclick="blokUser(this,'<%= user[i].email %>')">Unblock</button>
                                                             <%}else if(user[i].block==0){%>
-                                                                <button  class="btn btn-sm font-sm rounded btn-success " onclick="blokUser(this,'<%= user[i].email%>') ">Block</button>
+                                                                <button class="btn btn-sm font-sm rounded btn-success" onclick="blokUser(this,'<%= user[i].email %>')">Block</button>
                                                             <%}%>
-        
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn btn-sm font-sm rounded btn-success"><a href='/admin-userEdit?email=<%= user[i].email %>' style="color: white;">Edit</a></button>
                                                         </td>
                                                     </tr> 
                                                     <%
                                                 }
-                                                }else{
+                                                } else {
                                                     %>
                                                     <tr>
-                                                        <td colspan="3">Users Not Found</td>
+                                                        <td colspan="5">Users Not Found</td>
                                                     </tr>
                                                     <%
                                                 }
                                             %>
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
+                    
                     </div>
                 </div>
             </div>
@@ -143,7 +154,34 @@
     </div>
 
     <!-- JavaScript Libraries -->
-   <script> 
+    <script>
+        function filterTable() {
+            const searchInput = document.getElementById('searchInput');
+            const filter = searchInput.value.toLowerCase();
+            const table = document.getElementById('userTable');
+            const trs = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < trs.length; i++) {
+                let tds = trs[i].getElementsByTagName('td');
+                let match = false;
+                
+                for (let j = 0; j < tds.length - 2; j++) {  // Exclude the action and edit buttons columns
+                    if (tds[j] && tds[j].textContent.toLowerCase().includes(filter)) {
+                        match = true;
+                        break;
+                    }
+                }
+                if (match) {
+                    trs[i].style.display = '';
+                } else {
+                    trs[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+
+
+    <script> 
     async function blokUser (tag,email){
         try {
             Swal.fire({

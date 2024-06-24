@@ -1,6 +1,5 @@
 const basePath = '../../'
 const orderSchema = require(basePath + 'models/order')
-const turfSchema = require(basePath + 'models/turfs')
 
 
 const dashboard = async (req, res) => {
@@ -8,6 +7,7 @@ const dashboard = async (req, res) => {
         // ---- Grouping the top booking turfs ----
         const topTurfs = await orderSchema.aggregate([
             { $unwind: '$turfDetails' },  // Unwind the turfDetails array
+            { $match: { 'turfDetails.status': 'Success' } },
             { $group: {
                 _id: { name: '$turfDetails.name', court: '$turfDetails.court', location: '$turfDetails.location', startingTime: '$turfDetails.startingTime', endingTime: '$turfDetails.endingTime' },
                 orderCount: { $sum: 1 }
@@ -28,6 +28,7 @@ const dashboard = async (req, res) => {
         // ---- Grouping the top booking courts ----
         const topCourts = await orderSchema.aggregate([
             { $unwind: '$turfDetails' },
+            { $match: { 'turfDetails.status': 'Success' } },
             { $group: {
                 _id: '$turfDetails.court',
                 orderCount: { $sum: 1 }
@@ -39,7 +40,6 @@ const dashboard = async (req, res) => {
                 orderCount: 1
             }}
         ]);
-        console.log('sss', topTurfs, topCourts)
         res.render('index', { topTurfs, topCourts });
     } catch (error) {
         console.log(error.message);
@@ -51,10 +51,11 @@ const data = async (req, res) => {
         // ---- Grouping the cancelled and non-cancelled bookings with exact date ----
         const orders = await orderSchema.aggregate([
             { $unwind: '$turfDetails' },
+            { $match: { 'turfDetails.status': { $ne: 'Failed' } } },
             {
                 $facet: {
                     nonCanceledOrders: [
-                        { $match: { 'turfDetails.status': { $ne: 'Canceled' } } },
+                        { $match: { 'turfDetails.status': { $eq: 'Success' } } },
                         { $group: {
                                 _id: "$turfDetails.orderedDate",
                                 totalOrders: { $sum: 1 }
@@ -71,8 +72,6 @@ const data = async (req, res) => {
             }
         ]);
         
-        console.log(orders[0].canceledOrders);
-
         res.json(orders[0]);
         
     } catch (error) {

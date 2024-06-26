@@ -8,7 +8,10 @@ const nocache = require('nocache');
 const dotenv = require('dotenv').config()
 const {PORT} = process.env
 
-
+const path = require('path')
+app.use(express.static(path.join(__dirname,'../public/user')))
+app.set("view engine",'ejs');
+app.set('views','./views/users');
 
 app.use(nocache())
 app.use(session({
@@ -18,7 +21,7 @@ app.use(session({
 }))
 
 const mongoose = require('mongoose')
-mongoose.connect("mongodb://127.0.0.1:27017/turf")
+mongoose.connect('mongodb+srv://muhammedshabeeb330:d0F3HaDyPmt54EoL@scouser.icgssjw.mongodb.net/turf')
 .then(()=>console.log('MongoDB success'))
 .catch(()=>console.Console.log('MongoDB cracked'))
 
@@ -27,5 +30,9 @@ app.use(flash());
 
 app.use('/',adminRoute)
 app.use('/',userRoute)
+
+app.get('*', (req, res) => {
+    res.render('404')
+});
 
 app.listen(PORT, () => console.log('http://localhost:8000/'))

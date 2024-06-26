@@ -37,7 +37,6 @@ const wishlistController = require('../controller/User/wishlistController')
 
 
 user_route.use(express.static(path.join(__dirname,'../public/user')))
-// user_route.use(express.static(path.join(__dirname,'../public/admin')))
 
 
 user_route.use(express.json())

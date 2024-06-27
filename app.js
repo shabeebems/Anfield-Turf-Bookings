@@ -12,7 +12,7 @@ const path = require('path')
 app.use(express.static(path.join(__dirname,'../public/user')))
 app.set("view engine",'ejs');
 app.set('views','./views/users');
-// just to push
+
 app.use(nocache())
 app.use(session({
     secret: 'your-secret-key',
@@ -30,9 +30,5 @@ app.use(flash());
 
 app.use('/',adminRoute)
 app.use('/',userRoute)
-
-app.get('*', (req, res) => {
-    res.render('404')
-});
 
 app.listen(PORT, () => console.log('http://localhost:8000/'))

@@ -45,7 +45,7 @@ user_route.use(express.urlencoded({extended:true}))
 user_route.set("view engine",'ejs');
 user_route.set('views','./views/users');
 
-
+user_route.get('*',auth.isLogout,userControler.global)
 user_route.get('/signup',auth.isLogout,userControler.signup)
 user_route.get('/check-refferal',auth.isLogout,userControler.refferalCodeCheck)
 user_route.get('/signup-check',auth.isLogout,userControler.signupCheck)

@@ -15,6 +15,12 @@ app.use(session({
     saveUninitialized: true
 }))
 
+
+const path = require('path')
+app.use(express.static(path.join(__dirname,'../public/user')))
+app.set("view engine",'ejs');
+app.set('views','./views/users');
+
 const mongoose = require('mongoose')
 mongoose.connect('mongodb+srv://muhammedshabeeb330:d0F3HaDyPmt54EoL@scouser.icgssjw.mongodb.net/turf')
 .then(()=>console.log('MongoDB success'))
@@ -25,5 +31,8 @@ app.use(flash());
 
 app.use('/',adminRoute)
 app.use('/',userRoute)
+app.get('*', (req, res) => {
+    res.render('404')
+})
 
 app.listen(PORT, () => console.log('http://localhost:8000/'))

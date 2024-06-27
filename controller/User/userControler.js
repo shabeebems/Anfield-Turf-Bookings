@@ -304,17 +304,8 @@ const checkForget = async (req, res) => {
     }
 }
 
-const global = async (req, res) => {
-    try {
-        res.render('404')
-    } catch (error) {
-        console.log(error.message)
-    }
-}
-
 
 module.exports = {
-    global,
     signup,
     refferalCodeCheck,
     signupCheck,

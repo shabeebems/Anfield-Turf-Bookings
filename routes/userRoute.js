@@ -89,7 +89,6 @@ user_route.get('/continue-payment',auth.isLogin,profileControler.continuePayment
 // ------ Wishlist -------
 user_route.get('/add-wishlist',auth.isLogin,wishlistController.addWishlist)
 
-
 user_route.get('*',auth.isLogout,userControler.global)
 
 module.exports = user_route

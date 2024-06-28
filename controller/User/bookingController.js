@@ -258,64 +258,77 @@ const couponCheck = async (req,res) => {
 
 const paymentSuccess = async (req, res) => {
     try {
+
         let status;
         if(req.query.error){
             status = 'Failed'
         } else {
             status = 'Success'
         }
-        console.log('sss', req.query)
-        // ----- Picking userId and coupon code for pushing id to coupon details -----
-        const user = req.session.user
-        const couponName = req.query.couponName
-        if(couponName.length !== 0 && status !== 'Failed'){
-            await couponSchema.findOneAndUpdate({ code: couponName }, { $push: { users: user._id } })
-        }
-        // ----- The last value of slot -----
-        const totalVal = req.query.totalVal
+
         // ----- Covert JSON oject to object -----
         const time = JSON.parse(req.query.time)
-        // ----- Find turf with turfId -----
-        const turf = await turfSchema.findOne({ _id: req.query.turfId })
-        const turfDetails = [{
-            slotBookDate: req.query.date,
-            turfId: turf._id,
-            name: turf.name,
-            court: turf.court,
-            startingTime: time.startingTime,
-            endingTime: time.endingTime,
-            cash: totalVal,
-            location: turf.location,
-            city: turf.city,
-            paymentMethod: req.query.method,
-            offer: req.query.offer,
-            couponDiscount: req.query.couponDiscount,
-            couponCode: req.query.couponName,
-            status: status,
-            orderedDate: new Date().toISOString().slice(0,10)
-        }]
-        // ----- Data variable for pushing orderSchema -----
-        const data = ({
-            userId: req.session.user._id,
-            turfDetails: turfDetails
-        })
-        // ------ Check user have any bookings -------
-        const userCheck = await orderSchema.findOne({ userId: data.userId })
-        if (userCheck) {
-            // ----- Pushing turfDetails to orderSchema -----
-            await orderSchema.findOneAndUpdate({ userId: data.userId },{ $push:{ turfDetails:turfDetails }})
+        const orders = await orderSchema.find({})
+        const checkTime = orders.flatMap(order => 
+            order.turfDetails
+            .filter(detail => detail.slotBookDate === req.query.date && detail.turfId === req.query.turfId && detail.status !== 'Canceled' && detail.startingTime == time.startingTime && detail.status != 'Failed')
+            // .map(detail => detail.startingTime)
+        );
+        if(checkTime.length != 0){
+            res.redirect('/my-accounts')
         } else {
-            // ----- Create new orderSchema document ------
-            await orderSchema.insertMany(data)
-        }
+            console.log('sss', req.query)
+            // ----- Picking userId and coupon code for pushing id to coupon details -----
+            const user = req.session.user
+            const couponName = req.query.couponName
+            if(couponName.length !== 0 && status !== 'Failed'){
+                await couponSchema.findOneAndUpdate({ code: couponName }, { $push: { users: user._id } })
+            }
+            // ----- The last value of slot -----
+            const totalVal = req.query.totalVal
 
-        if(req.query.method === 'wallet'){
-            await walletSchema.findOneAndUpdate({ userId: user._id }, { $inc: { amount: -totalVal } } )
-        }
-        if(status == 'Failed'){
-            res.render('paymentSuccess', { order: 'Failed' })
-        } else {
-            res.render('paymentSuccess', { order: 'success' })
+            // ----- Find turf with turfId -----
+            const turf = await turfSchema.findOne({ _id: req.query.turfId })
+            const turfDetails = [{
+                slotBookDate: req.query.date,
+                turfId: turf._id,
+                name: turf.name,
+                court: turf.court,
+                startingTime: time.startingTime,
+                endingTime: time.endingTime,
+                cash: totalVal,
+                location: turf.location,
+                city: turf.city,
+                paymentMethod: req.query.method,
+                offer: req.query.offer,
+                couponDiscount: req.query.couponDiscount,
+                couponCode: req.query.couponName,
+                status: status,
+                orderedDate: new Date().toISOString().slice(0,10)
+            }]
+            // ----- Data variable for pushing orderSchema -----
+            const data = ({
+                userId: req.session.user._id,
+                turfDetails: turfDetails
+            })
+            // ------ Check user have any bookings -------
+            const userCheck = await orderSchema.findOne({ userId: data.userId })
+            if (userCheck) {
+                // ----- Pushing turfDetails to orderSchema -----
+                await orderSchema.findOneAndUpdate({ userId: data.userId },{ $push:{ turfDetails:turfDetails }})
+            } else {
+                // ----- Create new orderSchema document ------
+                await orderSchema.insertMany(data)
+            }
+
+            if(req.query.method === 'wallet'){
+                await walletSchema.findOneAndUpdate({ userId: user._id }, { $inc: { amount: -totalVal } } )
+            }
+            if(status == 'Failed'){
+                res.render('paymentSuccess', { order: 'Failed' })
+            } else {
+                res.render('paymentSuccess', { order: 'success' })
+            }
         }
         
     } catch (error) {

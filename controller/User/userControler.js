@@ -70,8 +70,8 @@ const signupCheck = async (req, res) => {
         } else if (username) {
             const message = 'Username already exist'
             res.json({ message })
-        } else if (userName.length < 6 || userName.length > 50) {
-            const message = 'Enter username length btw 6 to 50'
+        } else if (userName.length < 6 || userName.length > 20) {
+            const message = 'Enter username length btw 6 to 20'
             res.json({ message })
         } else if (!/[A-Za-z0-9.%]+@gmail.com/.test(req.query.email)) {
             const message = 'Enter valid email'
@@ -171,8 +171,7 @@ const checkOtp = async (req, res) => {
 
             req.session.destroy()
             console.log('userData inserted to mongodb')
-            const message = 'Registration Success'
-            res.json({ message })
+            res.json({ success: true })
         } else if (email) {
             const message = 'Incorrect otp'
             res.json({ message })
@@ -199,6 +198,13 @@ const resendOtp = async (req, res) => {
     }
 }
 
+const registrationSuccess = async(req, res) => {
+    try {
+        res.render('registrationSuccess')
+    } catch (error) {
+        console.log(reeor.message)
+    }
+}
 
 // ------ Login page --------
 const login = async (req, res) => {
@@ -311,6 +317,7 @@ module.exports = {
     signupCheck,
     otpSend,
     checkOtp,
+    registrationSuccess,
     login,
     logout,
     forgetPassword,

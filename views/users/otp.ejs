@@ -1,57 +1,55 @@
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
+  .otp-container {
+    max-width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
 
-    .otp-container {
-      max-width: 400px;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+  .otp-input {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    text-align: center;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+  }
 
-    .otp-input {
-      width: 40px;
-      height: 40px;
-      font-size: 18px;
-      text-align: center;
-      margin: 0 5px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      outline: none;
-    }
+  .otp-input:focus {
+    border-color: #007bff;
+  }
 
-    .otp-input:focus {
-      border-color: #007bff;
-    }
-
-    .submit-btn {
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-  </style>
-
+  .submit-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+</style>
 
 <div class="otp-container">
   <h2>OTP Verification</h2>
   <div style="height: 20px;">
-      <h4 id="sendingMessage" style="color: red; text-align: center;"></h4>
+    <h4 id="sendingMessage" style="color: red; text-align: center;"></h4>
   </div>
-  <p>Enter the OTP sent to your mobile number</p>
+  <p>Enter the OTP sent to your email</p>
   <form id="otp-form" method="post" action="">
     <input class="otp-input" type="text" maxlength="1" id="num1" required>
     <input class="otp-input" type="text" maxlength="1" id="num2" required>
@@ -60,73 +58,79 @@
     <br><br>
     <button class="submit-btn">Submit</button>  
   </form>
-      <button style="background-color: cadetblue; border: cadetblue; height: 30px; color: #fff; border-radius: 5px;" onclick="resendClick()">resend otp</button>
-      <a href="/" style="margin-left: 150px; ">login</a>
-      <p id="timer" style="color: red;">Time is running : 40</p>
-  </div>
+  <button style="background-color: cadetblue; border: cadetblue; height: 30px; color: #fff; border-radius: 5px;" onclick="resendClick()">Resend OTP</button>
+  <a href="/" style="margin-left: 150px;">Login</a>
+  <p id="timer" style="color: red;">Time is running: 60</p>
+</div>
 
 <script>
-  var timeleft = 40;
+  var timeleft = 60;
   var timer = setInterval(function(){
     if(timeleft <= 0){
       clearInterval(timer);
-     let a= document.getElementById("timer").innerHTML = "0";
-      if(a<="0"){
-        let a=document.getElementById("timer").innerHTML="time is over"
-       
-        let x=setInterval((x)=>{
-          let a=document.getElementById("timer").innerHTML=""
+      let a = document.getElementById("timer").innerHTML = "0";
+      if(a <= "0"){
+        let a = document.getElementById("timer").innerHTML = "Time is over";
+        let x = setInterval(() => {
+          let a = document.getElementById("timer").innerHTML = "";
           setTimeout(x)
-        },6000)
+        }, 6000);
       }
     } else { 
-      document.getElementById("timer").innerHTML ="Time is running : " +timeleft
-   }
+      document.getElementById("timer").innerHTML = "Time is running: " + timeleft;
+    }
     timeleft -= 1;
-  },1000);
+  }, 1000);
 </script>
-
 
 <script>
   function resendClick() {
     fetch(`/resend?email=<%= emaile %>`)
     .then(res => res.json())
-			.then(data => {
-					document.getElementById('sendingMessage').innerHTML = data.message
-          function hideParagraph() {
-						document.getElementById('sendingMessage').innerHTML = ''
-					}
-					setTimeout(hideParagraph, 3000)
-					console.log(data.message)
-			})
+    .then(data => {
+      document.getElementById('sendingMessage').innerHTML = data.message;
+      function hideParagraph() {
+        document.getElementById('sendingMessage').innerHTML = '';
+      }
+      setTimeout(hideParagraph, 3000);
+      console.log(data.message);
+    });
   }
 </script>
 
-
-
 <script>
-  const form = document.getElementById('otp-form')
-  form.addEventListener('submit', function(event) {
-		event.preventDefault();
-			const num1 = document.getElementById('num1').value;
-			const num2 = document.getElementById('num2').value;
-			const num3 = document.getElementById('num3').value;
-			const num4 = document.getElementById('num4').value;
-      const otp = num1.toString() + num2.toString() + num3.toString() + num4.toString();
-      console.log(otp)
-			fetch(`/check-otp?otp=${otp}`)
-			.then(res=>res.json())
-			.then(data=>{
-					document.getElementById('sendingMessage').innerHTML=data.message
-          function hideParagraph() {
-						document.getElementById('sendingMessage').innerHTML = ''
-					}
-					setTimeout(hideParagraph, 3000)
-					console.log(data.message)
-			})
-		});
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const inputs = document.querySelectorAll('.otp-input');
+    inputs.forEach((input, index) => {
+      input.addEventListener('keyup', (e) => {
+        if (e.keyCode === 8 && input.value.length === 0 && index > 0) {
+          inputs[index - 1].focus();
+        } else if (input.value.length === 1 && index < inputs.length - 1) {
+          inputs[index + 1].focus();
+        }
+      });
+    });
+
+    const form = document.getElementById('otp-form');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const otp = Array.from(inputs).map(input => input.value).join('');
+      console.log(otp);
+      fetch(`/check-otp?otp=${otp}`)
+        .then(res => res.json())
+        .then(data => {
+          if(data.message) {
+            document.getElementById('sendingMessage').innerHTML = data.message;
+            function hideParagraph() {
+              document.getElementById('sendingMessage').innerHTML = '';
+            }
+            setTimeout(hideParagraph, 3000);
+            console.log(data.message);
+          } else if(data.success) {
+            window.location.href = '/registration-success';
+          }
+
+        });
+    });
+  });
 </script>
-
-
-</body>
-</html>

@@ -51,6 +51,8 @@ user_route.get('/signup-check',auth.isLogout,userControler.signupCheck)
 user_route.get('/otpSend',auth.isLogout,userControler.otpSend)
 user_route.get('/check-otp',auth.isLogout,userControler.checkOtp)
 user_route.get('/resend',auth.isLogout,userControler.resendOtp)
+user_route.get('/registration-success',auth.isLogout,userControler.registrationSuccess)
+
 
 user_route.get('/',auth.isLogout,userControler.login)
 user_route.get('/logout',auth.isLogin,userControler.logout)

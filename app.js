@@ -31,6 +31,7 @@ app.use(flash());
 
 app.use('/',adminRoute)
 app.use('/',userRoute)
+
 app.get('*', (req, res) => {
     res.render('404')
 })

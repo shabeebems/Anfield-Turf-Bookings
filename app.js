@@ -24,7 +24,7 @@ app.set('views','./views/users');
 const mongoose = require('mongoose')
 mongoose.connect('mongodb+srv://muhammedshabeeb330:d0F3HaDyPmt54EoL@scouser.icgssjw.mongodb.net/turf')
 .then(()=>console.log('MongoDB success'))
-.catch(()=>console.Console.log('MongoDB cracked'))
+.catch(()=>console.log('MongoDB cracked'))
 
 
 app.use(flash());

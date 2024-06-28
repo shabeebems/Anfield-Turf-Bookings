@@ -75,7 +75,7 @@ const slotSelection = async (req, res) => {
         // ----- Check time is it booked or able to booking -----
         const checkTime = orders.flatMap(order => 
             order.turfDetails
-                 .filter(detail => detail.slotBookDate === currentDate && detail.turfId === req.query._id && detail.status != 'Canceled' && detail.status != 'Failed')
+                 .filter(detail => detail.slotBookDate === currentDate && detail.turfId === req.query._id && detail.status != 'Success')
                  .map(detail => detail.startingTime)
         );
         
@@ -106,7 +106,7 @@ const checkBookings = async(req, res) => {
         // ----- Double check -----
         const checkTime = orders.flatMap(order => 
             order.turfDetails
-            .filter(detail => detail.slotBookDate === bookingDate && detail.turfId === req.query.id && detail.status !== 'Canceled' && detail.startingTime == time.startingTime && detail.status != 'Failed')
+            .filter(detail => detail.slotBookDate === bookingDate && detail.turfId === req.query.id && detail.status === 'Success' && detail.startingTime == time.startingTime)
             // .map(detail => detail.startingTime)
         );
 
@@ -161,7 +161,7 @@ const checkPayment = async (req, res) => {
         // ----- Treble check -----
         const checkTime = orders.flatMap(order => 
             order.turfDetails
-            .filter(detail => detail.slotBookDate === req.query.date && detail.turfId === req.query.turfId && detail.status !== 'Canceled' && detail.startingTime == time.startingTime && detail.status != 'Failed')
+            .filter(detail => detail.slotBookDate === req.query.date && detail.turfId === req.query.turfId && detail.status === 'Success' && detail.startingTime == time.startingTime)
             // .map(detail => detail.startingTime)
         );
         const cash = req.query.totalVal
@@ -258,28 +258,29 @@ const couponCheck = async (req,res) => {
 
 const paymentSuccess = async (req, res) => {
     try {
+        const user = req.session.user
+        // ----- Covert JSON oject to object -----
+        const time = JSON.parse(req.query.time)
 
         let status;
-        if(req.query.error){
+        if(req.query.error) {
+            // --- If payment will failed ---
             status = 'Failed'
         } else {
             status = 'Success'
         }
-
-        // ----- Covert JSON oject to object -----
-        const time = JSON.parse(req.query.time)
-        const orders = await orderSchema.find({})
+        // ---- Controlling refreshing booking success page ---
+        const orders = await orderSchema.find({ userId: user._id })
         const checkTime = orders.flatMap(order => 
             order.turfDetails
-            .filter(detail => detail.slotBookDate === req.query.date && detail.turfId === req.query.turfId && detail.status !== 'Canceled' && detail.startingTime == time.startingTime && detail.status != 'Failed')
-            // .map(detail => detail.startingTime)
+            .filter(detail => detail.slotBookDate === req.query.date && detail.turfId === req.query.turfId && detail.startingTime == time.startingTime && detail.status == status)
         );
+
         if(checkTime.length != 0){
+            // ---- If success page is refresh redirect to my accounts ----
             res.redirect('/my-accounts')
         } else {
-            console.log('sss', req.query)
             // ----- Picking userId and coupon code for pushing id to coupon details -----
-            const user = req.session.user
             const couponName = req.query.couponName
             if(couponName.length !== 0 && status !== 'Failed'){
                 await couponSchema.findOneAndUpdate({ code: couponName }, { $push: { users: user._id } })

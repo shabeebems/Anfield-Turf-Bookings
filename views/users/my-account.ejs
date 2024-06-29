@@ -248,9 +248,11 @@
                                                     <td><%= order[i].cash %></td>
                                                     <td><%= order[i].city %></td>
                                                     <td><%= order[i].slotBookDate %></td>
-                                                    <% if (order[i].status == 'Canceled'){ %>
+                                                    <% if (order[i].status === 'Failed') { %>
+                                                            <td>Payment failed</td>
+                                                    <% } else if (order[i].status == 'Canceled'){ %>
                                                             <td style="background-color:rgb(169, 169, 169);"><p>canceled</p></td>
-                                                    <% } else if (order[i].status == 'Failed'){
+                                                    <% } else if (order[i].status == 'Pending'){
                                                         if(order[i].slotBookDate < today || (order[i].slotBookDate <= today && order[i].startingTime < currentTime)) { %>
                                                             <td>Payment failed</td>
                                                         <% } else { %>

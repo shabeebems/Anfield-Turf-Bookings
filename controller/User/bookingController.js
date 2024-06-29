@@ -4,7 +4,6 @@ const orderSchema = require (basePath + 'models/order')
 const couponSchema = require(basePath + 'models/coupon')
 const offerSchema = require(basePath + 'models/offer')
 const walletSchema = require(basePath + 'models/wallet')
-
 const dotenv = require('dotenv').config()
 
 const { KeyId, KeySecret } = process.env
@@ -75,7 +74,7 @@ const slotSelection = async (req, res) => {
         // ----- Check time is it booked or able to booking -----
         const checkTime = orders.flatMap(order => 
             order.turfDetails
-                 .filter(detail => detail.slotBookDate === currentDate && detail.turfId === req.query._id && detail.status != 'Success')
+                 .filter(detail => detail.slotBookDate === currentDate && detail.turfId === req.query._id && detail.status === 'Success')
                  .map(detail => detail.startingTime)
         );
         
@@ -265,7 +264,7 @@ const paymentSuccess = async (req, res) => {
         let status;
         if(req.query.error) {
             // --- If payment will failed ---
-            status = 'Failed'
+            status = 'Pending'
         } else {
             status = 'Success'
         }
@@ -282,7 +281,7 @@ const paymentSuccess = async (req, res) => {
         } else {
             // ----- Picking userId and coupon code for pushing id to coupon details -----
             const couponName = req.query.couponName
-            if(couponName.length !== 0 && status !== 'Failed'){
+            if(couponName.length !== 0 && status !== 'Pending'){
                 await couponSchema.findOneAndUpdate({ code: couponName }, { $push: { users: user._id } })
             }
             // ----- The last value of slot -----
@@ -325,9 +324,19 @@ const paymentSuccess = async (req, res) => {
             if(req.query.method === 'wallet'){
                 await walletSchema.findOneAndUpdate({ userId: user._id }, { $inc: { amount: -totalVal } } )
             }
-            if(status == 'Failed'){
+            if(status == 'Pending'){
                 res.render('paymentSuccess', { order: 'Failed' })
             } else {
+                // ---- Checking the bookings is already pending once ----
+                const checkFailed = orders.flatMap(order => 
+                    order.turfDetails
+                    .filter(detail => detail.slotBookDate === req.query.date && detail.turfId === req.query.turfId && detail.startingTime == time.startingTime && detail.status == 'Pending')
+                    .map(detail => detail._id)
+                );
+                // ---- Changing pending to failed ----
+                await orderSchema.findOneAndUpdate(
+                    { 'turfDetails._id': checkFailed[0] }, { $set: { 'turfDetails.$.status': 'Failed' } }, { new: true }
+                );
                 res.render('paymentSuccess', { order: 'success' })
             }
         }

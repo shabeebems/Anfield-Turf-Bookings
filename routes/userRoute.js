@@ -22,8 +22,8 @@ user_route.get('/auth/google/callback',
         failureRedirect: '/failure'
 }))
 
-user_route.get('/success', googleAuthController.successGoogleLogin)
-user_route.get('/failure', googleAuthController.failureGoogleLogin)
+user_route.get('/success', auth.isLogin, googleAuthController.successGoogleLogin)
+user_route.get('/failure', auth.isLogin, googleAuthController.failureGoogleLogin)
 
 // ------- Passport Ends ---------
 

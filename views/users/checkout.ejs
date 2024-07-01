@@ -415,7 +415,7 @@
 						"order_id": data.order_id, 
 						"handler": function (response){
                             console.log('///////////////')
-							alert("Payment Succeeded");
+							// alert("Payment Succeeded");
                             window.location.href = `/payment-success?offer=${offer}&couponDiscount=${couponDiscount}&couponName=${couponName}&totalVal=${total}&date=${date}&method=${paymentMethod}&turfId=${turfId}&time=<%= encodeURIComponent(JSON.stringify(time)) %>`;
 						},
 						// "prefill": {

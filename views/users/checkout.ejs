@@ -204,6 +204,7 @@
                                                     <p>Coupon discount</p>
                                                 </td>
                                                 <td class="Product-price">
+                                                    <p id="couponPercentage">0</p>
                                                     <p id="couponDiscount">0</p>
                                                 </td>
                                             </tr>
@@ -250,7 +251,8 @@
                                                 <div class="payment-details">
                                                     <p>
                                                         Widrawing cash from
-                                                        your wallet
+                                                        your wallet <br>
+                                                        Your wallet balance is: <%= wallet.amount %>
                                                     </p>
                                                 </div>
                                             </div>
@@ -337,6 +339,8 @@
                     const couponOffer = total*data.couponPercentage/100
                     // ----- Assingning the total value and coupon offer -----
                     document.getElementById('couponDiscount').innerHTML = couponOffer
+                    document.getElementById('couponPercentage').innerHTML = data.couponPercentage+'%';
+
                     document.getElementById('totalVal').innerHTML = total - couponOffer
                     // ----- Assingn the coupon name to a p tag to checking coupon -----
                     document.getElementById('couponName').innerHTML = inputCode

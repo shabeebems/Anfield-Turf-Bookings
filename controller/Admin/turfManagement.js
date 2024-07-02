@@ -1,6 +1,8 @@
 const basePath = '../../'
 const categorySchema = require(basePath + 'models/category')
 const turfSchema = require(basePath + 'models/turfs')
+const extraSlotSchema = require(basePath + 'models/extraSlot')
+
 
 const turf = async (req, res) => {
     try {
@@ -49,6 +51,8 @@ const insertTurf = async (req, res) => {
             const newTurf = await turfSchema.create(data)
             // ----- Add turfId on childTurf field on category db -----
             await categorySchema.findOneAndUpdate({ name: req.body.court }, { $push: { childTurfs: newTurf._id }})
+            // ----- Add turfId on extraSlot db -----
+            await extraSlotSchema.create({ turfId: newTurf._id })
             res.redirect('/admin-turf')
         }
 
@@ -79,6 +83,39 @@ const saveTimeSlots = async (req, res) => {
     } catch (error) {
         console.error(error.message);
         res.sendStatus(500)
+    }
+}
+
+const addTimesDateBase = async (req, res ) => {
+    try {
+        const court = await turfSchema.findOne({ _id: req.query.id })
+        console.log(court)
+        res.render('addTimesDateBase', { court })
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+const saveSpecificDateTimes = async (req, res ) => {
+    try {
+        const { date, timeSlots } = req.body
+        if(date !== ''){
+            let existingSlot = await extraSlotSchema.findOne({ turfId: req.query._id, "extraSlots.date": date })
+            if(existingSlot){
+                await extraSlotSchema.findOneAndUpdate(
+                    { turfId: req.query._id },
+                    { $pull: { extraSlots: { date } } }
+                )
+            }
+            await extraSlotSchema.findOneAndUpdate(
+                { turfId: req.query._id },
+                { $push: { extraSlots: { date, timeSlots } } },
+                { new: true }        
+            )
+        }
+        res.sendStatus(200)
+    } catch (error) {
+        console.log(error.message)
     }
 }
 
@@ -146,8 +183,10 @@ module.exports = {
     insertTurf,
     addTime,
     saveTimeSlots,
+    addTimesDateBase,
     blockTurf,
     editTurf,
     updatingTurf,
-    bookings
+    bookings,
+    saveSpecificDateTimes
 }

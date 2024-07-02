@@ -4,6 +4,8 @@ const orderSchema = require (basePath + 'models/order')
 const couponSchema = require(basePath + 'models/coupon')
 const offerSchema = require(basePath + 'models/offer')
 const walletSchema = require(basePath + 'models/wallet')
+const extraSlotSchema = require(basePath + 'models/extraSlot')
+
 const dotenv = require('dotenv').config()
 
 const { KeyId, KeySecret } = process.env
@@ -49,12 +51,22 @@ const slotSelection = async (req, res) => {
         // ----- Slot booking date ------
         const currentDate = req.body.date
 
+        // --- Check selected date have any additional slots and add to availabeTimes ---
+        let result = await extraSlotSchema.findOne(
+            { turfId: req.query._id, "extraSlots.date": currentDate }
+        );
+        let availableTimes;
+        if(result) {
+            availableTimes = result.extraSlots.find(slot => slot.date === currentDate)?.timeSlots || [];
+        } else {
+            availableTimes = turf.time
+        }
 
         // -------- sort starting time acending order --------
-        turf.time.sort((a, b) => parseInt(a.startingTime) - parseInt(b.startingTime))
+        availableTimes.sort((a, b) => parseInt(a.startingTime) - parseInt(b.startingTime))
         
         // ----- Getting full starting times -----
-        const fullStartingTimes = turf.time.map(time => time.startingTime)
+        const fullStartingTimes = availableTimes.map(time => time.startingTime)
 
         // ----- Loop for storing showables times -----
         for (let i = 0; i < fullStartingTimes.length; i++) {
@@ -84,7 +96,7 @@ const slotSelection = async (req, res) => {
         const turfs = await turfSchema.find({ block: false })
         const city = await turfs.map((value) => value.city)
         const uniqueCity = await [...new Set(city)]
-        res.render('slotBooking',{ uniqueCity, dates, turf, currentDate, checkTime, startingTimes, percentage })
+        res.render('slotBooking',{ uniqueCity, dates, turf, currentDate, checkTime, startingTimes, percentage, availableTimes })
     } catch (error) {
         console.log(error.message)
     }
@@ -94,6 +106,7 @@ const slotSelection = async (req, res) => {
 
 const checkBookings = async(req, res) => {
     try {
+        console.log('sss')
         // ----- Covert JSON boject to object -----
         const time = JSON.parse(req.query.time);
         const bookingDate = req.query.date
@@ -110,7 +123,7 @@ const checkBookings = async(req, res) => {
         );
 
         // ------ Find turf based on selected time id -------
-        const turf = await turfSchema.findOne({ "time._id": time._id })
+        const turf = await turfSchema.findOne({ _id: req.query.id })
 
         // ------ Picking date from query ( Booking date ) -------
         const date = req.query.date
@@ -140,8 +153,11 @@ const confirmBooking = async (req, res) => {
         const time = JSON.parse(timeData);
         const date = req.query.date
         const percentage = req.query.percentage
+        // ---- Getting wallet -----
+        const user = req.session.user
+        const wallet = await walletSchema.findOne({ userId: user._id })
 
-        res.render('checkout', { time, turf, date, percentage })       
+        res.render('checkout', { time, turf, date, percentage, wallet })       
         
     } catch (error) {
         console.log(error.message)

@@ -81,12 +81,14 @@
 
 
             <!-- Chart Start -->
-            <h1>Update times</h1>
+             <br>
+            <h1>Update times based on date</h1>
             <p style="display: none;" id="courtId"><%= court._id %></p>
-            <a href="/admin-addTimesDateBase?id=<%= court._id %>"><button style="width: 150px; margin-left: 50px;">Update specific dates</button></a>
             <form id="turfForm" enctype="multipart/form-data">
                 <div style="display: flex;">
                     <div class="forme">
+                        <label for="">Date</label><br>
+                        <input type="date" name="" id="date"><br><br>
                         <label for="">Time</label><br>
                         <input type="time" id="startingTime"> to <input type="time" id="endingTime"><br><br>
                         <label for="">Cash</label>
@@ -182,8 +184,9 @@
                 let startingTime = document.getElementById("startingTime").value;
                 let endingTime = document.getElementById("endingTime").value;
                 let cash = document.getElementById("cash").value;
+                let date = document.getElementById("date").value;
 
-                if (startingTime && endingTime && cash) {
+                if (startingTime && endingTime && cash && date) {
                     addTableRow(startingTime, endingTime, cash);
                     // After click clear all fields
                     document.getElementById("startingTime").value = '';
@@ -207,19 +210,23 @@
                     let startingTime = cells[0].innerText;
                     let endingTime = cells[1].innerText;
                     let cash = cells[2].innerText;
-                    existingTimeSlots.push({ startingTime, endingTime, cash, enable: true });
+                    existingTimeSlots.push({ startingTime, endingTime, cash });
                 }
 
                 // Combine existing and new time slots
                 let allTimeSlots = existingTimeSlots.concat(timeSlots);
-
+                let date = document.getElementById("date").value;
+                
                 // Send timeSlots to backend
-                fetch(`/saveTimeSlots?_id=${courtId}`, {
+                fetch(`/saveTimeSlots-specificDate?_id=${courtId}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ timeSlots: allTimeSlots })
+                    body: JSON.stringify({ 
+                        timeSlots: allTimeSlots,
+                        date: date
+                    })                
                 })
                 .then(response => {
                     if (response.ok) {
@@ -230,7 +237,11 @@
                         timeSlots = [];
                         // Reset the counter
                         counter = 0;
-                        document.getElementById("message").innerHTML = "Time added";
+                        if(date == ''){
+                            document.getElementById("message").innerHTML = "Select a date";
+                        } else {
+                            document.getElementById("message").innerHTML = "Time added";
+                        }
                     } else {
                         console.error('Failed to save time slots.');
                     }

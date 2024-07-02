@@ -222,6 +222,7 @@
         <div class="section section-padding">
             <div class="container">
                 <div class="schedule">
+                    <% if(availableTimes.length !== 0) { %>
                     <div class="time heading">Time</div>
                     <div class="cash heading">Cash</div>
                     <% if(percentage !== 0){ %>
@@ -229,33 +230,36 @@
                     <% } %>    
                     <div class="event heading"></div>
                 </div>
-                <% for(let i=0;i<turf.time.length;i++){ 
-                    if(startingTimes.includes(turf.time[i].startingTime) == true){ %>
-                        <div class="schedule">
-                            <div class="time"><%= turf.time[i].startingTime %>   to   <%= turf.time[i].endingTime %></div>
-                            <% if(percentage !== 0){ 
-                                let p = (turf.time[i].cash*percentage)/100 %>
-                                <div class="event">
-                                    <p class="text-decoration-line-through"><%= turf.time[i].cash %></p>
-                                </div>
-                                <div class="event">
-                                    <p id="offerPrice"><%= turf.time[i].cash - p %></p>
-                                </div>
-                            <% } else { %>
-                                <div class="event"><a href="" >INR  <%= turf.time[i].cash %></a></div>
-                            <% }
-                            if(checkTime.length > 0 ){ 
-                                if(checkTime.includes(turf.time[i].startingTime)){ %>
-                                    <div style="background-color: brown;color: white;">Booked</div>
-                                    <% }else{ %>
-                                        <div class="event"><button style="background-color:#f2a100;border-radius: 10%;border: none;"><a onclick="slotClick('<%=JSON.stringify(turf.time[i]) %>')">Book now</a></button></div>
-                                    <% }
-                                    }else{ %>
-                                        <div class="event"><button style="background-color:#f2a100;border-radius: 10%;border: none;"><a onclick="slotClick('<%=JSON.stringify(turf.time[i]) %>')">Book now</a></button></div>
-                                    <% } %>
-                            </div> 
-                    <% }
-            } %>
+                <% for(let i=0;i<availableTimes.length;i++){ %>
+                        <% if(startingTimes.includes(availableTimes[i].startingTime) == true){ %>
+                            <div class="schedule">
+                                <div class="time"><%= availableTimes[i].startingTime %>   to   <%= availableTimes[i].endingTime %></div>
+                                <% if(percentage !== 0){ 
+                                    let p = (availableTimes[i].cash*percentage)/100 %>
+                                    <div class="event">
+                                        <p class="text-decoration-line-through"><%= availableTimes[i].cash %></p>
+                                    </div>
+                                    <div class="event">
+                                        <p id="offerPrice"><%= availableTimes[i].cash - p %></p>
+                                    </div>
+                                <% } else { %>
+                                    <div class="event"><a href="" >INR  <%= availableTimes[i].cash %></a></div>
+                                <% }
+                                if(checkTime.length > 0 ){ 
+                                    if(checkTime.includes(availableTimes[i].startingTime)){ %>
+                                        <div style="background-color: brown;color: white;">Booked</div>
+                                        <% }else{ %>
+                                            <div class="event"><button style="background-color:#f2a100;border-radius: 10%;border: none;"><a onclick="slotClick('<%=JSON.stringify(availableTimes[i]) %>')">Book now</a></button></div>
+                                        <% }
+                                        }else{ %>
+                                            <div class="event"><button style="background-color:#f2a100;border-radius: 10%;border: none;"><a onclick="slotClick('<%=JSON.stringify(availableTimes[i]) %>')">Book now</a></button></div>
+                                        <% } %>
+                                </div> 
+                        <% }
+                } 
+            } else { %>
+                <h2>No slots available</h2>
+            <% } %>
             </div>
         </div>
 
@@ -270,7 +274,7 @@
         async function slotClick(time) {
             try {
                 // time.a = 10
-                fetch(`/check-bookings?id=<%= turf._id %>&date=<%= currentDate %>&time=${time}&percentage=<%=percentage %>`)
+                fetch(`/check-bookings?id=<%= turf._id %>&date=<%= currentDate %>&time=${time}&percentage=<%= percentage %>`)
                 .then(res=>res.json())
                 .then(data=>{
                     if (data.success) {

@@ -8,7 +8,7 @@ const sendPassword = async(email,password)=>{
         secure: true, // Use `true` for port 465, `false` for all other ports
         auth: {
           user: "muhammedshabeeb330@gmail.com",
-          pass: "jvkd akwp whun pwyj",
+          pass: AUTHPASSWORD,
         },
       });
       const find = await userSchema.findOne({email:email})

@@ -20,7 +20,14 @@ const sendOtp = async(email)=>{
         to: email, // list of receivers
         subject: "For registration in turf booking website", // Subject line
         text: "Hello world?", // plain text body
-        html: `<b>otp is ${otp}</b>`, // html body
+        html: 
+        `<div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
+          <h2 style="color: #0056b3; margin-bottom: 10px;">Your OTP Code</h2>
+          <p style="margin: 5px 0;"><strong>OTP:</strong> ${otp}</p>
+          <p style="margin-top: 15px; font-size: 0.9em; color: #666;">
+              Please enter the OTP above to verify your account. The code will expire in 5 minutes.
+          </p>
+        </div>`, // html body
       });
 
       const storeOtp = ([{
@@ -35,3 +42,5 @@ const sendOtp = async(email)=>{
 
 
 module.exports = sendOtp
+
+

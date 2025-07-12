@@ -93,17 +93,19 @@
 
 
     <!-- Checkout Section Start -->
-    <div class="section section-padding">
-        <div class="container">
+    <div class="section section-padding" style="background-color: #f9f9f9; padding: 20px;">
+        <div class="container" style="max-width: 900px; margin: 0 auto; background: white; border-radius: 10px; 
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px;">
 
-            <div class="checkout-info">
-                <p class="info-header">
-                    <i class="fa fa-exclamation-circle"></i> Have a coupon?
-                    <a data-bs-toggle="collapse" href="#coupon">Click here to enter your code</a>
+            <div class="checkout-info" style="margin-bottom: 20px;">
+                <p class="info-header" style="font-size: 16px; font-weight: bold; margin-bottom: 10px; 
+                    text-align: center; color: #333;">
+                    <i class="fa fa-exclamation-circle" style="color: #ff9800;"></i> Have a coupon?
+                    <a data-bs-toggle="collapse" href="#coupon" style="color: #007bff; text-decoration: none;">Click here to enter your code</a>
                 </p>
         
                 <div class="collapse" id="coupon">
-                    <div class="card-body">
+                    <div class="card-body" style="margin-top: 10px;">
                         <form id="myForm" action="#">
                             <div class="row">
                                 <div class="col-lg-6">
@@ -126,93 +128,59 @@
                     </div>
                 </div>
             </div>
-            <br>
+            <!-- <br> -->
 
 
             <form action="#">
-                <div class="row">
-                    <h2>Confirm Your Order</h2>
-                    <div class="col-lg-5">
-                        <div class="checkout-order">
-                            <div class="checkout-title">
-                                <h5 class="title"><%= turf.name %> <%= turf.court %> Turf <%= turf.city %></h5>
+                    <h2 style="font-size: 24px; font-weight: bold; text-align: center; margin-bottom: 20px; color: #333;">Confirm Your Order</h2>
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <div class="checkout-order" style="padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+                            <div class="checkout-title" style="margin-bottom: 20px; text-align: center;">
+                                <h5 style="font-size: 18px; font-weight: bold; color: #555;"><%= turf.name %> <%= turf.court %> Turf <%= turf.city %></h5>
                             </div>
-
-                            <div class="checkout-order-table table-responsive">
-                                <table class="table">
+                                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; color: #555;">
+                                    <tbody>
                                         <tr>
-                                            <td class="-name">
-                                                <p>Turf name</p>
-                                            </td>
-                                            <td class="Product-price">
-                                                <p><%= turf.name %> Turf</p>
-                                            </td>
+                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;">Turf name</td>
+                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;"> <%= turf.name %> Turf</td>
                                         </tr>
                                         <tr>
-                                            <td class="Product-name">
-                                                <p>Court</p>
-                                            </td>
-                                            <td class="Product-price">
-                                                <p><%= turf.court %> Court</p>
-                                            </td>
+                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;">Court</td>
+                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;"><%= turf.court %> Court</td>
                                         </tr>
                                         <tr>
-                                            <td class="Product-name">
-                                                <p>Location</p>
-                                            </td>
-                                            <td class="Product-price">
-                                                <p><%= turf.location %>, <%= turf.city %></p>
-                                            </td>
+                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;">Location</td>
+                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;"><%= turf.location %>, <%= turf.city %></td>
                                         </tr>
                                         <tr>
-                                            <td class="Product-name">
-                                                <p>Time</p>
-                                            </td>
-                                            <td class="Product-price">
-                                                <p><%= time.startingTime %> to <%= time.endingTime %></p>
-                                            </td>
+                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;">Time</td>
+                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;"><%= time.startingTime %> to <%= time.endingTime %></td>
                                         </tr>
                                         <tr>
-                                            <td class="Product-name">
-                                                <p>Date</p>
-                                            </td>
-                                            <td class="Product-price">
-                                                <p id="date"><%= date %></p>
-                                            </td>
+                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;">Date</td>
+                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;" id="date"><%= date %></td>
                                         </tr>
                                         <tr>
-                                            <td class="Product-name">
-                                                <p>Cash</p>
-                                            </td>
-                                            <td class="Product-price">
-                                                <p id="date">₹<%= time.cash %></p>
-                                            </td>
+                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;">Cash</td>
+                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;">₹<%= time.cash %></td>
                                         </tr>
-                                        
                                     </tbody>
                                         <tfoot>
                                             <tr>
-                                                <td class="Product-name">
-                                                    <p>Offer</p>
-                                                </td>
-                                                <td class="Product-price">
-                                                    <p id="offer"><%= time.cash*percentage/100 %></p>
-                                                </td>
+                                                <td style="padding: 8px; font-weight: bold;">Offer</td>
+                                                <td style="padding: 8px; font-weight: bold;" id="offer"><%= time.cash*percentage/100 %></td>
                                             </tr>
                                             <tr>
-                                                <td class="Product-name">
-                                                    <p>Coupon discount</p>
-                                                </td>
-                                                <td class="Product-price">
-                                                    <p id="couponPercentage">0</p>
-                                                    <p id="couponDiscount">0</p>
-                                                </td>
+                                                <td style="padding: 8px; font-weight: bold;">Coupon discount in %</td>
+                                                <td style="padding: 8px; font-weight: bold;" id="couponPercentage">0</td>
                                             </tr>
                                             <tr>
-                                                <td class="Product-name">
-                                                    <p>Total</p>
-                                                </td>
-                                                <td class="Product-price">
+                                                <td style="padding: 8px; font-weight: bold;">Coupon discount</td>
+                                                <td style="padding: 8px; font-weight: bold;" id="couponDiscount">0</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 8px; font-weight: bold;">Total</td>
+                                                <td style="padding: 8px; font-weight: bold; color: orangered;">
                                                     <p style="font-weight: bold; color: orangered;" id="totalVal"><%= time.cash - time.cash*percentage/100 %></p>
                                                 </td>
                                             </tr>
@@ -220,62 +188,31 @@
                                         </tfoot>
                                         <p style="display: none;" id="percentage"><%= percentage %></p>
                                     </table>
-                                </div>
                                 <p hidden id="dummyTotal"><%= time.cash - time.cash*percentage/100 %></p>
                                 <p hidden id="couponName"></p>
 
-                            <div class="checkout-payment">
-                                <ul>
+                            <div class="checkout-payment" style="padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+                                <h5 style="font-size: 18px; font-weight: bold; margin-bottom: 20px; text-align: center;">Choose Payment Method</h5>
+                                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px;">
                                     <li>
-                                        <div class="single-payment">
-                                            <div class="payment-radio radio">
-                                                <input type="radio" name="payment" id="offline" />
-                                                <label for="offline"><span></span> Offline payment </label>
-                            
-                                                <div class="payment-details">
-                                                    <p>
-                                                        Pay cash to turf owners
-                                                        before entering the ground
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <label style="display: flex; align-items: center; gap: 10px;">
+                                            <input type="radio" name="payment" id="offline" /> 
+                                            Offline Payment
+                                        </label>
+                                        <p style="font-size: 12px; color: #777;">Pay cash to turf owners before entering the ground.</p>
                                     </li>
-
                                     <li>
-                                        <div class="single-payment">
-                                            <div class="payment-radio radio">
-                                                <input type="radio" name="payment" id="wallet" />
-                                                <label for="wallet"><span></span> Wallet </label>
-                            
-                                                <div class="payment-details">
-                                                    <p>
-                                                        Widrawing cash from
-                                                        your wallet <br>
-                                                        Your wallet balance is: <%= wallet.amount %>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <label style="display: flex; align-items: center; gap: 10px;">
+                                            <input type="radio" name="payment" id="wallet" /> 
+                                            Wallet (Balance: ₹<%= wallet.amount %>)
+                                        </label>
                                     </li>
-                            
                                     <li>
-                                        <div class="single-payment">
-                                            <div class="payment-radio radio">
-                                                <input type="radio" name="payment" id="razopay" />
-                                                <label for="razopay"><span></span> Razopay
-                                                    <img class="payment" src="assets/images/payment-2.html" alt="" />
-                                                    <a href="#"></a></label>
-                            
-                                                <div class="payment-details">
-                                                    <p>
-                                                        Pay via Razopay; you
-                                                        can pay with your
-                                                        Razopay very easily.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <label style="display: flex; align-items: center; gap: 10px;">
+                                            <input type="radio" name="payment" id="razopay" /> 
+                                            Razorpay
+                                        </label>
+                                        <p style="font-size: 12px; color: #777;">Pay via Razorpay easily and securely.</p>
                                     </li>
                                 </ul>
                             
@@ -286,7 +223,6 @@
                             
                         </div>
                     </div>
-                </div>
             </form>
         </div>
     </div>

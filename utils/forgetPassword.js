@@ -17,7 +17,15 @@ const sendPassword = async(email,password)=>{
         to: email, // list of receivers
         subject: "For registration in turf booking website", // Subject line
         text: "Hello world?", // plain text body
-        html: `<b>Username is : ${find.username} and Password is : ${password}</b>`, // html body
+        html: 
+          `<div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
+            <h2 style="color: #0056b3; margin-bottom: 10px;">Account Credentials</h2>
+            <p style="margin: 5px 0;"><strong>Username:</strong> ${find.username}</p>
+            <p style="margin: 5px 0;"><strong>Password:</strong> ${password}</p>
+            <p style="margin-top: 15px; font-size: 0.9em; color: #666;">
+              Please keep these credentials secure and do not share them with anyone.
+            </p>
+          </div>`, // html body
       });
 
     console.log('New password sended')

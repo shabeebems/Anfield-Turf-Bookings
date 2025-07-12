@@ -106,7 +106,7 @@ const signupCheck = async (req, res) => {
                 emaile = req.query.email
                 // --- Call sendOtp function ---
                 sendOtp(emaile)
-                res.json({success: true})
+                res.json({ success: true })
         }
         res.redirect('/signup')
     } catch (error) {

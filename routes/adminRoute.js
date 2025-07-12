@@ -17,7 +17,6 @@ const reportManagement = require('../controller/Admin/reportManagement')
 const orderController = require('../controller/Admin/orderController')
 
 
-
 const path = require('path')
 const multer = require('../middleware/multer')
 const auth = require('../middleware/adminAuth')
@@ -63,6 +62,7 @@ admin_route.get('/admin-filter-category',auth.isLogin,categoryManagementControll
 admin_route.get('/admin-edit-category',auth.isLogin,categoryManagementController.editCategory)
 admin_route.get('/admin-updating-category',categoryManagementController.updatingCategory)
 
+
 // --------- Turf management ---------
 admin_route.get('/admin-turf',auth.isLogin,turfManagementController.turf)
 admin_route.get('/admin-add-turf',auth.isLogin,turfManagementController.addTurf)
@@ -87,9 +87,6 @@ admin_route.get('/admin-editOffer-check',auth.isLogin,offerController.offerEditC
 admin_route.get('/admin-offer-editCheckSuccess',auth.isLogin,offerController.offerEditCheckSuccess)
 
 
-
-
-
 // --------- Coupon management ---------
 admin_route.get('/admin-couponPage', auth.isLogin, couponController.couponPage)
 admin_route.get('/admin-couponAddPage', auth.isLogin, couponController.addCoupon)
@@ -106,11 +103,13 @@ admin_route.get('/admin-check-report', auth.isLogin, reportManagement.checkRepor
 admin_route.get('/admin-report-download', auth.isLogin, reportManagement.reportDownload)
 admin_route.get('/admin-pdfDownload', auth.isLogin, reportManagement.pdfDownload)
 
+
 // ------ Orders -------
 admin_route.get('/admin-orderPage', auth.isLogin, orderController.orderPage)
 
 
-
-
 module.exports = admin_route
+
+
+
 

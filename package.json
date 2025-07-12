@@ -22,7 +22,8 @@
     "pdfkit": "^0.15.0",
     "puppeteer": "^22.10.0",
     "razorpay": "^2.9.3",
-    "session": "^0.1.0"
+    "session": "^0.1.0",
+    "sweetalert2": "^11.15.10"
   },
   "scripts": {
     "start": "nodemon app.js"

@@ -1,11 +1,3 @@
-// ---- 29 minutes past eigth
-// ---- I will drive you home
-// ---- We gonna let him have it
-// ---- There is no rest for me on this world
-// ---- Glad to hear it
-// ---- Sent him in
-// ---- Who on Earth is Messi?
-
 const basePath = '../../'
 const userSchema = require(basePath + 'models/user')
 

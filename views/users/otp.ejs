@@ -11,43 +11,104 @@
   }
 
   .otp-container {
-    max-width: 400px;
+    max-width: 450px;
     background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+  }
+
+  h2 {
+    color: #007bff;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    color: #555;
+    font-size: 16px;
   }
 
   .otp-input {
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
     text-align: center;
-    margin: 0 5px;
+    margin: 10px 8px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 8px;
     outline: none;
+    transition: border-color 0.3s ease;
   }
 
   .otp-input:focus {
     border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   }
 
   .submit-btn {
     background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 4px;
+    padding: 12px 30px;
+    font-size: 18px;
+    border-radius: 5px;
     cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+
+  .submit-btn:hover {
+    background-color: #0056b3;
+  }
+
+  button.resend-btn {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+  }
+
+  button.resend-btn:hover {
+    background-color: #218838;
+  }
+
+  #timer {
+    font-size: 16px;
+    color: red;
+    margin-top: 15px;
+  }
+
+  #sendingMessage {
+    font-size: 16px;
+    color: red;
+    margin-top: 10px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 14px;
+    margin-top: 10px;
+    display: inline-block;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 </style>
 
 <div class="otp-container">
   <h2>OTP Verification</h2>
   <div style="height: 20px;">
-    <h4 id="sendingMessage" style="color: red; text-align: center;"></h4>
+    <h4 id="sendingMessage"></h4>
   </div>
   <p>Enter the OTP sent to your email</p>
   <form id="otp-form" method="post" action="">
@@ -56,12 +117,13 @@
     <input class="otp-input" type="text" maxlength="1" id="num3" required>
     <input class="otp-input" type="text" maxlength="1" id="num4" required>
     <br><br>
-    <button class="submit-btn">Submit</button>  
+    <button type="submit" class="submit-btn">Submit</button>  
   </form>
-  <button style="background-color: cadetblue; border: cadetblue; height: 30px; color: #fff; border-radius: 5px;" onclick="resendClick()">Resend OTP</button>
-  <a href="/" style="margin-left: 150px;">Login</a>
-  <p id="timer" style="color: red;">Time is running: 60</p>
+  <button class="resend-btn" onclick="resendClick()">Resend OTP</button>
+  <a href="/">Login</a>
+  <p id="timer">Time is running: 60</p>
 </div>
+
 
 <script>
   var timeleft = 60;

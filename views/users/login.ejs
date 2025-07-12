@@ -77,9 +77,9 @@
                 <div class="col-lg-6">
                     <!-- Login & Register Start -->
                     <div class="login-register-wrapper">
-                        <a href="/auth/google">
+                        <!-- <a href="/auth/google">
                             <i class="fa fa-google"></i> Login with Google
-                        </a>                        
+                        </a> -->
                         <div style="height: 30px;">
                             <h4  id="respofecth" style="color: red; text-align: center;"></h4>
                         </div>
@@ -132,10 +132,10 @@
 			const username = document.getElementById('username').value;
 			fetch(`/login-check?password=${password}&&username=${username}`)
 			.then(res => res.json())
-			.then(res =>{
-				if(res.success){
+			.then(res => {
+				if(res.success) {
 					window.location.href = '/home';
-				}else{
+				} else {
 					document.getElementById('respofecth').innerHTML = res.message
 					function hideParagraph() {
 						document.getElementById('respofecth').innerHTML = ''

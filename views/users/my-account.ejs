@@ -159,6 +159,51 @@
                     <div class="tab-content my-account-tab">
                         <div class="tab-pane fade show active" id="pills-dashboard">
                             <div class="my-account-dashboard account-wrapper">
+                                <div class="account-address" style="padding: 20px; background-color: #f8f9fa; border-radius: 10px;">
+                                    <h4 class="account-title" style="color: #343a40; font-size: 24px; font-weight: bold; margin-bottom: 10px;">
+                                        <%= user.username %>
+                                    </h4>
+                                    <h6 class="name" style="color: #6c757d; font-size: 18px; margin-bottom: 20px;">
+                                        <%= user.name %>
+                                    </h6>
+                                    <% if(user.address){ %>
+                                    <p style="color: #495057; font-size: 16px; margin-bottom: 20px;">
+                                        <i class="fa fa-map-marker-alt" style="color: #007bff;"></i> 
+                                        <%= user.address %>
+                                    </p>
+                                    <% } %>
+                                    <p style="color: #495057; font-size: 16px; margin-bottom: 20px;">
+                                        <i class="fa fa-mobile-alt" style="color: #28a745;"></i> Mobile: <%= user.mobile %> <br>
+                                        <i class="fa fa-envelope" style="color: #ffc107;"></i> Email: <%= user.email %>
+                                    </p>
+                                    <hr style="border-top: 1px solid #dee2e6; margin: 20px 0;">
+                                    <div>
+                                        <h4 class="account-title" style="color: #343a40; font-size: 20px; font-weight: bold; margin-bottom: 10px;">
+                                            Referral Code:
+                                        </h4>
+                                        <h5 style="color: #17a2b8; font-size: 18px; font-weight: bold; margin-bottom: 10px;">
+                                            <%= user.refferalCode %>
+                                        </h5>
+                                        <div class="copy-container" style="display: flex; align-items: center; margin-bottom: 20px;">
+                                            <div id="textToCopy" style="color: #212529; background-color: #e9ecef; padding: 8px 12px; border-radius: 5px; flex-grow: 1; overflow-x: auto;">
+                                                http://localhost:8000/signup?refferal=<%= user._id %>
+                                            </div>
+                                            <button onclick="copyText()" style="margin-left: 10px; background-color: #007bff; color: #fff; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer;">
+                                                <i class="fa fa-copy"></i> Copy
+                                            </button>
+                                        </div>
+                                        <p style="color: #495057; font-size: 14px;">
+                                            (Invite friends to the Anfield turf booking website and get 
+                                            <strong style="color: #28a745;">₹121</strong> when your friend registers on our website. They get 
+                                            <strong style="color: #ffc107;">₹21</strong>.)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- <div class="tab-pane fade show active" id="pills-dashboard">
+                            <div class="my-account-dashboard account-wrapper">
                                 <div class="account-address">
                                     <h4 class="account-title">
                                         <%= user.username %>
@@ -189,30 +234,30 @@
                                         </div>
                                         <p>( Invite friends to Anfield turf booking website and get 
                                             ₹121 when your friend register on our website. They get ₹21 )</p>
-                                    
-                                        <script>
-                                            function copyText() {
-                                                // Create a temporary textarea element
-                                                const tempTextarea = document.createElement("textarea");
-                                                // Get the text from the div
-                                                tempTextarea.value = document.getElementById("textToCopy").textContent;
-                                                // Add the textarea to the document body
-                                                document.body.appendChild(tempTextarea);
-                                                // Select the text inside the textarea
-                                                tempTextarea.select();
-                                                // Copy the text inside the textarea
-                                                document.execCommand("copy");
-                                                // Remove the temporary textarea
-                                                document.body.removeChild(tempTextarea);
-                                                // Alert the user
-                                                alert("Text copied to clipboard!");
-                                            }
-                                        </script>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
+                        <!-- Script fpr copy referal code -->
+                        <script>
+                            function copyText() {
+                                // Create a temporary textarea element
+                                const tempTextarea = document.createElement("textarea");
+                                // Get the text from the div
+                                tempTextarea.value = document.getElementById("textToCopy").textContent;
+                                // Add the textarea to the document body
+                                document.body.appendChild(tempTextarea);
+                                // Select the text inside the textarea
+                                tempTextarea.select();
+                                // Copy the text inside the textarea
+                                document.execCommand("copy");
+                                // Remove the temporary textarea
+                                document.body.removeChild(tempTextarea);
+                                // Alert the user
+                                alert("Text copied to clipboard!");
+                            }
+                        </script>
                         
 
                         <div class="tab-pane fade" id="pills-order">
@@ -487,13 +532,6 @@
                                             </div>
                                         </div>
 
-                                        <!-- <div class="col-md-12">
-                                            <div class="single-form">
-                                                <label for="email">email:</label>
-                                                <input type="text" value="<%= user.email %>" />
-                                            </div>
-                                        </div> -->
-                                        
                                         <div class="col-md-12">
                                             <div class="single-form">
                                                 <h5 class="title">
@@ -543,11 +581,11 @@
     <!--Back To End-->
     <!-- JS
     ============================================ -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         async function editUser(){
             try {
-                console.log('lk')
 		        const form = document.getElementById('editForm');
                 form.addEventListener('submit', function(event) {
 		            event.preventDefault();
@@ -565,7 +603,8 @@
                     // 	if(res.success){
                     // 		window.location.href = '/home';
                     // 	}else{
-                    		document.getElementById('message').innerHTML=res.message
+                            Swal.fire(res.message)
+                    		// document.getElementById('message').innerHTML=res.message
                     // 	}
                     })
                 });

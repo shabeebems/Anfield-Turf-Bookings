@@ -219,49 +219,61 @@
     <!-- Date Selection end -->
 
 
-        <div class="section section-padding">
-            <div class="container">
-                <div class="schedule">
-                    <% if(availableTimes.length !== 0) { %>
-                    <div class="time heading">Time</div>
-                    <div class="cash heading">Cash</div>
-                    <% if(percentage !== 0){ %>
-                    <div class="cash heading">Offer price</div>
-                    <% } %>    
-                    <div class="event heading"></div>
-                </div>
-                <% for(let i=0;i<availableTimes.length;i++){ %>
-                        <% if(startingTimes.includes(availableTimes[i].startingTime) == true){ %>
-                            <div class="schedule">
-                                <div class="time"><%= availableTimes[i].startingTime %>   to   <%= availableTimes[i].endingTime %></div>
-                                <% if(percentage !== 0){ 
-                                    let p = (availableTimes[i].cash*percentage)/100 %>
-                                    <div class="event">
-                                        <p class="text-decoration-line-through"><%= availableTimes[i].cash %></p>
-                                    </div>
-                                    <div class="event">
-                                        <p id="offerPrice"><%= availableTimes[i].cash - p %></p>
-                                    </div>
-                                <% } else { %>
-                                    <div class="event"><a href="" >INR  <%= availableTimes[i].cash %></a></div>
-                                <% }
-                                if(checkTime.length > 0 ){ 
-                                    if(checkTime.includes(availableTimes[i].startingTime)){ %>
-                                        <div style="background-color: brown;color: white;">Booked</div>
-                                        <% }else{ %>
-                                            <div class="event"><button style="background-color:#f2a100;border-radius: 10%;border: none;"><a onclick="slotClick('<%=JSON.stringify(availableTimes[i]) %>')">Book now</a></button></div>
-                                        <% }
-                                        }else{ %>
-                                            <div class="event"><button style="background-color:#f2a100;border-radius: 10%;border: none;"><a onclick="slotClick('<%=JSON.stringify(availableTimes[i]) %>')">Book now</a></button></div>
-                                        <% } %>
-                                </div> 
-                        <% }
-                } 
-            } else { %>
-                <h2>No slots available</h2>
+    <div class="section section-padding">
+    <div style="max-width: 800px; margin: 0 auto; text-align: center; background-color: #f8f9fa; 
+                padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <% if (availableTimes.length !== 0) { %>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; 
+                    font-weight: bold; font-size: 16px; color: #343a40; margin-bottom: 20px; 
+                    text-align: center;">
+            <div>Time</div>
+            <div>Cash</div>
+            <% if (percentage !== 0) { %>
+            <div>Offer Price</div>
             <% } %>
-            </div>
+            <div>Status</div>
         </div>
+
+        <% for (let i = 0; i < availableTimes.length; i++) { %>
+        <% if (startingTimes.includes(availableTimes[i].startingTime)) { %>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; 
+                    padding: 10px 0; border-bottom: 1px solid #dee2e6; align-items: center; text-align: center;">
+            <div><%= availableTimes[i].startingTime %> to <%= availableTimes[i].endingTime %></div>
+            <% if (percentage !== 0) { 
+                let p = (availableTimes[i].cash * percentage) / 100 %>
+            <div style="text-decoration: line-through; color: #6c757d;"><%= availableTimes[i].cash %></div>
+            <div style="color: #28a745; font-weight: bold;">INR <%= availableTimes[i].cash - p %></div>
+            <% } else { %>
+            <div>INR <%= availableTimes[i].cash %></div>
+            <% }
+            if (checkTime.length > 0) {
+                if (checkTime.includes(availableTimes[i].startingTime)) { %>
+            <div style="color: white; background-color: brown; padding: 5px 10px; border-radius: 5px;">Booked</div>
+            <% } else { %>
+            <div>
+                <button style="background-color: #f2a100; border: none; padding: 5px 10px; 
+                               border-radius: 5px; color: white; cursor: pointer;" 
+                        onclick="slotClick('<%= JSON.stringify(availableTimes[i]) %>')">Book Now</button>
+            </div>
+            <% } } else { %>
+            <div>
+                <button style="background-color: #f2a100; border: none; padding: 5px 10px; 
+                               border-radius: 5px; color: white; cursor: pointer;" 
+                        onclick="slotClick('<%= JSON.stringify(availableTimes[i]) %>')">Book Now</button>
+            </div>
+            <% } %>
+        </div>
+        <% } %>
+        <% } %>
+        <% } else { %>
+        <h2 style="color: #dc3545; margin-top: 20px;">No Slots Available</h2>
+        <% } %>
+    </div>
+</div>
+
+
+
+
 
     <!--Back To Start-->
     <button id="backBtn" class="back-to-top"><i class="pe-7s-angle-up"></i></button>

@@ -1,6 +1,8 @@
 const nodemailer = require('nodemailer')
 const otpSchema = require('../models/otp')
 
+const dotenv = require('dotenv').config()
+const { AUTHPASSWORD } = process.env
 
 const sendOtp = async(email)=>{
     const transporter = nodemailer.createTransport({
@@ -9,7 +11,7 @@ const sendOtp = async(email)=>{
         secure: true, // Use `true` for port 465, `false` for all other ports
         auth: {
           user: "muhammedshabeeb330@gmail.com",
-          pass: "jvkd akwp whun pwyj",
+          pass: AUTHPASSWORD,
         },
       });
 
@@ -42,5 +44,8 @@ const sendOtp = async(email)=>{
 
 
 module.exports = sendOtp
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 7ecf173b9c6ebc490a25a0def6ad548de79c5ba1

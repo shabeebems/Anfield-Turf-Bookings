@@ -1,6 +1,9 @@
 const nodemailer = require('nodemailer')
 const userSchema = require('../models/user')
 
+const dotenv = require('dotenv').config()
+const { AUTHPASSWORD } = process.env
+
 const sendPassword = async(email,password)=>{
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -8,7 +11,7 @@ const sendPassword = async(email,password)=>{
         secure: true, // Use `true` for port 465, `false` for all other ports
         auth: {
           user: "muhammedshabeeb330@gmail.com",
-          pass: "jvkd akwp whun pwyj",
+          pass: AUTHPASSWORD,
         },
       });
       const find = await userSchema.findOne({email:email})

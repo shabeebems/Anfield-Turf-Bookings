@@ -19,6 +19,7 @@
     "passport": "^0.7.0",
     "passport-google-oauth2": "^0.2.0",
     "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^5.3.93",
     "pdfkit": "^0.15.0",
     "puppeteer": "^22.10.0",
     "razorpay": "^2.9.3",

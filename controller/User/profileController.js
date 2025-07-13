@@ -84,7 +84,7 @@ const invoice = async (req, res) => {
             },
             // Your own data
             sender: {
-                company: "Anfield Turf Bookings",
+                company: "Green-Slot",
                 address: "Kerala",
                 zip: "1234 AB",
                 city: "Calicut",

@@ -6,7 +6,7 @@ const adminRoute = require('./routes/adminRoute')
 const session = require("express-session")
 const nocache = require('nocache');
 const dotenv = require('dotenv').config()
-const {PORT} = process.env
+const PORT = process.env.PORT || 4000
 
 app.use(nocache())
 app.use(session({

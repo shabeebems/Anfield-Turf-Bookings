@@ -44,8 +44,3 @@ const sendOtp = async(email)=>{
 
 
 module.exports = sendOtp
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 7ecf173b9c6ebc490a25a0def6ad548de79c5ba1

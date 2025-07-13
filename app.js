@@ -25,7 +25,7 @@ const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost:27017/turf')
 // mongoose.connect('mongodb+srv://muhammedshabeeb330:d0F3HaDyPmt54EoL@scouser.icgssjw.mongodb.net/turf')
 .then(()=>console.log('MongoDB success'))
-.catch(()=>console.log('MongoDB cracked'))
+.catch((err)=>console.log('MongoDB cracked', err))
 
 
 

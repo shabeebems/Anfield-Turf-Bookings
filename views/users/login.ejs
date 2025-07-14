@@ -92,13 +92,17 @@
                                 <input type="password" id="password" name="password" placeholder="password" value="Shabeeb@123" required>
                                 <!-- Eye icon for password visibility toggle -->
                                 <span class="toggle-password" onclick="togglePasswordVisibility()">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                <i style="cursor: pointer;" class="fa fa-eye" aria-hidden="true"></i>
                       </span>
                             </div>
                             <div class="single-form">
-                                <button class="btn btn-primary btn-hover-dark">
+                                <button id="loginBtn" class="btn btn-primary btn-hover-dark">
                                     Login
                                 </button>
+                                <div id="loadingMessage" style="display: none; text-align: center; margin-top: 10px;">
+                                    <span class="spinner-border text-primary" role="status" style="width: 1.5rem; height: 1.5rem;"></span>
+                                    <p style="margin: 0;">Logging in...</p>
+                                </div>
                             </div>
                         </form>
                         <p><a href="forget-password">Lost your password?</a></p>
@@ -126,34 +130,50 @@
     <script>
 		const form = document.getElementById('myForm');
 
-		form.addEventListener('submit', function(event) {
-		event.preventDefault();
-			const password = document.getElementById('password').value;
-			const username = document.getElementById('username').value;
-			fetch(`/login-check?password=${password}&&username=${username}`)
-			.then(res => res.json())
-			.then(res => {
-				if(res.success) {
-					window.location.href = '/home';
-				} else {
-					document.getElementById('respofecth').innerHTML = res.message
-					function hideParagraph() {
-						document.getElementById('respofecth').innerHTML = ''
-					}
-					setTimeout(hideParagraph, 3000)
-				}
-			})
-		});
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const password = document.getElementById('password').value;
+            const username = document.getElementById('username').value;
+
+            // Show loading, hide button
+            document.getElementById('loginBtn').style.display = 'none';
+            document.getElementById('loadingMessage').style.display = 'block';
+
+            fetch(`/login-check?password=${password}&&username=${username}`)
+                .then(res => res.json())
+                .then(res => {
+                    if (res.success) {
+                        window.location.href = '/home';
+                    } else {
+                        document.getElementById('respofecth').innerHTML = res.message;
+
+                        // Hide loading, show button again
+                        document.getElementById('loginBtn').style.display = 'block';
+                        document.getElementById('loadingMessage').style.display = 'none';
+
+                        setTimeout(() => {
+                            document.getElementById('respofecth').innerHTML = '';
+                        }, 3000);
+                    }
+                })
+                .catch(err => {
+                    // Handle error
+                    document.getElementById('respofecth').innerHTML = 'Something went wrong!';
+                    document.getElementById('loginBtn').style.display = 'block';
+                    document.getElementById('loadingMessage').style.display = 'none';
+                });
+        });
 	</script>
 
     <script>
         function togglePasswordVisibility() {
-        const passwordField = document.getElementById('password');
-        if (passwordField.type === 'password') {
-            passwordField.type = 'text';
-        } else {
-            passwordField.type = 'password';
-        }
+            const passwordField = document.getElementById('password');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
         }
     </script>
 

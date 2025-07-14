@@ -172,11 +172,14 @@
                                 one lowercase letter, one number, and one special character
                             </p>
                             <div class="single-form">
-                                <button class="btn btn-primary btn-hover-dark">
+                                <button id="registerBtn" class="btn btn-primary btn-hover-dark">
                                     Register
                                 </button>
+                                <div id="registerLoading" style="display: none; text-align: center; margin-top: 10px;">
+                                    <span class="spinner-border text-primary" role="status" style="width: 1.5rem; height: 1.5rem;"></span>
+                                    <p style="margin: 0;">Registering...</p>
+                                </div>
                             </div>
-
                         </form>
                     </div>
                     <!-- Login & Register End -->
@@ -195,33 +198,51 @@
 
     <!-- Modernizer & jQuery JS -->
     <script>
-		const form = document.getElementById('signupForm')
-		form.addEventListener('submit',(event)=>{
-			event.preventDefault()
-			const name = document.getElementById('name').value
-			const email = document.getElementById('email').value
-			const mobile = document.getElementById('mobile').value
-			const username = document.getElementById('username').value
-			const password = document.getElementById('password').value
-			const conformPassword = document.getElementById('conformPassword').value
-			fetch(`/signup-check?name=${name}&&email=${email}&&mobile=${mobile}&&username=${username}&&password=${password}&&conformPassword=${conformPassword}`)
-			.then(res=>res.json())
-			.then(data=>{
-				if(data.success){
-					window.location.href = '/otpSend';
-				}else{
-					document.getElementById('sendingMessage').innerHTML=data.message
-					function hideParagraph() {
-						document.getElementById('sendingMessage').innerHTML = ''
-					}
-					setTimeout(hideParagraph, 3000)
-					console.log(data.message)
-				}
-			})
-			
-		})
+        const form = document.getElementById('signupForm');
+        const registerBtn = document.getElementById('registerBtn');
+        const registerLoading = document.getElementById('registerLoading');
 
-	</script>  
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            // Show loading and hide register button
+            registerBtn.style.display = 'none';
+            registerLoading.style.display = 'block';
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const mobile = document.getElementById('mobile').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const conformPassword = document.getElementById('conformPassword').value;
+
+            fetch(`/signup-check?name=${name}&&email=${email}&&mobile=${mobile}&&username=${username}&&password=${password}&&conformPassword=${conformPassword}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        window.location.href = '/otpSend';
+                    } else {
+                        document.getElementById('sendingMessage').innerHTML = data.message;
+
+                        // Show register button again
+                        registerBtn.style.display = 'block';
+                        registerLoading.style.display = 'none';
+
+                        setTimeout(() => {
+                            document.getElementById('sendingMessage').innerHTML = '';
+                        }, 3000);
+                    }
+                })
+                .catch(() => {
+                    document.getElementById('sendingMessage').innerHTML = "Something went wrong. Try again.";
+
+                    // Show register button again
+                    registerBtn.style.display = 'block';
+                    registerLoading.style.display = 'none';
+                });
+        });
+    </script>
+
 
     <script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
     <script src="assets/js/vendor/jquery-3.5.1.min.js"></script>

@@ -43,7 +43,7 @@ const listTurf = async (req, res) => {
                 break;
             default:
                 // ------- Finding turfs based on query category -------
-                turfCount = await turfSchema.find({ $and: [{ court: category },{ block: false }]}).count()
+                turfCount = await turfSchema.countDocuments({ $and: [{ court: category },{ block: false }]});
                 turfs = await turfSchema.find({ $and: [{ court: category },{ block: false }]}).skip((pageNum-1)*docLimit).limit(docLimit*1).exec()
                 break;
             }

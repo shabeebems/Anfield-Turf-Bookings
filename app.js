@@ -6,7 +6,7 @@ const adminRoute = require('./routes/adminRoute')
 const session = require("express-session")
 const nocache = require('nocache');
 const dotenv = require('dotenv').config()
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT || 10000
 
 app.use(nocache())
 app.use(session({
@@ -39,4 +39,6 @@ app.get('*', (req, res) => {
 })
 
 
-app.listen(PORT, () => console.log('http://localhost:8000/'))
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server is running on port ${PORT}`);
+});

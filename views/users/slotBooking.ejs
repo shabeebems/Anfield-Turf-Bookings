@@ -1,337 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>GreenSlot Turf Courts</title>
+    <link rel="shortcut icon" href="/assets/images/liverpool_logo_PNG5.png" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+<body class="bg-gray-100 text-gray-800">
 
-
-<!-- Mirrored from htmldemo.net/furbar-1/furbar/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Dec 2023 16:16:17 GMT -->
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Anfield turf booking</title>
-    <meta name="robots" content="noindex, follow" />
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/liverpool_logo_PNG5.png" />
-
-    <!-- CSS
-	============================================ -->
-
-    <!-- Icon Font CSS -->
-    <link rel="stylesheet" href="assets/css/plugins/pe-icon-7-stroke.css" />
-    <link rel="stylesheet" href="assets/css/plugins/font-awesome.min.css" />
-
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" href="assets/css/plugins/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/animate.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/odometer.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/select2.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/ion.rangeSlider.min.css" />
-
-    <!-- Main Style CSS -->
-    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
-    <link rel="stylesheet" href="assets/css/style.min.css" />
-   
-    <!-- time form style -->
-    <style>
-        .schedule {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 2px solid #ccc;
-            padding: 10px 20px;
-            width: 600px;
-            
-            
-        }
-
-        .time,
-        .event {
-            font-weight: normal;
-            font-size: 14px;
-            color: black;
-            
-        }
-
-        .heading {
-            font-weight: bold;
-            font-size: 16px;
-            color:chocolate;
-        }
-    </style>
-<!-- time form style -->
-
-
-    <!-- Date form style -->
-    <style>
-        .slot {
-          font-family: Arial, sans-serif;
-          margin: 0;
-          padding: 0;
-          display: flex;
-          justify-content: center;
-        }
-    
-        .dateDiv {
-          background-color: #fff;
-          border-radius: 8px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-          padding: 20px;
-          width: 300px;
-        }
-    
-        .slotForm {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-    
-        .slotLabel {
-          font-size: 16px;
-          margin-bottom: 10px;
-        }
-    
-        #start_date {
-          width: 100%;
-          padding: 10px;
-          margin-bottom: 20px;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-        }
-    
-        .slotButton {
-          padding: 10px 20px;
-          background-color: #f2a100;
-          color: #ffffff;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-        }
-    
-        .slotButton:hover {
-          background-color: #494949;
-        }
-      </style>
-</head>
-
-
-<body>
-   <!-- Header Start  -->
-   <div class="header-area header-sticky d-none d-lg-block">
-    <div class="container position-relative">
-        <div class="row align-items-center">
-            <div class="col-lg-3">
-                <!-- Header Logo Start -->
-                <div class="header-logo">
-                    <a href="/home"><img src="assets/images/liverpool_logo_PNG5.png" width="154" height="46" alt="Logo" /></a>
-                </div>
-                <!-- Header Logo End -->
-            </div>
-            <div class="col-lg-6">
-                <div class="header-menu">
-                    <ul class="nav-menu">
-                        <li><a href="/home">Home</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <!-- Header Meta Start -->
-                <div class="header-meta">
-                    <div class="dropdown">
-                        <a class="action" href="#" role="button" data-bs-toggle="dropdown">
-                            <i class="pe-7s-search"></i>
-                        </a>
-
-                        <div class="dropdown-menu dropdown-search">
-                            <!-- Header Search Start -->
-                            <div class="header-search">
-                                <form action="/search-location" autocomplete="off" id="location-form">
-                                    <input type="text" placeholder="Search location...." list="locations" name="city">
-                                    <datalist id="locations">
-                                        <% for(let i = 0; i < uniqueCity.length; i++){ %>
-                                        <option value="<%= uniqueCity[i] %>">
-                                        <% } %>
-                                    </datalist>
-                                    <button type="submit">
-                                        <i class="pe-7s-search"></i>
-                                    </button>
-                                </form>
-                            </div>
-                            <!-- Header Search End -->
-                        </div>
-                    </div>
-
-                    <div class="dropdown">
-                        <a class="action" href="#" role="button" data-bs-toggle="dropdown"><i class="pe-7s-user"></i></a>
-
-                        <ul class="dropdown-menu dropdown-profile">
-                            <li><a href="/my-accounts">My Account</a></li>
-                            <li><a href="/logout">Logout</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Header Meta End -->
-            </div>
+  <!-- Header -->
+  <header class="bg-red-600 text-white p-4 shadow-md sticky top-0 z-50">
+      <div class="container mx-auto flex items-center justify-between">
+        <a href="/home" class="flex items-center gap-2">
+          <img src="/assets/images/liverpool_logo_PNG5.png" alt="GreenSlot" class="h-10" />
+        </a>
+        <nav class="space-x-6 hidden md:flex text-lg font-medium">
+          <a href="/home" class="hover:underline">Home</a>
+          <a href="/my-accounts" class="hover:underline">My Account</a>
+          <a href="/turfs?court=all&page=1" class="hover:underline">Turfs</a>
+        </nav>
+        <div class="flex items-center gap-4">
+          <form action="/search-location" id="location-form" autocomplete="off" class="relative">
+            <input type="text" name="city" placeholder="Search location..." class="rounded-md px-3 py-1 text-black" list="locations">
+            <input type="number" name="page" value="1" hidden>
+            <datalist id="locations">
+              <% for(let i = 0; i < uniqueCity.length; i++){ %>
+                <option value="<%= uniqueCity[i] %>">
+              <% } %>
+            </datalist>
+            <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2">
+              <i class="fa fa-search text-gray-500"></i>
+            </button>
+          </form>
+          <a href="/logout" class="bg-white text-red-600 px-4 py-1.5 rounded-full font-semibold hover:bg-gray-200 flex items-center gap-2">
+            <i class="fas fa-sign-out-alt"></i>
+          </a>
         </div>
+      </div>
+    </header>
+
+  <!-- Banner -->
+  <section class="bg-cover bg-center py-24 text-white" style="background-image: url('/assets/images/team-photos/grasss.jpg')">
+    <div class="container mx-auto h-full flex items-center justify-start">
+      <div class="text-left">
+        <h1 class="text-5xl font-bold mb-4">Slot Booking</h1>
+        <p class="text-lg">
+          <a href="/home" class="underline">Home</a> / <span>Slot Booking</span>
+        </p>
+      </div>
     </div>
-</div>
-    <!-- Header End -->
+  </section>
 
+  <!-- Booking Section -->
+<section class="py-16">
+  <div class="container mx-auto px-4 max-w-5xl">
+    <div class="bg-white p-6 rounded shadow-md">
+      <!-- Date Selection Form -->
+      <form method="post" action="/slot-selection?_id=<%= turf._id %>">
+        <label for="start_date" class="block text-lg font-medium mb-2">Booking Date:</label>
+        <select id="start_date" name="date" required class="w-full px-4 py-2 border border-gray-300 rounded">
+          <option value="<%= currentDate %>"><%= currentDate %></option>
+          <% dates.forEach(date => { if (date !== currentDate) { %>
+            <option value="<%= date %>"><%= date %></option>
+          <% } }) %>
+        </select>
+        <button type="submit" class="mt-4 bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition">Submit</button>
+      </form>
 
-    <!-- Page Banner Section Start -->
-    <div class="section page-banner-section" style="background-image: url(assets/images/team-photos/Soccer.jpg)">
-        <div class="container">
-            <!-- Page Banner Content End -->
-            <div class="page-banner-content">
-                <h2 class="title">Slot Booking</h2>
-                <ul class="breadcrumb">
-                    <li><a href="/">Home</a></li>
-                    <li class="active">Slot Booking</li>
-                </ul>
-            </div>
-            <!-- Page Banner Content End -->
+      <!-- Cancellation Policy -->
+      <p class="text-sm text-gray-700 mt-4 leading-relaxed">
+        After booking a slot, you are allowed to cancel the reservation up to 24 hours before the booked time.
+        Cancellations made within this window are eligible for a full refund. However, any cancellations made 
+        less than 24 hours before the slot will not be accepted, and no refunds will be issued. 
+        Please check your schedule and plan accordingly. Repeated late cancellations or no-shows may affect your booking privileges.
+      </p>
+
+      <!-- Format Time Function -->
+      <%
+        function formatTo12Hour(time) {
+          const [hour, minute] = time.split(':').map(Number);
+          const ampm = hour >= 12 ? 'PM' : 'AM';
+          const hr12 = hour % 12 || 12;
+          return `${hr12}:${minute.toString().padStart(2, '0')} ${ampm}`;
+        }
+      %>
+
+      <!-- Slot Table -->
+      <% if (availableTimes.length !== 0) { %>
+        <div class="mt-6 overflow-x-auto">
+          <table class="w-full table-auto border-collapse rounded-lg overflow-hidden shadow-sm">
+            <thead>
+              <tr class="bg-red-100 text-red-700 text-sm uppercase tracking-wide">
+                <th class="px-6 py-3 text-left">Time</th>
+                <th class="px-6 py-3 text-left">Cash</th>
+                <% if (percentage !== 0) { %>
+                  <th class="px-6 py-3 text-left">Offer Price</th>
+                <% } %>
+                <th class="px-6 py-3 text-left">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for (let i = 0; i < availableTimes.length; i++) {
+                   if (startingTimes.includes(availableTimes[i].startingTime)) { %>
+                <tr class="hover:bg-gray-50 border-b border-gray-200 transition">
+                  <td class="px-6 py-4 font-medium text-gray-700">
+                    <%= formatTo12Hour(availableTimes[i].startingTime) %> - <%= formatTo12Hour(availableTimes[i].endingTime) %>
+                  </td>
+                  <% if (percentage !== 0) {
+                       let p = (availableTimes[i].cash * percentage) / 100; %>
+                    <td class="px-6 py-4 text-gray-400 line-through">₹<%= availableTimes[i].cash %></td>
+                    <td class="px-6 py-4 text-green-600 font-semibold">₹<%= availableTimes[i].cash - p %></td>
+                  <% } else { %>
+                    <td class="px-6 py-4 text-gray-800 font-medium">₹<%= availableTimes[i].cash %></td>
+                  <% } %>
+                  <td class="px-6 py-4">
+                    <% if (checkTime.length > 0 && checkTime.includes(availableTimes[i].startingTime)) { %>
+                      <span class="inline-block bg-red-500 text-white text-xs px-3 py-1 rounded-full">Booked</span>
+                    <% } else { %>
+                      <button class="bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-medium px-4 py-1.5 rounded-full transition"
+                              onclick="slotClick('<%= JSON.stringify(availableTimes[i]) %>')">
+                        Book Now
+                      </button>
+                    <% } %>
+                  </td>
+                </tr>
+              <% } } %>
+            </tbody>
+          </table>
         </div>
+      <% } else { %>
+        <h2 class="text-center text-red-500 font-semibold text-xl mt-6">No Slots Available</h2>
+      <% } %>
     </div>
-    <!-- Page Banner Section End -->
+  </div>
+</section>
 
-    <!-- Date Selection start -->
-    <div class="section section-padding">
-        <div class="container">
-            <div class="slot">
-                <div class="dateDiv">
-                    <!-- <h1>Select Start Date</h1> -->
-                    <form method="post" action="/slot-selection?_id=<%= turf._id %>" class="slotForm">
-                        <label class="slotLabel" for="start_date">Booking Date:</label>
-                        <select id="start_date" name="date" required>
-                            <option value="<%= currentDate %>"><%= currentDate %></option>
-                            <% dates.forEach(date => { 
-                                if(date!=currentDate){ %>
-                                    <option value="<%= date %>"><%= date %></option>
-                                <% }
-                            }) %>
-                        </select>
-                        <button class="slotButton" type="submit">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Date Selection end -->
+  <!-- Footer -->
+  <footer class="bg-red-600 text-white p-4 text-center mt-10">
+    <p>&copy; 2025 GreenSlot. All rights reserved.</p>
+  </footer>
 
-
-    <div class="section section-padding">
-    <div style="max-width: 800px; margin: 0 auto; text-align: center; background-color: #f8f9fa; 
-                padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-        <% if (availableTimes.length !== 0) { %>
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; 
-                    font-weight: bold; font-size: 16px; color: #343a40; margin-bottom: 20px; 
-                    text-align: center;">
-            <div>Time</div>
-            <div>Cash</div>
-            <% if (percentage !== 0) { %>
-            <div>Offer Price</div>
-            <% } %>
-            <div>Status</div>
-        </div>
-
-        <% for (let i = 0; i < availableTimes.length; i++) { %>
-        <% if (startingTimes.includes(availableTimes[i].startingTime)) { %>
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; 
-                    padding: 10px 0; border-bottom: 1px solid #dee2e6; align-items: center; text-align: center;">
-            <div><%= availableTimes[i].startingTime %> to <%= availableTimes[i].endingTime %></div>
-            <% if (percentage !== 0) { 
-                let p = (availableTimes[i].cash * percentage) / 100 %>
-            <div style="text-decoration: line-through; color: #6c757d;"><%= availableTimes[i].cash %></div>
-            <div style="color: #28a745; font-weight: bold;">INR <%= availableTimes[i].cash - p %></div>
-            <% } else { %>
-            <div>INR <%= availableTimes[i].cash %></div>
-            <% }
-            if (checkTime.length > 0) {
-                if (checkTime.includes(availableTimes[i].startingTime)) { %>
-            <div style="color: white; background-color: brown; padding: 5px 10px; border-radius: 5px;">Booked</div>
-            <% } else { %>
-            <div>
-                <button style="background-color: #f2a100; border: none; padding: 5px 10px; 
-                               border-radius: 5px; color: white; cursor: pointer;" 
-                        onclick="slotClick('<%= JSON.stringify(availableTimes[i]) %>')">Book Now</button>
-            </div>
-            <% } } else { %>
-            <div>
-                <button style="background-color: #f2a100; border: none; padding: 5px 10px; 
-                               border-radius: 5px; color: white; cursor: pointer;" 
-                        onclick="slotClick('<%= JSON.stringify(availableTimes[i]) %>')">Book Now</button>
-            </div>
-            <% } %>
-        </div>
-        <% } %>
-        <% } %>
-        <% } else { %>
-        <h2 style="color: #dc3545; margin-top: 20px;">No Slots Available</h2>
-        <% } %>
-    </div>
-</div>
-
-
-
-
-
-    <!--Back To Start-->
-    <button id="backBtn" class="back-to-top"><i class="pe-7s-angle-up"></i></button>
-    <!--Back To End-->
-    <!-- JS
-    ============================================ -->
-
-    <!-- Modernizer & jQuery JS -->
-    <script>
-        async function slotClick(time) {
-            try {
-                // time.a = 10
-                fetch(`/check-bookings?id=<%= turf._id %>&date=<%= currentDate %>&time=${time}&percentage=<%= percentage %>`)
-                .then(res=>res.json())
-                .then(data=>{
-                    if (data.success) {
-                        console.log(data.turf)
-                        console.log(data.date)
-                        console.log(data.time)
-                        const turfData = JSON.stringify(data.turf);
-                        const timeData = JSON.stringify(data.time);
-                        window.location.href = `/confirm-booking?turf=${encodeURIComponent(turfData)}&date=${data.date}&percentage=${data.percentage}&time=${encodeURIComponent(timeData)}`
-                    } else if (data.reject) {
-                        Swal.fire({
-                            title: "Already booked",
-                            text: "This slot is already booked, You can book another slot",
-                        });
-                    }
-                })
-            } catch (error) {
-                console.log(error.message)
+  <script>
+    async function slotClick(time) {
+      try {
+        fetch(`/check-bookings?id=<%= turf._id %>&date=<%= currentDate %>&time=${time}&percentage=<%= percentage %>`)
+          .then(res => res.json())
+          .then(data => {
+            if (data.success) {
+              const turfData = JSON.stringify(data.turf);
+              const timeData = JSON.stringify(data.time);
+              window.location.href = `/confirm-booking?turf=${encodeURIComponent(turfData)}&date=${data.date}&percentage=${data.percentage}&time=${encodeURIComponent(timeData)}`
+            } else if (data.reject) {
+              Swal.fire({
+                title: "Already booked",
+                text: "This slot is already booked. You can book another slot.",
+              });
             }
-        }    
-    </script>    
-
-    <script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
-    <script src="assets/js/vendor/jquery-3.5.1.min.js"></script>
-
-    <script src="sweetalert2.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- Bootstrap JS -->
-    <script src="assets/js/plugins/popper.min.js"></script>
-    <script src="assets/js/plugins/bootstrap.min.js"></script>
-
-    <!-- Plugins JS -->
-    <script src="assets/js/plugins/swiper-bundle.min.js"></script>
-    <script src="assets/js/plugins/ajax-contact.js"></script>
-    <script src="assets/js/plugins/odometer.min.js"></script>
-    <script src="assets/js/plugins/select2.min.js"></script>
-    <script src="assets/js/plugins/ion.rangeSlider.min.js"></script>
-    <script src="assets/js/plugins/jquery.zoom.min.js"></script>
-
-    <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
-
+          });
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
-
-
-<!-- Mirrored from htmldemo.net/furbar-1/furbar/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Dec 2023 16:16:17 GMT -->
 </html>

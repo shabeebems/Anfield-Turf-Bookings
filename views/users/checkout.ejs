@@ -1,410 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-<!-- Mirrored from htmldemo.net/furbar-1/furbar/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Dec 2023 16:16:17 GMT -->
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Anfield turf booking</title>
-    <meta name="robots" content="noindex, follow" />
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/liverpool_logo_PNG5.png" />
-
-    <!-- CSS
-	============================================ -->
-
-    <!-- Icon Font CSS -->
-    <link rel="stylesheet" href="assets/css/plugins/pe-icon-7-stroke.css" />
-    <link rel="stylesheet" href="assets/css/plugins/font-awesome.min.css" />
-
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" href="assets/css/plugins/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/animate.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/odometer.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/select2.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/ion.rangeSlider.min.css" />
-
-    <!-- Main Style CSS -->
-    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
-    <link rel="stylesheet" href="assets/css/style.min.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout - GreenSlot</title>
+  <link rel="shortcut icon" href="/assets/images/liverpool_logo_PNG5.png" type="image/x-icon" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
+<body class="bg-gray-100 text-gray-800">
 
-
-<body>
-    <div class="header-area header-sticky d-none d-lg-block">
-        <div class="container position-relative">
-            <div class="row align-items-center">
-                <div class="col-lg-3">
-                    <!-- Header Logo Start -->
-                    <div class="header-logo">
-                        <a href="/home"><img src="assets/images/liverpool_logo_PNG5.png" width="154" height="46" alt="Logo" /></a>
-                    </div>
-                    <!-- Header Logo End -->
-                </div>
-                <div class="col-lg-6">
-                    <div class="header-menu">
-                        <ul class="nav-menu">
-                            <li><a href="/home">Home</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <!-- Header Meta Start -->
-                    <div class="header-meta">
-                        <div class="dropdown">
-                            <a class="action" href="#" role="button" data-bs-toggle="dropdown"><i class="pe-7s-user"></i></a>
-                            <ul class="dropdown-menu dropdown-profile">
-                                <li><a href="/my-accounts">My Account</a></li>
-                                <li><a href="/logout">Logout</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Header Meta End -->
-                </div>
-            </div>
-        </div>
+  <!-- Navbar -->
+  <header class="bg-red-600 text-white p-4 shadow-md sticky top-0 z-50">
+    <div class="container mx-auto flex items-center justify-between">
+      <a href="/home" class="flex items-center gap-2">
+        <img src="/assets/images/liverpool_logo_PNG5.png" alt="GreenSlot" class="h-10" />
+      </a>
+      <nav class="space-x-6 hidden md:flex text-lg font-medium">
+        <a href="/home" class="hover:underline">Home</a>
+        <a href="/my-accounts" class="hover:underline">My Account</a>
+        <a href="/turfs?court=all&page=1" class="hover:underline">Turfs</a>
+      </nav>
+      <a href="/logout" class="bg-white text-red-600 px-4 py-1.5 rounded-full font-semibold hover:bg-gray-200 flex items-center gap-2">
+        <i class="fas fa-sign-out-alt"></i>
+      </a>
     </div>
-    <!-- Header End -->
+  </header>
 
-   
-
-
-    <!-- Page Banner Section Start -->
-    <div class="section page-banner-section" style="background-image: url(assets/images/team-photos/Soccer.jpg)">
-        <div class="container">
-            <!-- Page Banner Content End -->
-            <div class="page-banner-content">
-                <h2 class="title">Checkout</h2>
-                <ul class="breadcrumb">
-                    <li><a href="/">Home</a></li>
-                    <li class="active">Checkout</li>
-                </ul>
-            </div>
-            <!-- Page Banner Content End -->
-        </div>
+  <!-- Banner -->
+  <section class="bg-cover bg-center py-24 text-white" style="background-image: url('/assets/images/team-photos/grasss.jpg')">
+    <div class="container mx-auto h-full flex items-center justify-start">
+      <div class="text-left">
+        <h1 class="text-5xl font-bold mb-4">Checkout</h1>
+        <p class="text-lg"><a href="/home" class="underline">Home</a> / <span>Checkout</span></p>
+      </div>
     </div>
-    <!-- Page Banner Section End -->
+  </section>
 
-    
+  <!-- Checkout Section -->
+  <section class="py-16">
+    <div class="container mx-auto max-w-4xl bg-white p-6 rounded-lg shadow">
+      
+      <!-- Coupon Section -->
+      <div class="mb-6">
+        <p class="font-semibold text-center text-gray-700 mb-2">
+          <i class="fa fa-tag text-yellow-500 mr-1"></i> Have a coupon?
+        </p>
+        <form id="myForm" class="flex flex-col sm:flex-row gap-4 items-center justify-center">
+          <input type="text" id="inputCode" placeholder="Enter your coupon code"
+                 class="px-4 py-2 w-full sm:w-1/2 border border-gray-300 rounded focus:ring focus:ring-red-300" />
+          <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded transition">Apply</button>
+        </form>
+        <p id="couponMessage" class="text-center text-sm text-red-500 mt-2"></p>
+      </div>
 
+      <!-- Checkout Order -->
+      <form>
+        <h2 class="text-2xl font-bold text-center mb-4 text-gray-800">Confirm Your Order</h2>
 
-    <!-- Checkout Section Start -->
-    <div class="section section-padding" style="background-color: #f9f9f9; padding: 20px;">
-        <div class="container" style="max-width: 900px; margin: 0 auto; background: white; border-radius: 10px; 
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px;">
+        <div class="space-y-6">
+          <!-- Turf Summary Table -->
+          <div class="border p-4 rounded-lg shadow-sm">
+            <h3 class="text-center font-semibold text-gray-700 mb-4">
+              <%= turf.name %> <%= turf.court %> Turf, <%= turf.city %>
+            </h3>
+            <table class="w-full text-left text-sm text-gray-700 border-collapse">
+              <tbody>
+                <tr><td class="py-1 font-medium">Turf name</td><td><%= turf.name %> Turf</td></tr>
+                <tr><td class="py-1 font-medium">Court</td><td><%= turf.court %> Court</td></tr>
+                <tr><td class="py-1 font-medium">Location</td><td><%= turf.location %>, <%= turf.city %></td></tr>
+                <tr><td class="py-1 font-medium">Time</td><td><%= time.startingTime %> to <%= time.endingTime %></td></tr>
+                <tr><td class="py-1 font-medium">Date</td><td id="date"><%= date %></td></tr>
+                <tr><td class="py-1 font-medium">Cash</td><td>₹<%= time.cash %></td></tr>
+              </tbody>
+              <tfoot>
+                <tr><td class="font-semibold">Offer</td><td id="offer"><%= time.cash * percentage / 100 %></td></tr>
+                <tr><td class="font-semibold">Coupon discount in %</td><td id="couponPercentage">0</td></tr>
+                <tr><td class="font-semibold">Coupon discount</td><td id="couponDiscount">0</td></tr>
+                <tr><td class="font-bold">Total</td><td class="font-bold text-red-600" id="totalVal"><%= time.cash - time.cash*percentage/100 %></td></tr>
+              </tfoot>
+            </table>
+            <p hidden id="dummyTotal"><%= time.cash - time.cash*percentage/100 %></p>
+            <p hidden id="couponName"></p>
+            <p hidden id="percentage"><%= percentage %></p>
+          </div>
 
-            <div class="checkout-info" style="margin-bottom: 20px;">
-                <p class="info-header" style="font-size: 16px; font-weight: bold; margin-bottom: 10px; 
-                    text-align: center; color: #333;">
-                    <i class="fa fa-exclamation-circle" style="color: #ff9800;"></i> Have a coupon?
-                    <a data-bs-toggle="collapse" href="#coupon" style="color: #007bff; text-decoration: none;">Click here to enter your code</a>
-                </p>
-        
-                <div class="collapse" id="coupon">
-                    <div class="card-body" style="margin-top: 10px;">
-                        <form id="myForm" action="#">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="single-form">
-                                        <input id="inputCode" type="" placeholder="Coupon code" />
-                                        <div style="height: 10px;">
-                                            <p id="couponMessage" style="color: red;"></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="single-form">
-                                        <button class="btn btn-primary btn-hover-dark">
-                                            Coupon
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+          <!-- Payment Method -->
+          <div class="border p-4 rounded-lg shadow-sm">
+            <h3 class="text-center font-semibold mb-4 text-gray-700">Choose Payment Method</h3>
+            <div class="space-y-2">
+              <label class="flex items-center gap-2">
+                <input type="radio" name="payment" id="offline" />
+                <span>Offline Payment</span>
+              </label>
+              <p class="text-xs text-gray-500 ml-6">Pay directly to turf owner at the venue.</p>
+
+              <label class="flex items-center gap-2">
+                <input type="radio" name="payment" id="wallet" />
+                <span>Wallet (Balance: ₹<%= wallet.amount %>)</span>
+              </label>
+
+              <label class="flex items-center gap-2">
+                <input type="radio" name="payment" id="razopay" />
+                <span>Razorpay</span>
+              </label>
+              <p class="text-xs text-gray-500 ml-6">Secure payment with Razorpay.</p>
             </div>
-            <!-- <br> -->
 
-
-            <form action="#">
-                    <h2 style="font-size: 24px; font-weight: bold; text-align: center; margin-bottom: 20px; color: #333;">Confirm Your Order</h2>
-                    <div style="display: flex; flex-direction: column; gap: 20px;">
-                        <div class="checkout-order" style="padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
-                            <div class="checkout-title" style="margin-bottom: 20px; text-align: center;">
-                                <h5 style="font-size: 18px; font-weight: bold; color: #555;"><%= turf.name %> <%= turf.court %> Turf <%= turf.city %></h5>
-                            </div>
-                                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; color: #555;">
-                                    <tbody>
-                                        <tr>
-                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;">Turf name</td>
-                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;"> <%= turf.name %> Turf</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;">Court</td>
-                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;"><%= turf.court %> Court</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;">Location</td>
-                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;"><%= turf.location %>, <%= turf.city %></td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;">Time</td>
-                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;"><%= time.startingTime %> to <%= time.endingTime %></td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;">Date</td>
-                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;" id="date"><%= date %></td>
-                                        </tr>
-                                        <tr>
-                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;">Cash</td>
-                                            <td style="padding: 8px; border-bottom: 1px solid #ddd;">₹<%= time.cash %></td>
-                                        </tr>
-                                    </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <td style="padding: 8px; font-weight: bold;">Offer</td>
-                                                <td style="padding: 8px; font-weight: bold;" id="offer"><%= time.cash*percentage/100 %></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="padding: 8px; font-weight: bold;">Coupon discount in %</td>
-                                                <td style="padding: 8px; font-weight: bold;" id="couponPercentage">0</td>
-                                            </tr>
-                                            <tr>
-                                                <td style="padding: 8px; font-weight: bold;">Coupon discount</td>
-                                                <td style="padding: 8px; font-weight: bold;" id="couponDiscount">0</td>
-                                            </tr>
-                                            <tr>
-                                                <td style="padding: 8px; font-weight: bold;">Total</td>
-                                                <td style="padding: 8px; font-weight: bold; color: orangered;">
-                                                    <p style="font-weight: bold; color: orangered;" id="totalVal"><%= time.cash - time.cash*percentage/100 %></p>
-                                                </td>
-                                            </tr>
-                                            
-                                        </tfoot>
-                                        <p style="display: none;" id="percentage"><%= percentage %></p>
-                                    </table>
-                                <p hidden id="dummyTotal"><%= time.cash - time.cash*percentage/100 %></p>
-                                <p hidden id="couponName"></p>
-
-                            <div class="checkout-payment" style="padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
-                                <h5 style="font-size: 18px; font-weight: bold; margin-bottom: 20px; text-align: center;">Choose Payment Method</h5>
-                                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px;">
-                                    <li>
-                                        <label style="display: flex; align-items: center; gap: 10px;">
-                                            <input type="radio" name="payment" id="offline" /> 
-                                            Offline Payment
-                                        </label>
-                                        <p style="font-size: 12px; color: #777;">Pay cash to turf owners before entering the ground.</p>
-                                    </li>
-                                    <li>
-                                        <label style="display: flex; align-items: center; gap: 10px;">
-                                            <input type="radio" name="payment" id="wallet" /> 
-                                            Wallet (Balance: ₹<%= wallet.amount %>)
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label style="display: flex; align-items: center; gap: 10px;">
-                                            <input type="radio" name="payment" id="razopay" /> 
-                                            Razorpay
-                                        </label>
-                                        <p style="font-size: 12px; color: #777;">Pay via Razorpay easily and securely.</p>
-                                    </li>
-                                </ul>
-                            
-                                <div class="single-form">
-                                    <a class="btn btn-primary btn-hover-dark d-block" onclick="checkPayment()">Book confirm</a>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-            </form>
+            <div class="text-center mt-6">
+              <a onclick="checkPayment()" class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition cursor-pointer">
+                Book Confirm
+              </a>
+            </div>
+          </div>
         </div>
+      </form>
     </div>
-    <!-- Checkout Section End -->
+  </section>
 
-    <p style="display: none;" id="turfId"><%= turf._id %></p>
-    <p style="display: none;" id="timeId"><%= time %></p>
-    <!--Back To Start-->
-    <button id="backBtn" class="back-to-top"><i class="pe-7s-angle-up"></i></button>
-    <!--Back To End-->
-    <!-- JS
-    ============================================ -->
+  <!-- Hidden Data -->
+  <p hidden id="turfId"><%= turf._id %></p>
+  <p hidden id="timeId"><%= time %></p>
 
-    <!-- Modernizer & jQuery JS -->
-    <!-- Coupon check script -->
-    <script>
-        const form = document.getElementById('myForm');
-    
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-            // ----- Dummy total for adjusting coupon apply -----
-            const dummyTotal = document.getElementById('dummyTotal').innerHTML;
-            // ----- Assign dummy total to grand total -----
-            document.getElementById('totalVal').innerHTML = dummyTotal
-            // ----- User entered coupon code -----
-            const inputCode = document.getElementById('inputCode').value;
-            fetch(`/coupon-check?inputCode=${inputCode}`)
-            .then(res => res.json())
-            .then(data => {
-                // ----- If coupon code is wrong -----
-                if(data.message) {
-                    // ------ Put off the value on a p tag (That is hidden coupon name) ------
-                    document.getElementById('couponName').innerHTML = ''
-                    // ---- Assingn coupon discount = 0 ----
-                    document.getElementById('couponDiscount').innerHTML = 0
-                    // ---- Passing the message ----
-                    document.getElementById('couponMessage').innerHTML = data.message
-                    // ---- Remove message after 3 seconds ----
-                    function hideParagraph() {
-                        document.getElementById('couponMessage').innerHTML = ''
-                    }
-                    setTimeout(hideParagraph, 3000)
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-                } else if(data.success) {
-                    // ----- Pass coupon applied message -----
-                    document.getElementById('couponMessage').innerHTML = data.verified
-                    // ----- Grand total after all offers applied -----
-                    const total = document.getElementById('totalVal').innerHTML
-                    // ----- Setting coupon offer -----
-                    const couponOffer = total*data.couponPercentage/100
-                    // ----- Assingning the total value and coupon offer -----
-                    document.getElementById('couponDiscount').innerHTML = couponOffer
-                    document.getElementById('couponPercentage').innerHTML = data.couponPercentage+'%';
+  <!-- Coupon Script (same as your original) -->
+  <script>
+    const form = document.getElementById('myForm');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const dummyTotal = document.getElementById('dummyTotal').innerHTML;
+      document.getElementById('totalVal').innerHTML = dummyTotal;
 
-                    document.getElementById('totalVal').innerHTML = total - couponOffer
-                    // ----- Assingn the coupon name to a p tag to checking coupon -----
-                    document.getElementById('couponName').innerHTML = inputCode
-                }
-            })
+      const inputCode = document.getElementById('inputCode').value;
+      fetch(`/coupon-check?inputCode=${inputCode}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.message) {
+          document.getElementById('couponName').innerHTML = '';
+          document.getElementById('couponDiscount').innerHTML = 0;
+          document.getElementById('couponMessage').innerHTML = data.message;
+          setTimeout(() => { document.getElementById('couponMessage').innerHTML = ''; }, 3000);
+        } else if (data.success) {
+          document.getElementById('couponMessage').innerHTML = data.verified;
+          const total = document.getElementById('totalVal').innerHTML;
+          const couponOffer = total * data.couponPercentage / 100;
+          document.getElementById('couponDiscount').innerHTML = couponOffer;
+          document.getElementById('couponPercentage').innerHTML = data.couponPercentage + '%';
+          document.getElementById('totalVal').innerHTML = total - couponOffer;
+          document.getElementById('couponName').innerHTML = inputCode;
+        }
+      });
+    });
+  </script>
+
+  <!-- Payment script (preserved) -->
+  <script>
+    function checkPayment() {
+      const offlineRadio = document.getElementById("offline");
+      const razopayRadio = document.getElementById("razopay");
+      const walletRadio = document.getElementById("wallet");
+
+      let paymentMethod;
+      if (offlineRadio.checked) {
+        paymentMethod = 'offline';
+      } else if (razopayRadio.checked) {
+        paymentMethod = 'razopay';
+      } else if (walletRadio.checked) {
+        paymentMethod = 'wallet';
+      } else {
+        return Swal.fire({ title: "Pick method", text: "Please select a payment option." });
+      }
+
+      const time = document.getElementById("timeId").innerHTML;
+      const turfId = document.getElementById("turfId").innerHTML;
+      const date = document.getElementById("date").innerHTML;
+      const total = document.getElementById('totalVal').innerText;
+
+      fetch(`/check-payment?totalVal=${total}&date=${date}&method=${paymentMethod}&turfId=${turfId}&time=<%= encodeURIComponent(JSON.stringify(time)) %>`)
+        .then(res => res.json())
+        .then(data => {
+          const couponName = document.getElementById('couponName').innerHTML;
+          const offer = document.getElementById('offer').innerHTML;
+          const couponDiscount = document.getElementById('couponDiscount').innerHTML;
+
+          if (data.offline) {
+            window.location.href = `/payment-success?offer=${offer}&couponDiscount=${couponDiscount}&couponName=${couponName}&totalVal=${total}&date=${date}&method=${paymentMethod}&turfId=${turfId}&time=<%= encodeURIComponent(JSON.stringify(time)) %>`;
+          } else if (data.offlineLimit) {
+            Swal.fire({ title: "Amount > 1000", text: "Offline payment not allowed. Choose another option." });
+          } else if (data.booked) {
+            Swal.fire({ title: "Already booked", text: "This slot is already booked. Choose another." });
+          } else if (data.balance) {
+            Swal.fire({ title: "No balance", text: "Wallet has insufficient balance." });
+          } else if (data.success) {
+            const options = {
+              key: data.key_id,
+              amount: `${total}`,
+              currency: "INR",
+              name: data.name,
+              order_id: data.order_id,
+              handler: function (response) {
+                window.location.href = `/payment-success?offer=${offer}&couponDiscount=${couponDiscount}&couponName=${couponName}&totalVal=${total}&date=${date}&method=${paymentMethod}&turfId=${turfId}&time=<%= encodeURIComponent(JSON.stringify(time)) %>`;
+              },
+              theme: { color: "#2300a3" }
+            };
+            const razorpayObject = new Razorpay(options);
+            razorpayObject.on('payment.failed', function (response) {
+              alert("Payment Failed");
+              window.location.href = `/payment-success?error=yes&offer=${offer}&couponDiscount=${couponDiscount}&couponName=${couponName}&totalVal=${total}&date=${date}&method=${paymentMethod}&turfId=${turfId}&time=<%= encodeURIComponent(JSON.stringify(time)) %>`;
+            });
+            razorpayObject.open();
+          }
         });
-    </script>
-    
-    
-    
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <!-- Checkout submit -->
-    <script>
-        function checkPayment() {
-            const offlineRadio = document.getElementById("offline");
-            const razopayRadio = document.getElementById("razopay");
-            const walletRadio = document.getElementById("wallet");
-
-            let paymentMethod;
-            if (offlineRadio.checked) {
-                paymentMethod = 'offline'
-                console.log("User selected Offline payment");
-            } else if (razopayRadio.checked) {
-                paymentMethod = 'razopay'
-                console.log("User selected Razopay");
-            } else if (walletRadio.checked) {
-                paymentMethod = 'wallet'
-                console.log("User selected Razopay");
-            } else {
-                Swal.fire({
-                    title: "Pick method",
-                    text: "Please select a payment option.",
-                });
-            }
-            const time = document.getElementById("timeId").innerHTML
-            const turfId = document.getElementById("turfId").innerHTML
-            const date = document.getElementById("date").innerHTML
-            const total = document.getElementById('totalVal').innerText
-
-            fetch(`/check-payment?totalVal=${total}&date=${date}&method=${paymentMethod}&turfId=${turfId}&time=<%= encodeURIComponent(JSON.stringify(time)) %>`)
-            .then(res => res.json())
-			.then(data =>{
-                const couponName = document.getElementById('couponName').innerHTML
-                const offer = document.getElementById('offer').innerHTML
-                const couponDiscount = document.getElementById('couponDiscount').innerHTML
-                const time = document.getElementById("timeId").innerHTML
-                const turfId = document.getElementById("turfId").innerHTML
-                const date = document.getElementById("date").innerHTML
-                const total = document.getElementById('totalVal').innerText
-				if(data.offline){
-					window.location.href = `/payment-success?offer=${offer}&couponDiscount=${couponDiscount}&couponName=${couponName}&totalVal=${total}&date=${date}&method=${paymentMethod}&turfId=${turfId}&time=<%= encodeURIComponent(JSON.stringify(time)) %>`;
-				} else if (data.offlineLimit){
-                    Swal.fire({
-                        title: "Amount greater than 1000",
-                        text: "Offline payment not available grater than 1000, Please choose another option",
-                    });
-                } else if (data.booked){
-                    Swal.fire({
-                        title: "Already booked",
-                        text: "This slot is already booked, You can book another slot",
-                    });
-                } else if (data.balance){
-                    Swal.fire({
-                        title: "No balance",
-                        text: "No balance in your wallet, Please choose another option",
-                    });
-                } else if (data.success) {
-                    console.log('Raaaaaazopaaaay')
-                    var options = {
-						"key": data.key_id,
-						"amount": `${total}`,
-						"currency": "INR",
-						"name": data.name,
-						// "description": ""+res.description+"",
-						// "image": "https://dummyimage.com/600x400/000/fff",
-						"order_id": data.order_id, 
-						"handler": function (response){
-                            console.log('///////////////')
-							// alert("Payment Succeeded");
-                            window.location.href = `/payment-success?offer=${offer}&couponDiscount=${couponDiscount}&couponName=${couponName}&totalVal=${total}&date=${date}&method=${paymentMethod}&turfId=${turfId}&time=<%= encodeURIComponent(JSON.stringify(time)) %>`;
-						},
-						// "prefill": {
-						// 	// "contact":""+res.contact+"",
-						// 	"name":`asdfa`,
-						// 	"email": `asdfa`
-						// },
-						// "notes" : {
-						// 	"description":""+res.description+""
-						// },
-						"theme": {
-							"color": "#2300a3"
-						}
-					};
-                  
-					var razorpayObject = new Razorpay(options);
-					razorpayObject.on('payment.failed', function (response){
-                        console.log(response);
-						alert("Payment Failed");
-                        window.location.href = `/payment-success?error=yes&offer=${offer}&couponDiscount=${couponDiscount}&couponName=${couponName}&totalVal=${total}&date=${date}&method=${paymentMethod}&turfId=${turfId}&time=<%= encodeURIComponent(JSON.stringify(time)) %>`;
-					});
-					razorpayObject.open();
-                } 
-            
-        })
     }
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
-    <script src="assets/js/vendor/jquery-3.5.1.min.js"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="assets/js/plugins/popper.min.js"></script>
-    <script src="assets/js/plugins/bootstrap.min.js"></script>
-
-    <!-- Plugins JS -->
-    <script src="assets/js/plugins/swiper-bundle.min.js"></script>
-    <script src="assets/js/plugins/ajax-contact.js"></script>
-    <script src="assets/js/plugins/odometer.min.js"></script>
-    <script src="assets/js/plugins/select2.min.js"></script>
-    <script src="assets/js/plugins/ion.rangeSlider.min.js"></script>
-    <script src="assets/js/plugins/jquery.zoom.min.js"></script>
-
-    <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
+  </script>
 
 </body>
-
-
-<!-- Mirrored from htmldemo.net/furbar-1/furbar/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Dec 2023 16:16:17 GMT -->
 </html>

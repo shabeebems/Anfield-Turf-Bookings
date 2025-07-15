@@ -1,366 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-<!-- Mirrored from htmldemo.net/furbar-1/furbar/product-details-affiliate.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Dec 2023 16:16:17 GMT -->
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Anfield turf booking</title>
-    <meta name="robots" content="noindex, follow" />
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/liverpool_logo_PNG5.png" />
-
-    <!-- CSS
-	============================================ -->
-
-    <!-- Icon Font CSS -->
-    <link rel="stylesheet" href="assets/css/plugins/pe-icon-7-stroke.css" />
-    <link rel="stylesheet" href="assets/css/plugins/font-awesome.min.css" />
-
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" href="assets/css/plugins/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/animate.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/odometer.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/select2.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/ion.rangeSlider.min.css" />
-
-    <!-- Main Style CSS -->
-    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
-    <link rel="stylesheet" href="assets/css/style.min.css" />
-    <!-- Date form style -->
-    <style>
-        .slot {
-          font-family: Arial, sans-serif;
-          margin: 0;
-          padding: 0;
-          display: flex;
-          justify-content: center;
-        }
-    
-        .dateDiv {
-          background-color: #fff;
-          border-radius: 8px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-          padding: 20px;
-          width: 300px;
-        }
-    
-        .slotForm {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-    
-        .slotLabel {
-          font-size: 16px;
-          margin-bottom: 10px;
-        }
-    
-        #start_date {
-          width: 100%;
-          padding: 10px;
-          margin-bottom: 20px;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-        }
-    
-        .slotButton {
-          padding: 10px 20px;
-          background-color: #f2a100;
-          color: #ffffff;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-        }
-    
-        .slotButton:hover {
-          background-color: #494949;
-        }
-      </style>
-</head>
-
-
-<body>
-    <!-- Header Start  -->
-    <div class="header-area header-sticky d-none d-lg-block">
-        <div class="container position-relative">
-            <div class="row align-items-center">
-                <div class="col-lg-3">
-                    <!-- Header Logo Start -->
-                    <div class="header-logo">
-                        <a href="/home"><img src="assets/images/liverpool_logo_PNG5.png" width="154" height="46" alt="Logo" /></a>
-                    </div>
-                    <!-- Header Logo End -->
-                </div>
-                <div class="col-lg-6">
-                    <div class="header-menu">
-                        <ul class="nav-menu">
-                            <li><a href="/home">Home</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <!-- Header Meta Start -->
-                    <div class="header-meta">
-                        <div class="dropdown">
-                            <a class="action" href="#" role="button" data-bs-toggle="dropdown">
-                                <i class="pe-7s-search"></i>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-search">
-                                <!-- Header Search Start -->
-                                <div class="header-search">
-                                    <form action="/search-location" autocomplete="off" id="location-form">
-                                        <input type="text" placeholder="Search location...." list="locations" name="city">
-                                        <input type="number" value=1 list="locations" name="page" hidden>
-                                        <datalist id="locations">
-                                            <% for(let i = 0; i < uniqueCity.length; i++){ %>
-                                                <option value="<%= uniqueCity[i] %>">
-                                            <% } %>
-                                        </datalist>
-                                        <button type="submit">
-                                            <i class="pe-7s-search"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                                <!-- Header Search End -->
-                            </div>
-                        </div>
-
-                        <div class="dropdown">
-                            <a class="action" href="#" role="button" data-bs-toggle="dropdown"><i class="pe-7s-user"></i></a>
-
-                            <ul class="dropdown-menu dropdown-profile">
-                                <li><a href="/my-accounts">My Account</a></li>
-                                <li><a href="/logout">Logout</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Header Meta End -->
-                </div>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Turf Details - GreenSlot</title>
+    <link rel="shortcut icon" href="/assets/images/liverpool_logo_PNG5.png" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- Header -->
+    <header class="bg-red-600 text-white p-4 shadow-md sticky top-0 z-50">
+      <div class="container mx-auto flex items-center justify-between">
+        <a href="/home" class="flex items-center gap-2">
+          <img src="/assets/images/liverpool_logo_PNG5.png" alt="GreenSlot" class="h-10" />
+        </a>
+        <nav class="space-x-6 hidden md:flex text-lg font-medium">
+          <a href="/home" class="hover:underline">Home</a>
+          <a href="/my-accounts" class="hover:underline">My Account</a>
+          <a href="/turfs?court=all&page=1" class="hover:underline">Turfs</a>
+        </nav>
+        <div class="flex items-center gap-4">
+          <form action="/search-location" id="location-form" autocomplete="off" class="relative">
+            <input type="text" name="city" placeholder="Search location..." class="rounded-md px-3 py-1 text-black" list="locations">
+            <input type="number" name="page" value="1" hidden>
+            <datalist id="locations">
+              <% for(let i = 0; i < uniqueCity.length; i++){ %>
+                <option value="<%= uniqueCity[i] %>">
+              <% } %>
+            </datalist>
+            <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2">
+              <i class="fa fa-search text-gray-500"></i>
+            </button>
+          </form>
+          <a href="/logout" class="bg-white text-red-600 px-4 py-1.5 rounded-full font-semibold hover:bg-gray-200 flex items-center gap-2">
+            <i class="fas fa-sign-out-alt"></i>
+          </a>
         </div>
-    </div>
-    <!-- Header End -->
+      </div>
+    </header>
 
-
-    <!-- Page Banner Section Start -->
-    <div class="section page-banner-section" style="background-image: url(assets/images/team-photos/Soccer.jpg)">
-        <div class="container">
-            <!-- Page Banner Content End -->
-            <div class="page-banner-content">
-                <h2 class="title">Turf Details</h2>
-
-                <ul class="breadcrumb">
-                    <li ><a href="/home">Home</a></li>
-                    <li class="active">Turf Details</li>
-                </ul>
-            </div>
-            <!-- Page Banner Content End -->
+    <!-- Banner -->
+    <section class="bg-cover bg-center py-24 text-white" style="background-image: url('/assets/images/team-photos/grasss.jpg')">
+      <div class="container mx-auto h-full flex items-center justify-start">
+        <div class="text-left">
+          <h1 class="text-5xl font-bold mb-4">Turf Details</h1>
+          <p class="text-lg">
+            <a href="/home" class="underline">Home</a> / <span>Turf Details</span>
+          </p>
         </div>
-    </div>
-    <!-- Page Banner Section End -->
+      </div>
+    </section>
 
-    <!-- Product Details Section Start -->
-    <div class="section section-padding-02">
-        <div class="container">
-            <!-- Product Section Wrapper Start -->
-            <div class="product-section-wrapper">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <!-- Product Details Images Start -->
-                        <div class="product-details-images">
-                            <!-- Details Gallery Images Start -->
-                            <div class="details-gallery-images">
-                                <div class="swiper-container">
-                                    <div class="swiper-wrapper">
-                                        <% for(let i=0;i<turf.image.length;i++){ %>
-                                            <div class="swiper-slide single-img zoom">
-                                                <img src="/turfPhotos/<%= turf.image[i] %>" width="570" height="604" alt="Product Image" />
-                                            </div>
-                                        <% } %>
-                                       
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Details Gallery Images End -->
-
-                            <!-- Details Gallery Thumbs Start -->
-                            <div class="details-gallery-thumbs">
-                                <div class="swiper-container">
-                                    <div class="swiper-wrapper">
-                                        <% for(let i=0;i<turf.image.length;i++){ %>
-                                        <div class="swiper-slide">
-                                            <img src="/turfPhotos/<%= turf.image[i] %>" width="88" height="93" alt="Product Thumbnail" />
-                                        </div>
-                                        <% } %>
-                                    </div>
-                                </div>
-                                <!-- Add Arrows -->
-                                <div class="swiper-button-prev">
-                                    <i class="pe-7s-angle-left"></i>
-                                </div>
-                                <div class="swiper-button-next">
-                                    <i class="pe-7s-angle-right"></i>
-                                </div>
-                            </div>
-                            <!-- Details Gallery Thumbs End -->
-                        </div>
-                        <!-- Product Details Images End -->
-                    </div>
-                    <div class="col-lg-6">
-                        <!-- Product Details Description Start -->
-                        <div class="product-details-description">
-                            <h4 class="product-name">
-                                <%= turf.name %>  <%=turf.court %> Turf, <%= turf.city%>
-                            </h4>
-                            
-
-                            <p>
-                                
-                            </p>
-                            
-                           
-                              <div class="slot">
-                                  <div class="dateDiv">
-                                      <!-- <h1>Select Start Date</h1> -->
-                                      <form method="post" action='/slot-selection?_id=<%= turf._id %>' class="slotForm">
-                                          <label class="slotLabel" for="start_date">Booking Date:</label>
-                                          <select id="start_date" name="date" required>
-                                              <% dates.forEach(date => { %>
-                                                <option value="<%= date %>"><%= date %></option>
-                                                <% }); %>
-                                            </select>
-                                            <button class="slotButton" type="submit">Submit</button>
-                                        </form>
-                                    </div>
-                                </div>
-
-                                    
-                                </div>
-                        <!-- Product Details Description End -->
-                    </div>
-                </div>
+    <!-- Turf Details -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Turf Images -->
+          <div>
+            <div class="grid grid-cols-3 gap-2 mb-4">
+              <% for(let i=0;i<turf.image.length;i++){ %>
+                <img src="/turfPhotos/<%= turf.image[i] %>" class="h-20 object-cover rounded cursor-pointer border border-gray-200" />
+              <% } %>
             </div>
-            <!-- Product Section Wrapper End -->
-        </div>
-    </div>
-    <!-- Product Details Section End -->
+            <img src="/turfPhotos/<%= turf.image[0] %>" class="w-full h-[400px] object-cover rounded shadow" />
+          </div>
 
-  
-
-    <!-- Sale Product Section Start -->
-    <div class="section section-padding">
-        <div class="container">
-            <div class="">
-                <!-- Product Wrapper Start -->
-                <div class="product-active-02">
-                    <!-- Product Top Wrapper Start -->
-                    <div class="product-top-wrapper">
-                        <!-- Section Title Start -->
-                        <div class="section-title">
-                            <h2 class="title">Related Turfs</h2>
-                        </div>
-                        <!-- Section Title End -->
-
-                        
-
-                        <!-- Swiper Arrows End -->
-                        <div class="swiper-arrows">
-                        </div>
-                        <!-- Swiper Arrows End -->
-                    </div>
-                    <!-- Product Top Wrapper End -->
-
-                    <!-- Product Tabs Content Start -->
-                    <div class="product-tabs-content">
-                        <div class="tab-content">
-                            <div class="tab-pane fade show active" id="tab7">
-                                <div class="swiper-container">
-                                    <div class="swiper-wrapper">
-                                        
-                                        <% if(turfs.length>4){
-                                            num = 4
-                                        }else{
-                                            num = turfs.length
-                                        }for(let i=0;i<num;i++){ %>
-                                            <!-- Single Product Start -->
-                                            <div class="single-product" style="margin-right: 20px;">
-                                                <a href="turf-details?id=<%= turfs[i]._id %>"><img style="height: 200px; width: 300px;" src="/turfPhotos/<%= turfs[i].image[0] %>" width="270" height="303" alt="product" /></a>
-                                                <div class="product-content">
-                                                    <h4 class="title">
-                                                        <a href="turf-details?id=<%= turfs[i]._id %>"><%= turfs[i].name %> <%= turfs[i].court %> turf, <%= turfs[i].city %></a>
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                            <% } %>
-                                            
-                                            <!-- Single Product End -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product Tabs Content End -->
-                </div>
-                <!-- Product Wrapper End -->
+          <!-- Turf Description -->
+          <div>
+            <h2 class="text-3xl font-bold mb-2"><%= turf.name %> <%= turf.court %> Turf, <%= turf.city %></h2>
+            <div class="mt-6">
+              <form method="post" action='/slot-selection?_id=<%= turf._id %>' class="space-y-4">
+                <label for="start_date" class="block text-lg font-medium">Booking Date:</label>
+                <select id="start_date" name="date" required class="w-full px-4 py-2 border border-gray-300 rounded">
+                  <% dates.forEach(date => { %>
+                    <option value="<%= date %>"><%= date %></option>
+                  <% }); %>
+                </select>
+                <button type="submit" class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition">Submit</button>
+                <p class="text-md text-gray-700 pt-3 leading-relaxed">
+                  After booking a slot, you are allowed to cancel the reservation up to 24 hours before the booked time. Cancellations made within this time window are eligible for a full refund. However, cancellations made less than 24 hours before the booked slot will not be accepted, and no refunds will be issued. We advise all users to double-check their schedules and manage bookings carefully to avoid any inconveniences. Late cancellations or no-shows can affect turf availability for others.
+                </p>
+              </form>
             </div>
+          </div>
         </div>
-    </div>
-    <!-- Sale Product Section End -->
-    <!-- Footer Section Start -->
+      </div>
+    </section>
 
+    <!-- Related Turfs -->
+    <section class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-6">Related Turfs</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <% if(turfs.length>4){ num = 4 }else{ num = turfs.length } for(let i=0;i<num;i++){ %>
+            <div class="bg-white rounded shadow overflow-hidden">
+              <a href="turf-details?id=<%= turfs[i]._id %>">
+                <img src="/turfPhotos/<%= turfs[i].image[0] %>" alt="<%= turfs[i].name %>" class="w-full h-48 object-cover" />
+              </a>
+              <div class="p-4">
+                <h4 class="text-lg font-semibold"><a href="turf-details?id=<%= turfs[i]._id %>"><%= turfs[i].name %> <%= turfs[i].court %> turf, <%= turfs[i].city %></a></h4>
+              </div>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </section>
 
-
-
-
-
-
-
-
-
-
-
-    <!--Back To Start-->
-    <button id="backBtn" class="back-to-top"><i class="pe-7s-angle-up"></i></button>
-    <!--Back To End-->
-
-    <!-- Quick View End -->
-    <!-- JS
-    ============================================ -->
-   
-    <!-- Modernizer & jQuery JS -->
-    <script>
-    function booking(time,amount){
-        console.log(time)
-        console.log(amount)
-        fetch(`/booking`)
-    }    
-    </script>
-    <script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
-    <script src="assets/js/vendor/jquery-3.5.1.min.js"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="assets/js/plugins/popper.min.js"></script>
-    <script src="assets/js/plugins/bootstrap.min.js"></script>
-
-    <!-- Plugins JS -->
-    <script src="assets/js/plugins/swiper-bundle.min.js"></script>
-    <script src="assets/js/plugins/ajax-contact.js"></script>
-    <script src="assets/js/plugins/odometer.min.js"></script>
-    <script src="assets/js/plugins/select2.min.js"></script>
-    <script src="assets/js/plugins/ion.rangeSlider.min.js"></script>
-    <script src="assets/js/plugins/jquery.zoom.min.js"></script>
-
-    <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
-
-</body>
-
-
-<!-- Mirrored from htmldemo.net/furbar-1/furbar/product-details-affiliate.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Dec 2023 16:16:17 GMT -->
+    <!-- Footer -->
+    <footer class="bg-red-600 text-white p-4 text-center">
+      <p>&copy; 2025 GreenSlot. All rights reserved.</p>
+    </footer>
+  </body>
 </html>

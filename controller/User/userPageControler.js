@@ -38,7 +38,7 @@ const listTurf = async (req, res) => {
             case 'all':
                 const categories = await categorySchema.find({ block: false })
                 const avilableCategory = categories.map(cat => cat.name)
-                turfCount = await turfSchema.find({ block: false, court: { $in: avilableCategory } }).count()
+                turfCount = await turfSchema.countDocuments({ block: false, court: { $in: avilableCategory } });
                 turfs = await turfSchema.find({ block: false, court: { $in: avilableCategory } }).skip((pageNum-1)*docLimit).limit(docLimit*1).exec()
                 break;
             default:

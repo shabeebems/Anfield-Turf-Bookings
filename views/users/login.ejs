@@ -1,203 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - GreenSlot</title>
+    <link rel="shortcut icon" href="assets/images/liverpool_logo_PNG5.png" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- Header -->
+    <header class="bg-red-600 text-white p-4 shadow-md sticky top-0 z-50">
+      <div class="container mx-auto flex items-center justify-between">
+        <a href="/home" class="flex items-center gap-2">
+          <img src="assets/images/liverpool_logo_PNG5.png" alt="GreenSlot" class="h-10" />
+        </a>
+      </div>
+    </header>
 
-
-<!-- Mirrored from htmldemo.net/furbar-1/furbar/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Dec 2023 16:16:18 GMT -->
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Anfield turf booking</title>
-    <meta name="robots" content="noindex, follow" />
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/liverpool_logo_PNG5.png" />
-
-    <!-- CSS
-	============================================ -->
-
-    <!-- Icon Font CSS -->
-    <link rel="stylesheet" href="assets/css/plugins/pe-icon-7-stroke.css" />
-    <link rel="stylesheet" href="assets/css/plugins/font-awesome.min.css" />
-
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" href="assets/css/plugins/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/animate.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/odometer.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/select2.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/ion.rangeSlider.min.css" />
-
-    <!-- Main Style CSS -->
-    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
-    <link rel="stylesheet" href="assets/css/style.min.css" />
-</head>
-
-
-<body>
-    <!-- Header Start  -->
-    <div class="header-area header-sticky d-none d-lg-block">
-        <div class="container position-relative">
-            <div class="row align-items-center">
-
-                <div class="col-lg-3">
-                    <!-- Header Logo Start -->
-                    <div class="header-logo">
-                        <a href="/home"><img src="assets/images/liverpool_logo_PNG5.png" width="154" height="46" alt="Logo" /></a>
-                    </div>
-                    <!-- Header Logo End -->
-                </div>
-
-            </div>
+    <!-- Banner -->
+    <section class="bg-cover bg-center py-24 text-white" style="background-image: url('assets/images/team-photos/grasss.jpg')">
+      <div class="container mx-auto h-full flex items-center justify-start">
+        <div class="text-left">
+          <h1 class="text-5xl font-bold mb-4">Login</h1>
+          <p class="text-lg">
+            <a href="/" class="underline">Home</a> / <span>Login</span>
+          </p>
         </div>
-    </div>
-    <!-- Header End -->
+      </div>
+    </section>
 
-
-    <!-- Page Banner Section Start -->
-    <div class="section page-banner-section" style="background-image: url(assets/images/team-photos/Soccer.jpg)">
-        <div class="container">
-            <!-- Page Banner Content End -->
-            <div class="page-banner-content">
-                <h2 class="title">Login</h2>
-
-                <ul class="breadcrumb">
-                    <li><a href="/">Login</a></li>
-                </ul>
+    <!-- Login Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+          <h2 class="text-2xl font-bold mb-6 text-center">Login to Your Account</h2>
+            <h4 id="respofecth" class="text-center text-red-600 mb-4 min-h-[24px]"></h4>
+          <form id="myForm" method="post" class="space-y-5">
+            <div>
+              <input type="text" id="username" name="username" placeholder="Username" required class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" />
             </div>
-            <!-- Page Banner Content End -->
-        </div>
-    </div>
-    <!-- Page Banner Section End -->
-
-    <!-- Login Section Start -->
-    <div class="section section-padding">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <!-- Login & Register Start -->
-                    <div class="login-register-wrapper">
-                        <!-- <a href="/auth/google">
-                            <i class="fa fa-google"></i> Login with Google
-                        </a> -->
-                        <div style="height: 30px;">
-                            <h4  id="respofecth" style="color: red; text-align: center;"></h4>
-                        </div>
-                        <h4 class="title">Login to Your Account</h4>
-                        <form id="myForm" method="post">
-                            <div class="single-form">
-                                <input type="text" id="username" name="username" placeholder="User name" required="">
-                            </div>
-                            <div class="single-form">
-                                <input type="password" id="password" name="password" placeholder="password" required>
-                                <!-- Eye icon for password visibility toggle -->
-                                <span class="toggle-password" onclick="togglePasswordVisibility()">
-                                <i style="cursor: pointer;" class="fa fa-eye" aria-hidden="true"></i>
-                      </span>
-                            </div>
-                            <div class="single-form">
-                                <button id="loginBtn" class="btn btn-primary btn-hover-dark">
-                                    Login
-                                </button>
-                                <div id="loadingMessage" style="display: none; text-align: center; margin-top: 10px;">
-                                    <span class="spinner-border text-primary" role="status" style="width: 1.5rem; height: 1.5rem;"></span>
-                                    <p style="margin: 0;">Logging in...</p>
-                                </div>
-                            </div>
-                        </form>
-                        <p><a href="forget-password">Lost your password?</a></p>
-                        <p>
-                            No account?
-                            <a href="signup">Create one here.</a>
-                        </p>
-                    </div>
-                    <!-- Login & Register End -->
-                </div>
+            <div class="relative">
+              <input type="password" id="password" name="password" placeholder="Password" required class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" />
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 cursor-pointer" onclick="togglePasswordVisibility()">
+                <i class="fa fa-eye"></i>
+              </span>
             </div>
+            <div>
+              <button id="loginBtn" class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 transition">Login</button>
+              <div id="loadingMessage" class="text-center mt-3 hidden">
+                <span class="inline-block w-5 h-5 border-2 border-white border-t-transparent animate-spin rounded-full"></span>
+                <p class="text-gray-700 text-sm mt-1">Logging in...</p>
+              </div>
+            </div>
+          </form>
+
+          <div class="text-center mt-6 space-y-2">
+            <p><a href="/forget-password" class="text-red-600 hover:underline">Forgot your password?</a></p>
+            <p>
+              Don't have an account?
+              <a href="/signup" class="text-red-600 hover:underline">Create one here</a>
+            </p>
+          </div>
         </div>
-    </div>
-    <!-- Login Section End -->
+      </div>
+    </section>
 
-   
+    <!-- Footer -->
+    <footer class="bg-red-600 text-white p-4 text-center">
+      <p>&copy; 2025 GreenSlot. All rights reserved.</p>
+    </footer>
 
-    <!--Back To Start-->
-    <button id="backBtn" class="back-to-top"><i class="pe-7s-angle-up"></i></button>
-    <!--Back To End-->
-    <!-- JS
-    ============================================ -->
-
-    <!-- Modernizer & jQuery JS -->
+    <!-- JS -->
     <script>
-		const form = document.getElementById('myForm');
+      const form = document.getElementById('myForm');
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
 
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
 
-            const password = document.getElementById('password').value;
-            const username = document.getElementById('username').value;
+        document.getElementById('loginBtn').style.display = 'none';
+        document.getElementById('loadingMessage').style.display = 'block';
 
-            // Show loading, hide button
-            document.getElementById('loginBtn').style.display = 'none';
-            document.getElementById('loadingMessage').style.display = 'block';
-
-            fetch(`/login-check?password=${password}&&username=${username}`)
-                .then(res => res.json())
-                .then(res => {
-                    if (res.success) {
-                        window.location.href = '/home';
-                    } else {
-                        document.getElementById('respofecth').innerHTML = res.message;
-
-                        // Hide loading, show button again
-                        document.getElementById('loginBtn').style.display = 'block';
-                        document.getElementById('loadingMessage').style.display = 'none';
-
-                        setTimeout(() => {
-                            document.getElementById('respofecth').innerHTML = '';
-                        }, 3000);
-                    }
-                })
-                .catch(err => {
-                    // Handle error
-                    document.getElementById('respofecth').innerHTML = 'Something went wrong!';
-                    document.getElementById('loginBtn').style.display = 'block';
-                    document.getElementById('loadingMessage').style.display = 'none';
-                });
-        });
-	</script>
-
-    <script>
-        function togglePasswordVisibility() {
-            const passwordField = document.getElementById('password');
-            if (passwordField.type === 'password') {
-                passwordField.type = 'text';
+        fetch(`/login-check?username=${username}&&password=${password}`)
+          .then((res) => res.json())
+          .then((res) => {
+            if (res.success) {
+              window.location.href = '/home';
             } else {
-                passwordField.type = 'password';
+              document.getElementById('respofecth').innerHTML = res.message;
+              document.getElementById('loginBtn').style.display = 'block';
+              document.getElementById('loadingMessage').style.display = 'none';
+              setTimeout(() => {
+                document.getElementById('respofecth').innerHTML = '';
+              }, 3000);
             }
-        }
+          })
+          .catch((err) => {
+            document.getElementById('respofecth').innerHTML = 'Something went wrong!';
+            document.getElementById('loginBtn').style.display = 'block';
+            document.getElementById('loadingMessage').style.display = 'none';
+          });
+      });
+
+      function togglePasswordVisibility() {
+        const passwordField = document.getElementById('password');
+        passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+      }
     </script>
-
-
-    <script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
-    <script src="assets/js/vendor/jquery-3.5.1.min.js"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="assets/js/plugins/popper.min.js"></script>
-    <script src="assets/js/plugins/bootstrap.min.js"></script>
-
-    <!-- Plugins JS -->
-    <script src="assets/js/plugins/swiper-bundle.min.js"></script>
-    <script src="assets/js/plugins/ajax-contact.js"></script>
-    <script src="assets/js/plugins/odometer.min.js"></script>
-    <script src="assets/js/plugins/select2.min.js"></script>
-    <script src="assets/js/plugins/ion.rangeSlider.min.js"></script>
-    <script src="assets/js/plugins/jquery.zoom.min.js"></script>
-
-    <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
-
-</body>
-
-
-<!-- Mirrored from htmldemo.net/furbar-1/furbar/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Dec 2023 16:16:18 GMT -->
+  </body>
 </html>

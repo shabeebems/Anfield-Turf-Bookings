@@ -1,64 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Success</title>
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/liverpool_logo_PNG5.png" />
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-}
-
-.container {
-    text-align: center;
-    padding: 50px;
-}
-
-.success-icon {
-    margin-bottom: 20px;
-}
-
-.success-heading {
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-.success-message {
-    font-size: 18px;
-    margin-bottom: 30px;
-}
-
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: green;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: darkgreen;
-}
-
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registration Success</title>
+  <link rel="shortcut icon" href="assets/images/liverpool_logo_PNG5.png" type="image/x-icon" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="container">
-            <div class="success-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="green" width="100px" height="100px">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
-                </svg>
-            </div>
-            <h1 class="success-heading">Registration Complete!</h1>
-            <p class="success-message">Thank you for registering. Get ready to enjoy Anfield Turf Bookings!</p>
-        <a href="/" class="btn">Go to login</a>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen px-4">
+
+  <div class="bg-white shadow-xl rounded-xl p-8 max-w-lg w-full text-center">
+    <!-- Success Icon -->
+    <div class="mb-6">
+      <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto" width="100" height="100" fill="none" viewBox="0 0 24 24" stroke="green" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+      </svg>
     </div>
+
+    <!-- Success Text -->
+    <h1 class="text-3xl font-bold text-green-600 mb-2">Registration Complete!</h1>
+    <p class="text-gray-700 text-base mb-6">Thank you for registering. Get ready to enjoy GreenSlot Turf Bookings!</p>
+
+    <!-- Button -->
+    <a href="/" class="inline-block bg-green-600 text-white text-sm font-semibold px-6 py-3 rounded-lg shadow hover:bg-green-700 transition duration-300">
+      Go to Login
+    </a>
+  </div>
+
 </body>
 </html>

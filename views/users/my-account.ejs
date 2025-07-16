@@ -1,643 +1,534 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>GreenSlot Turf Courts</title>
+    <link rel="shortcut icon" href="/assets/images/liverpool_logo_PNG5.png" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- Header -->
+    <header class="bg-red-600 text-white p-4 shadow-md sticky top-0 z-50">
+      <div class="container mx-auto flex items-center justify-between">
+        <a href="/home" class="flex items-center gap-2">
+          <img src="/assets/images/liverpool_logo_PNG5.png" alt="GreenSlot" class="h-10" />
+        </a>
+        <nav class="space-x-6 hidden md:flex text-lg font-medium">
+          <a href="/home" class="hover:underline">Home</a>
+          <a href="/my-accounts" class="hover:underline">My Account</a>
+          <a href="/turfs?court=all&page=1" class="hover:underline">Turfs</a>
+        </nav>
+        <div class="flex items-center gap-4">
+          <a href="/logout" class="bg-white text-red-600 px-4 py-1.5 rounded-full font-semibold hover:bg-gray-200 flex items-center gap-2">
+            <i class="fas fa-sign-out-alt"></i>
+          </a>
+        </div>
+      </div>
+    </header>
 
-
-<!-- Mirrored from htmldemo.net/furbar-1/furbar/my-account.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Dec 2023 16:16:18 GMT -->
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Anfield turf booking</title>
-    <meta name="robots" content="noindex, follow" />
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/liverpool_logo_PNG5.png" />
-
-    <!-- CSS
-	============================================ -->
-
-    <!-- Icon Font CSS -->
-    <link rel="stylesheet" href="assets/css/plugins/pe-icon-7-stroke.css" />
-    <link rel="stylesheet" href="assets/css/plugins/font-awesome.min.css" />
-
-    <!-- Sweet alert css -->
-    <link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
-
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" href="assets/css/plugins/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/animate.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/odometer.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/select2.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins/ion.rangeSlider.min.css" />
-
-    <!-- Main Style CSS -->
-    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
-    <link rel="stylesheet" href="assets/css/style.min.css" />
-</head>
-
-
-<body>
-    <!-- Header Start  -->
-    <div class="header-area header-sticky d-none d-lg-block">
-        <div class="container position-relative">
-            <div class="row align-items-center">
-                <div class="col-lg-3">
-                    <!-- Header Logo Start -->
-                    <div class="header-logo">
-                        <a href="/home"><img src="assets/images/liverpool_logo_PNG5.png" width="154" height="46" alt="Logo" /></a>
-                    </div>
-                    <!-- Header Logo End -->
-                </div>
-                <div class="col-lg-6">
-                    <div class="header-menu">
-                        <ul class="nav-menu">
-                            <li><a href="/home">Home</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <!-- Header Meta Start -->
-                    <div class="header-meta">
-                        <div class="dropdown">
-                            <a class="action" href="#" role="button" data-bs-toggle="dropdown">
-                                <i class="pe-7s-search"></i>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-search">
-                                <!-- Header Search Start -->
-                                <div class="header-search">
-                                    <form action="#">
-                                        <input type="text" placeholder="Enter your search key ... " />
-                                        <button>
-                                            <i class="pe-7s-search"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                                <!-- Header Search End -->
-                            </div>
-                        </div>
-
-                        <div class="dropdown">
-                            <a class="action" href="#" role="button" data-bs-toggle="dropdown"><i class="pe-7s-user"></i></a>
-
-                            <ul class="dropdown-menu dropdown-profile">
-                                <li><a href="/my-accounts">My Account</a></li>
-                                <li><a href="/logout">Logout</a></li>
-                            </ul>
-                        </div>
-                        </div>
-                    </div>
-                    <!-- Header Meta End -->
-                </div>
+    <!-- Banner -->
+    <section class="bg-cover bg-center py-24 text-white" style="background-image: url('/assets/images/team-photos/grasss.jpg')">
+        <div class="container mx-auto h-full flex items-center justify-start">
+            <div class="text-left">
+            <h1 class="text-5xl font-bold mb-4">My Account</h1>
+            <p class="text-lg">
+                <a href="/home" class="underline">Home</a> / <span>My Account</span>
+            </p>
             </div>
         </div>
-    </div>
-    <!-- Header End -->
+    </section>
 
+    <!-- My Account Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row gap-8">
+          <!-- Sidebar Menu -->
+          <div class="w-full md:w-1/4 bg-white p-6 rounded-lg shadow">
+            <ul class="space-y-4">
+              <li>
+                <a href="javascript:void(0)" onclick="showSection('profile')" id="profile-link" 
+                   class="flex items-center gap-3 text-gray-700 hover:text-red-600">
+                  <i class="fas fa-user w-6"></i> Profile
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onclick="showSection('bookings')" id="bookings-link"
+                   class="flex items-center gap-3 text-gray-700 hover:text-red-600">
+                  <i class="fas fa-calendar-alt w-6"></i> Bookings
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onclick="showSection('wishlist')" id="wishlist-link"
+                   class="flex items-center gap-3 text-gray-700 hover:text-red-600">
+                  <i class="fas fa-heart w-6"></i> Wishlist
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onclick="showSection('wallet')" id="wallet-link"
+                   class="flex items-center gap-3 text-gray-700 hover:text-red-600">
+                  <i class="fas fa-wallet w-6"></i> Wallet
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onclick="showSection('coupons')" id="coupons-link"
+                   class="flex items-center gap-3 text-gray-700 hover:text-red-600">
+                  <i class="fas fa-tag w-6"></i> Coupons
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onclick="showSection('edit-profile')" id="edit-profile-link"
+                   class="flex items-center gap-3 text-gray-700 hover:text-red-600">
+                  <i class="fas fa-edit w-6"></i> Edit Profile
+                </a>
+              </li>
+              <li>
+                <a href="/logout" class="flex items-center gap-3 text-gray-700 hover:text-red-600">
+                  <i class="fas fa-sign-out-alt w-6"></i> Logout
+                </a>
+              </li>
+            </ul>
+          </div>
 
-
-    <!-- Page Banner Section Start -->
-    <div class="section page-banner-section" style="background-image: url(assets/images/team-photos/Soccer.jpg)">
-        <div class="container">
-            <!-- Page Banner Content End -->
-            <div class="page-banner-content">
-                <h2 class="title">My Account</h2>
-                <ul class="breadcrumb">
-                    <li><a href="/">Home</a></li>
-                    <li class="active">My Account</li>
-                </ul>
-            </div>
-            <!-- Page Banner Content End -->
-        </div>
-    </div>
-    <!-- Page Banner Section End -->
-
-    <!-- My Account Section Start -->
-    <div class="section section-padding">
-        <div class="container">
-            <div class="row gy-4">
-                <div class="col-xl-3 col-md-4">
-                    <!-- My Account Menu Start -->
-                    <div class="my-account-menu">
-                        <ul class="nav account-menu-list flex-column">
-                            <li>
-                                <a class="active" data-bs-toggle="pill" href="#pills-dashboard"><i class="fa fa-tachometer"></i>
-                                    Profile</a>
-                            </li>
-                            <li>
-                                <a data-bs-toggle="pill" href="#pills-order"><i class="fa fa-shopping-cart"></i>
-                                    Order</a>
-                            </li>
-                            <li>
-                                <a data-bs-toggle="pill" href="#pills-download"><i class="fa fa-cloud-download"></i>
-                                    Wishlist</a>
-                            </li>
-                            <li>
-                                <a data-bs-toggle="pill" href="#pills-payment"><i class="fa fa-credit-card"></i>
-                                    Wallet</a>
-                            </li>
-                            <li>
-                                <a data-bs-toggle="pill" href="#pills-address"><i class="fa fa-credit-card"></i>
-                                    Coupon</a>
-                            </li>
-                            <li>
-                                <a data-bs-toggle="pill" href="#pills-account"><i class="fa fa-user"></i> Edit
-                                    Details</a>
-                            </li>
-                            <li>
-                                <a href="/logout"><i class="fa fa-sign-out"></i>
-                                    Logout</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- My Account Menu End -->
+          <!-- Main Content -->
+          <div class="w-full md:w-3/4">
+            <!-- Profile Section -->
+            <div id="profile-section" class="bg-white p-8 rounded-lg shadow hidden">
+              <h2 class="text-2xl font-bold mb-6 text-gray-800">Profile Information</h2>
+              <div class="space-y-4">
+                <div>
+                  <h3 class="text-xl font-semibold"><%= user.username %></h3>
+                  <p class="text-gray-600"><%= user.name %></p>
                 </div>
-
-                <div class="col-xl-9 col-md-8">
-                    <!-- Tab content start -->
-                    <div class="tab-content my-account-tab">
-                        <div class="tab-pane fade show active" id="pills-dashboard">
-                            <div class="my-account-dashboard account-wrapper">
-                                <div class="account-address" style="padding: 20px; background-color: #f8f9fa; border-radius: 10px;">
-                                    <h4 class="account-title" style="color: #343a40; font-size: 24px; font-weight: bold; margin-bottom: 10px;">
-                                        <%= user.username %>
-                                    </h4>
-                                    <h6 class="name" style="color: #6c757d; font-size: 18px; margin-bottom: 20px;">
-                                        <%= user.name %>
-                                    </h6>
-                                    <% if(user.address){ %>
-                                    <p style="color: #495057; font-size: 16px; margin-bottom: 20px;">
-                                        <i class="fa fa-map-marker-alt" style="color: #007bff;"></i> 
-                                        <%= user.address %>
-                                    </p>
-                                    <% } %>
-                                    <p style="color: #495057; font-size: 16px; margin-bottom: 20px;">
-                                        <i class="fa fa-mobile-alt" style="color: #28a745;"></i> Mobile: <%= user.mobile %> <br>
-                                        <i class="fa fa-envelope" style="color: #ffc107;"></i> Email: <%= user.email %>
-                                    </p>
-                                    <hr style="border-top: 1px solid #dee2e6; margin: 20px 0;">
-                                    <div>
-                                        <h4 class="account-title" style="color: #343a40; font-size: 20px; font-weight: bold; margin-bottom: 10px;">
-                                            Referral Code:
-                                        </h4>
-                                        <h5 style="color: #17a2b8; font-size: 18px; font-weight: bold; margin-bottom: 10px;">
-                                            <%= user.refferalCode %>
-                                        </h5>
-                                        <div class="copy-container" style="display: flex; align-items: center; margin-bottom: 20px;">
-                                            <div id="textToCopy" style="color: #212529; background-color: #e9ecef; padding: 8px 12px; border-radius: 5px; flex-grow: 1; overflow-x: auto;">
-                                                http://localhost:8000/signup?refferal=<%= user._id %>
-                                            </div>
-                                            <button onclick="copyText()" style="margin-left: 10px; background-color: #007bff; color: #fff; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer;">
-                                                <i class="fa fa-copy"></i> Copy
-                                            </button>
-                                        </div>
-                                        <p style="color: #495057; font-size: 14px;">
-                                            (Invite friends to the Anfield turf booking website and get 
-                                            <strong style="color: #28a745;">₹121</strong> when your friend registers on our website. They get 
-                                            <strong style="color: #ffc107;">₹21</strong>.)
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- <div class="tab-pane fade show active" id="pills-dashboard">
-                            <div class="my-account-dashboard account-wrapper">
-                                <div class="account-address">
-                                    <h4 class="account-title">
-                                        <%= user.username %>
-                                    </h4> <br>
-                                    <h6 class="name">
-                                        <%= user.name %>
-                                    </h6>
-                                    <% if(user.address){ %>
-                                    <p>
-                                        <%= user.address %>
-                                        <br />
-                                    </p>
-                                    <% } %>
-
-                                    <p>Mobile: <%= user.mobile %> <br>
-                                        Email: <%= user.email %></p>
-                                        <br>
-                                    <div>
-                                        <h4 class="account-title">
-                                            Refferal code:
-                                        </h4>
-                                        <h5><%= user.refferalCode %></h5><br>
-                                        <div class="copy-container">
-                                            <div style="color: black;" id="textToCopy">http://localhost:8000/signup?refferal=<%= user._id %></div>
-                                            <button onclick="copyText()">
-                                                <i class="fa fa-copy"></i> Copy
-                                            </button>
-                                        </div>
-                                        <p>( Invite friends to Anfield turf booking website and get 
-                                            ₹121 when your friend register on our website. They get ₹21 )</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-
-                        <!-- Script fpr copy referal code -->
-                        <script>
-                            function copyText() {
-                                // Create a temporary textarea element
-                                const tempTextarea = document.createElement("textarea");
-                                // Get the text from the div
-                                tempTextarea.value = document.getElementById("textToCopy").textContent;
-                                // Add the textarea to the document body
-                                document.body.appendChild(tempTextarea);
-                                // Select the text inside the textarea
-                                tempTextarea.select();
-                                // Copy the text inside the textarea
-                                document.execCommand("copy");
-                                // Remove the temporary textarea
-                                document.body.removeChild(tempTextarea);
-                                // Alert the user
-                                alert("Text copied to clipboard!");
-                            }
-                        </script>
-                        
-
-                        <div class="tab-pane fade" id="pills-order">
-                            <div class="my-account-order account-wrapper">
-                                <h4 class="account-title">Bookings</h4>
-                                <div class="account-table text-center table-responsive">
-                                    <% if (typeof order !== 'undefined'){ %>
-
-                                        <table class="table" >
-                                            <thead >
-                                            <tr>
-                                                <th class="name">Turf</th>
-                                                <th class="name">Court</th>
-                                                <th class="date">Time</th>
-                                                <th class="status">
-                                                    Payment
-                                                </th>
-                                                <th class="total">Cash</th>
-                                                <th class="action">Location</th>
-                                                <th class="date">Booked date</th>
-                                                <th class="date">Actions</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody >
-                                            <% for(let i=0;i<order.length;i++){ %>
-                                                <!-- <p id="orderId" style=""></p> -->
-                                                <tr style="height: 70px;">
-                                                    <td><%= order[i].name %></td>
-                                                    <td><%= order[i].court %></td>
-                                                    <td><%= order[i].startingTime %> to <%= order[i].endingTime %></td>
-                                                    <td><%= order[i].paymentMethod %></td>
-                                                    <td><%= order[i].cash %></td>
-                                                    <td><%= order[i].city %></td>
-                                                    <td><%= order[i].slotBookDate %></td>
-                                                    <% if (order[i].status === 'Failed') { %>
-                                                            <td>Payment failed</td>
-                                                    <% } else if (order[i].status == 'Canceled'){ %>
-                                                            <td style="background-color:rgb(169, 169, 169);"><p>canceled</p></td>
-                                                    <% } else if (order[i].status == 'Pending'){
-                                                        if(order[i].slotBookDate < today || (order[i].slotBookDate <= today && order[i].startingTime < currentTime)) { %>
-                                                            <td>Payment failed</td>
-                                                        <% } else { %>
-                                                            <td><a href="/continue-payment?order=<%= encodeURIComponent(JSON.stringify(order[i])) %>">Continue payment</a></td>
-                                                        <% } %>
-                                                    <% } else if (order[i].slotBookDate < today){ %>
-                                                        <td><a onclick="invoice(this,'<%= encodeURIComponent(JSON.stringify(order[i])) %>')">Invoice</a></td>
-                                                    <% } else if(order[i].slotBookDate > today) { %>
-                                                            <div><td><a onclick="orderCancel(this,'<%= order[i]._id %>', '<%= order[i].couponCode %>')" style="background-color: red; color: white; border-radius: 5px;">Cancel</a></td></div>
-                                                    <% } else if(order[i].endingTime > currentTime){ %>
-                                                            <td>You can't cancel</td>
-                                                    <% } else { %>
-                                                        <td><a onclick="invoice(this,'<%= encodeURIComponent(JSON.stringify(order[i])) %>')">Invoice</a></td>
-                                                        <% } %>
-                                                    <td style="display: none;" id="orderId"><%= order[i]._id %></td>
-                                                </tr>
-                                            <% } %>
-                                        </tbody>
-                                    </table>
-                                <% }else{ %>
-                                    <h3>No Bookings</h3>
-                                <% } %>    
-                            </div>
-                        </div>
+                
+                <% if(user.address){ %>
+                <div class="flex items-start gap-2">
+                  <i class="fas fa-map-marker-alt text-red-600 mt-1"></i>
+                  <p class="text-gray-700"><%= user.address %></p>
+                </div>
+                <% } %>
+                
+                <div class="flex items-start gap-2">
+                  <i class="fas fa-mobile-alt text-red-600 mt-1"></i>
+                  <p class="text-gray-700"><%= user.mobile %></p>
+                </div>
+                
+                <div class="flex items-start gap-2">
+                  <i class="fas fa-envelope text-red-600 mt-1"></i>
+                  <p class="text-gray-700"><%= user.email %></p>
+                </div>
+                
+                <div class="border-t border-gray-200 pt-4 mt-4">
+                  <h4 class="text-lg font-semibold mb-2">Referral Program</h4>
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="font-medium mb-2">Your Referral Code: <span class="text-red-600"><%= user.refferalCode %></span></p>
+                    <div class="flex gap-2 mb-3">
+                      <input type="text" id="referralLink" value="http://localhost:8000/signup?refferal=<%= user._id %>" 
+                             class="flex-1 p-2 border rounded text-gray-700" readonly>
+                      <button onclick="copyText()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
                     </div>
-                            <script>
-                                async function invoice(tag, order) {
-                                    try {
-                                        console.log('lll')
-                                        // console.log(order)
-                                        fetch(`/invoice-check`)
-                                        .then(res => res.json())
-                                        .then(res => {
-                                            console.log(order)
-					                        window.location.href = `/invoice?order=${order}`;
-                                        })
-                                    } catch (error) {
-                                        console.log(error.message)
-                                    }
-                                }
-                            </script>
-                        
-
-                    <script>
-                        async function orderCancel(element, orderId, couponCode){
-                            try {
-                                swal({
-                                    title: "Are you sure?",
-                                    text: "Do you want cancel this turf",
-                                    type: "warning",
-                                    showCancelButton: true,
-                                    confirmButtonColor: "#DD6B55",
-                                    confirmButtonText: "Yes, cancel it!",
-                                    cancelButtonText: "No, don't cancel!",
-                                    closeOnConfirm: false,
-                                    closeOnCancel: false
-                                },
-                                function(isConfirm){
-                                    if (isConfirm) {
-                                        const orderIds = document.querySelectorAll("orderId");
-                                        const couponCodes = document.querySelectorAll("couponCode");
-
-                                        orderIds.forEach(element => {
-                                            const orderId = element.textContent.trim();
-                                        });
-                                        couponCodes.forEach(element => {
-                                            const couponCode = element.textContent.trim();
-                                        });
-
-                                        element.innerText = 'Canceled';
-                                        // Create a new <p> element
-                                        const pElement = document.createElement('td');
-                                        pElement.innerText = 'Canceled';
-                                        pElement.style.backgroundColor = 'rgb(169, 169, 169)';
-                                        pElement.style.height = '75px'
-                                        pElement.style.width = '150px'
-
-                                        console.log(pElement)
-                                        // Replace the <a> tag with the new <p> tag
-                                        element.parentNode.replaceChild(pElement, element);
-                                        fetch(`/cancel-bookings?orderId=${orderId}&couponCode=${couponCode}`)
-                                        swal("canceled!", "Your booking is canceled.", "success");
-                                    } else {
-
-                                        swal("Dont worry", "Your booking is safe", "error");
-                                    }
-                                });
-                            } catch (error) {
-                                console.log(error.message)
-                            }  
-                        }
-                        
-                    </script>
-
-                    
-                        <div class="tab-pane fade" id="pills-download">
-                            <div class="my-account-download account-wrapper">
-                                <h4 class="account-title">Wishlist</h4>
-                                <div class="account-table text-center table-responsive">
-                                    <% if(wishlist && wishlist.turfs && wishlist.turfs.length > 0){ %>
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th class="name">
-                                                        Turf
-                                                    </th>
-                                                    <th class="date">City</th>
-                                                    <th class="status">
-                                                        Court
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <% for(let i = 0; i < wishlist.turfs.length; i++) { %>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="/turf-details?id=<%= wishlist.turfs[i]._id %>"><%= wishlist.turfs[i].name %></a>
-                                                        </td>
-                                                        <td><%= wishlist.turfs[i].city %></td>
-                                                        <td>
-                                                            <a href="/turf-details?id=<%= wishlist.turfs[i]._id %>"><%= wishlist.turfs[i].court %></a>
-                                                        </td>
-                                                    </tr>
-                                                <% } %>
-                                            </tbody>
-                                        </table>
-                                    <% } else { %>
-                                        <h3>Wishlists are empty</h3>
-                                    <% } %>    
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="pills-payment">
-                            <div class="my-account-payment account-wrapper">
-                                <h4 class="account-title">
-                                    Wallet
-                                </h4>
-                                <div class="account-table text-center table-responsive">
-                                    <% if(wallet && wallet.cancelledOrders && wallet.cancelledOrders.length > 0){ %>
-                                        <h5>Wallet balance: <%= wallet.amount %></h5><br>
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th class="name">
-                                                        Date
-                                                    </th>
-                                                    <th class="date">Reason</th>
-                                                    <th class="status">
-                                                        Amount
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <% for(let i = 0; i < wallet.cancelledOrders.length; i++) { %>
-                                                    <tr >
-                                                        <td><a><%= wallet.cancelledOrders[i].cancelledDate %></a></td>
-                                                        <td><%= wallet.cancelledOrders[i].name %></td>
-                                                        <td><%= wallet.cancelledOrders[i].amount %></td>
-                                                    </tr>
-                                                <% } %>
-                                            </tbody>
-                                        </table>
-                                    <% } else { %>
-                                        <h3>Wallet are empty</h3>
-                                    <% } %>    
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="pills-address">
-                            <div class="my-account-download account-wrapper">
-                                <h4 class="account-title">Available coupons</h4>
-                                <div class="account-table text-center table-responsive">
-                                    <% if(coupon){ %>
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th class="date">Name</th>
-                                                    <th class="status">Code</th>
-                                                    <th class="status">Expiry date</th>
-
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <% for(let i = 0; i < coupon.length; i++) { %>
-                                                    <tr>
-                                                        <td><a><%= coupon[i].name %></a> </td>
-                                                        <td><%= coupon[i].code %></td>
-                                                        <td><%= coupon[i].expiredAt.toLocaleDateString() %></td>
-                                                        
-                                                    </tr>
-                                                <% } %>
-                                            </tbody>
-                                        </table>
-                                    <% } else { %>
-                                        <h3>Wishlists are empty</h3>
-                                    <% } %>    
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="pills-account">
-                            <div class="my-account-details account-wrapper">
-                                <h4 class="account-title">
-                                    Edit Details
-                                </h4>
-
-                                <form id="editForm" action="#">
-                                    <div class="account-details">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="single-form">
-                                                <label for="username">username:</label>
-                                                <input type="text" id="username" value="<%= user.username %>" required/>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="single-form">
-                                                <label for="name">name:</label>
-                                                <input type="text" id="name" value="<%= user.name %>" required/>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="single-form">
-                                                <label for="address">address:</label>
-                                                <% if(user.address){ %>
-                                                    <input type="text" id="address" value="<%= user.address %>" required/>
-                                                <% }else{ %>
-                                                    <input type="text" id="address" placeholder="Enter your address" required/>
-                                                <% } %>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12">
-                                            <div class="single-form">
-                                                <h5 class="title">
-                                                    Password change
-                                                </h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="single-form">
-                                                <input type="password" id="currentPass" placeholder="Current Password" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="single-form">
-                                                <input type="password" id="newPass" placeholder="New Password" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="single-form">
-                                                <input type="password" id="confirmPass" placeholder="Confirm Password" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="single-form">
-                                                <button class="btn btn-primary btn-hover-dark" onclick="editUser()">
-                                                    Save Change
-                                                </button> <p id="message" style="color: red;"></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-
-                            </div>
-                        </div>
-                        
+                    <p class="text-sm text-gray-600">
+                      Invite friends to GreenSlot Turf Courts and get <span class="font-bold text-green-600">₹121</span> when they register. 
+                      They'll get <span class="font-bold text-yellow-600">₹21</span> too!
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <!-- Bookings Section -->
+            <div id="bookings-section" class="bg-white p-8 rounded-lg shadow hidden">
+              <h2 class="text-2xl font-bold mb-6 text-gray-800">My Bookings</h2>
+              <% if (typeof order !== 'undefined' && order.length > 0){ %>
+                <div class="overflow-x-auto">
+                  <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                      <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Turf</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Court</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Payment</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                      <% for(let i=0;i<order.length;i++){ %>
+                      <tr>
+                        <td class="px-6 py-4 whitespace-nowrap"><%= order[i].name %></td>
+                        <td class="px-6 py-4 whitespace-nowrap"><%= order[i].court %></td>
+                        <td class="px-6 py-4 whitespace-nowrap"><%= order[i].startingTime %> to <%= order[i].endingTime %></td>
+                        <td class="px-6 py-4 whitespace-nowrap"><%= order[i].paymentMethod %></td>
+                        <td class="px-6 py-4 whitespace-nowrap">₹<%= order[i].cash %></td>
+                        <td class="px-6 py-4 whitespace-nowrap"><%= order[i].city %></td>
+                        <td class="px-6 py-4 whitespace-nowrap"><%= order[i].slotBookDate %></td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <% if (order[i].status === 'Failed') { %>
+                            <span class="text-red-600">Payment failed</span>
+                          <% } else if (order[i].status == 'Canceled'){ %>
+                            <span class="text-gray-500">Canceled</span>
+                          <% } else if (order[i].status == 'Pending'){
+                            if(order[i].slotBookDate < today || (order[i].slotBookDate <= today && order[i].startingTime < currentTime)) { %>
+                              <span class="text-red-600">Payment failed</span>
+                            <% } else { %>
+                              <a href="/continue-payment?order=<%= encodeURIComponent(JSON.stringify(order[i])) %>" 
+                                 class="text-red-600 hover:underline">Continue payment</a>
+                            <% } %>
+                          <% } else if (order[i].slotBookDate < today){ %>
+                            <a onclick="invoice(this,'<%= encodeURIComponent(JSON.stringify(order[i])) %>')" 
+                               class="text-red-600 hover:underline cursor-pointer">Invoice</a>
+                          <% } else if(order[i].slotBookDate > today) { %>
+                            <a onclick="orderCancel(this,'<%= order[i]._id %>', '<%= order[i].couponCode %>')" 
+                               class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 cursor-pointer">Cancel</a>
+                          <% } else if(order[i].endingTime > currentTime){ %>
+                            <span class="text-gray-500">Can't cancel</span>
+                          <% } else { %>
+                            <a onclick="invoice(this,'<%= encodeURIComponent(JSON.stringify(order[i])) %>')" 
+                               class="text-red-600 hover:underline cursor-pointer">Invoice</a>
+                          <% } %>
+                        </td>
+                      </tr>
+                      <% } %>
+                    </tbody>
+                  </table>
+                </div>
+              <% } else { %>
+                <div class="text-center py-8">
+                  <i class="fas fa-calendar-alt text-4xl text-gray-300 mb-4"></i>
+                  <h3 class="text-lg font-medium text-gray-700">No bookings found</h3>
+                  <p class="text-gray-500 mt-2">You haven't made any bookings yet.</p>
+                  <a href="/turfs?court=all&page=1" class="mt-4 inline-block bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+                    Book a Turf Now
+                  </a>
+                </div>
+              <% } %>
+            </div>
+
+            <!-- Wishlist Section -->
+            <div id="wishlist-section" class="bg-white p-8 rounded-lg shadow hidden">
+              <h2 class="text-2xl font-bold mb-6 text-gray-800">My Wishlist</h2>
+              <% if(wishlist && wishlist.turfs && wishlist.turfs.length > 0){ %>
+                <div class="overflow-x-auto">
+                  <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                      <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Turf</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">City</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Court</th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                      <% for(let i = 0; i < wishlist.turfs.length; i++) { %>
+                      <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <a href="/turf-details?id=<%= wishlist.turfs[i]._id %>" class="text-red-600 hover:underline"><%= wishlist.turfs[i].name %></a>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap"><%= wishlist.turfs[i].city %></td>
+                        <td class="px-6 py-4 whitespace-nowrap"><%= wishlist.turfs[i].court %></td>
+                      </tr>
+                      <% } %>
+                    </tbody>
+                  </table>
+                </div>
+              <% } else { %>
+                <div class="text-center py-8">
+                  <i class="fas fa-heart text-4xl text-gray-300 mb-4"></i>
+                  <h3 class="text-lg font-medium text-gray-700">Your wishlist is empty</h3>
+                  <p class="text-gray-500 mt-2">Save your favorite turfs to your wishlist for easy access later.</p>
+                </div>
+              <% } %>
+            </div>
+
+            <!-- Wallet Section -->
+            <div id="wallet-section" class="bg-white p-8 rounded-lg shadow hidden">
+              <h2 class="text-2xl font-bold mb-6 text-gray-800">My Wallet</h2>
+              <% if(wallet && wallet.cancelledOrders && wallet.cancelledOrders.length > 0){ %>
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                  <h3 class="text-lg font-semibold">Wallet Balance: <span class="text-green-600">₹<%= wallet.amount %></span></h3>
+                </div>
+                <div class="overflow-x-auto">
+                  <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                      <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Reason</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                      <% for(let i = 0; i < wallet.cancelledOrders.length; i++) { %>
+                      <tr>
+                        <td class="px-6 py-4 whitespace-nowrap"><%= wallet.cancelledOrders[i].cancelledDate %></td>
+                        <td class="px-6 py-4 whitespace-nowrap"><%= wallet.cancelledOrders[i].name %></td>
+                        <td class="px-6 py-4 whitespace-nowrap">₹<%= wallet.cancelledOrders[i].amount %></td>
+                      </tr>
+                      <% } %>
+                    </tbody>
+                  </table>
+                </div>
+              <% } else { %>
+                <div class="text-center py-8">
+                  <i class="fas fa-wallet text-4xl text-gray-300 mb-4"></i>
+                  <h3 class="text-lg font-medium text-gray-700">Your wallet is empty</h3>
+                  <p class="text-gray-500 mt-2">Cancelled bookings will be credited to your wallet.</p>
+                </div>
+              <% } %>
+            </div>
+
+            <!-- Coupons Section -->
+            <div id="coupons-section" class="bg-white p-8 rounded-lg shadow hidden">
+              <h2 class="text-2xl font-bold mb-6 text-gray-800">Available Coupons</h2>
+              <% if(coupon && coupon.length > 0){ %>
+                <div class="overflow-x-auto">
+                  <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                      <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Code</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Expiry Date</th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                      <% for(let i = 0; i < coupon.length; i++) { %>
+                      <tr>
+                        <td class="px-6 py-4 whitespace-nowrap"><%= coupon[i].name %></td>
+                        <td class="px-6 py-4 whitespace-nowrap"><span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded"><%= coupon[i].code %></span></td>
+                        <td class="px-6 py-4 whitespace-nowrap"><%= coupon[i].expiredAt.toLocaleDateString() %></td>
+                      </tr>
+                      <% } %>
+                    </tbody>
+                  </table>
+                </div>
+              <% } else { %>
+                <div class="text-center py-8">
+                  <i class="fas fa-tag text-4xl text-gray-300 mb-4"></i>
+                  <h3 class="text-lg font-medium text-gray-700">No coupons available</h3>
+                  <p class="text-gray-500 mt-2">Check back later for special offers and discounts.</p>
+                </div>
+              <% } %>
+            </div>
+
+            <!-- Edit Profile Section -->
+            <div id="edit-profile-section" class="bg-white p-8 rounded-lg shadow hidden">
+              <h2 class="text-2xl font-bold mb-6 text-gray-800">Edit Profile</h2>
+              <form id="editForm" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                    <input type="text" id="username" value="<%= user.username %>" 
+                           class="w-full px-4 py-2 border rounded-md focus:ring-red-500 focus:border-red-500" required>
+                  </div>
+                  <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                    <input type="text" id="name" value="<%= user.name %>" 
+                           class="w-full px-4 py-2 border rounded-md focus:ring-red-500 focus:border-red-500" required>
+                  </div>
+                  <div class="md:col-span-2">
+                    <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                    <% if(user.address){ %>
+                      <input type="text" id="address" value="<%= user.address %>" 
+                             class="w-full px-4 py-2 border rounded-md focus:ring-red-500 focus:border-red-500" required>
+                    <% }else{ %>
+                      <input type="text" id="address" placeholder="Enter your address" 
+                             class="w-full px-4 py-2 border rounded-md focus:ring-red-500 focus:border-red-500" required>
+                    <% } %>
+                  </div>
+                </div>
+                
+                <div class="border-t border-gray-200 pt-6">
+                  <h3 class="text-lg font-medium text-gray-800 mb-4">Change Password</h3>
+                  <div class="space-y-4">
+                    <div>
+                      <label for="currentPass" class="block text-sm font-medium text-gray-700 mb-1">Current Password</label>
+                      <input type="password" id="currentPass" placeholder="Current Password" 
+                             class="w-full px-4 py-2 border rounded-md focus:ring-red-500 focus:border-red-500">
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label for="newPass" class="block text-sm font-medium text-gray-700 mb-1">New Password</label>
+                        <input type="password" id="newPass" placeholder="New Password" 
+                               class="w-full px-4 py-2 border rounded-md focus:ring-red-500 focus:border-red-500">
+                      </div>
+                      <div>
+                        <label for="confirmPass" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+                        <input type="password" id="confirmPass" placeholder="Confirm Password" 
+                               class="w-full px-4 py-2 border rounded-md focus:ring-red-500 focus:border-red-500">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="flex justify-end">
+                  <button type="submit" onclick="editUser()" 
+                          class="bg-red-600 text-white px-6 py-2 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+                    Save Changes
+                  </button>
+                </div>
+                <p id="message" class="text-red-600 text-sm"></p>
+              </form>
+            </div>
+          </div>
         </div>
-    </div>
-    <!-- My Account Section End -->
+      </div>
+    </section>
 
-
-        
-
-    <!--Back To Start-->
-    <button id="backBtn" class="back-to-top"><i class="pe-7s-angle-up"></i></button>
-    <!--Back To End-->
-    <!-- JS
-    ============================================ -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <script>
-        async function editUser(){
-            try {
-		        const form = document.getElementById('editForm');
-                form.addEventListener('submit', function(event) {
-		            event.preventDefault();
-                    const username = document.getElementById('username').value;
-                    const address = document.getElementById('address').value;
-                    const name = document.getElementById('name').value;
-                    const currentPass = document.getElementById('currentPass').value;
-                    const newPass = document.getElementById('newPass').value;
-                    const confirmPass = document.getElementById('confirmPass').value;
-
-                    let query = `username=${username}&address=${address}&name=${name}&currentPass=${currentPass}&newPass=${newPass}&confirmPass=${confirmPass}`
-                    fetch(`/edit-profile?${query}`)
-                    .then(res => res.json())
-                    .then(res =>{
-                    // 	if(res.success){
-                    // 		window.location.href = '/home';
-                    // 	}else{
-                            Swal.fire(res.message)
-                    		// document.getElementById('message').innerHTML=res.message
-                    // 	}
-                    })
-                });
-            } catch (error) {
-                console.log(error.message)
-            }
+      // Track current active section
+      let currentActiveLink = null;
+      
+      function showSection(sectionId) {
+        // Hide all sections
+        document.querySelectorAll('[id$="-section"]').forEach(section => {
+          section.classList.add('hidden');
+        });
+        
+        // Show selected section
+        document.getElementById(sectionId + '-section').classList.remove('hidden');
+        
+        // Update menu styling
+        const clickedLink = document.getElementById(sectionId + '-link');
+        
+        // Remove active class from previous link if exists
+        if (currentActiveLink) {
+          currentActiveLink.classList.remove('text-red-600', 'font-medium');
+          currentActiveLink.classList.add('text-gray-700');
         }
+        
+        // Add active class to clicked link
+        clickedLink.classList.add('text-red-600', 'font-medium');
+        clickedLink.classList.remove('text-gray-700');
+        
+        // Update current active link
+        currentActiveLink = clickedLink;
+      }
+
+      // Initialize with profile section visible
+      document.addEventListener('DOMContentLoaded', function() {
+        // Set profile as default active
+        const profileLink = document.getElementById('profile-link');
+        profileLink.classList.add('text-red-600', 'font-medium');
+        profileLink.classList.remove('text-gray-700');
+        currentActiveLink = profileLink;
+        
+        // Show profile section
+        document.getElementById('profile-section').classList.remove('hidden');
+      });
+
+      function copyText() {
+        const referralLink = document.getElementById("referralLink");
+        referralLink.select();
+        document.execCommand("copy");
+        Swal.fire({
+          icon: 'success',
+          title: 'Copied!',
+          text: 'Referral link copied to clipboard',
+          timer: 2000,
+          showConfirmButton: false
+        });
+      }
+
+      async function invoice(tag, order) {
+        try {
+          const res = await fetch(`/invoice-check`);
+          const data = await res.json();
+          window.location.href = `/invoice?order=${order}`;
+        } catch (error) {
+          console.log(error.message);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Failed to generate invoice'
+          });
+        }
+      }
+
+      async function orderCancel(element, orderId, couponCode) {
+        try {
+          const { isConfirmed } = await Swal.fire({
+            title: 'Are you sure?',
+            text: 'Do you want to cancel this booking?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, cancel it!'
+          });
+
+          if (isConfirmed) {
+            const response = await fetch(`/cancel-bookings?orderId=${orderId}&couponCode=${couponCode}`);
+            if (response.ok) {
+              element.outerHTML = '<span class="text-gray-500">Canceled</span>';
+              Swal.fire('Cancelled!', 'Your booking has been cancelled.', 'success');
+            } else {
+              throw new Error('Failed to cancel booking');
+            }
+          }
+        } catch (error) {
+          console.log(error.message);
+          Swal.fire('Error', 'Failed to cancel booking', 'error');
+        }
+      }
+
+      async function editUser() {
+        try {
+          const form = document.getElementById('editForm');
+          form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const address = document.getElementById('address').value;
+            const name = document.getElementById('name').value;
+            const currentPass = document.getElementById('currentPass').value;
+            const newPass = document.getElementById('newPass').value;
+            const confirmPass = document.getElementById('confirmPass').value;
+
+            const query = `username=${username}&address=${address}&name=${name}&currentPass=${currentPass}&newPass=${newPass}&confirmPass=${confirmPass}`;
+            
+            try {
+              const response = await fetch(`/edit-profile?${query}`);
+              const result = await response.json();
+              
+              if (result.success) {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Success!',
+                  text: result.message,
+                  timer: 2000,
+                  showConfirmButton: false
+                }).then(() => {
+                  window.location.reload();
+                });
+              } else {
+                document.getElementById('message').textContent = result.message;
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: result.message
+                });
+              }
+            } catch (error) {
+              console.log(error.message);
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'An error occurred while updating your profile'
+              });
+            }
+          });
+        } catch (error) {
+          console.log(error.message);
+        }
+      }
     </script>
 
-    <!-- Modernizer & jQuery JS -->
-    <!-- Swal script -->
-    <script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
-
-    <script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
-    <script src="assets/js/vendor/jquery-3.5.1.min.js"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="assets/js/plugins/popper.min.js"></script>
-    <script src="assets/js/plugins/bootstrap.min.js"></script>
-
-    <!-- Plugins JS -->
-    <script src="assets/js/plugins/swiper-bundle.min.js"></script>
-    <script src="assets/js/plugins/ajax-contact.js"></script>
-    <script src="assets/js/plugins/odometer.min.js"></script>
-    <script src="assets/js/plugins/select2.min.js"></script>
-    <script src="assets/js/plugins/ion.rangeSlider.min.js"></script>
-    <script src="assets/js/plugins/jquery.zoom.min.js"></script>
-
-    <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
-
-</body>
-
-
-<!-- Mirrored from htmldemo.net/furbar-1/furbar/my-account.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Dec 2023 16:16:18 GMT -->
+    <footer class="bg-red-600 text-white p-4 text-center">
+      <p>&copy; 2025 GreenSlot. All rights reserved.</p>
+    </footer>
+  </body>
 </html>
